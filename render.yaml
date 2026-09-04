@@ -1,0 +1,33 @@
+services:
+  # ----------------------------------------------------------------------------
+  # FastAPI Backend Web Service
+  # ----------------------------------------------------------------------------
+  - type: web
+    name: campusmind-api
+    env: python
+    region: singapore
+    plan: free
+    buildCommand: cd backend && pip install -r requirements.txt && python scripts/generate_students.py && python -m rag.ingest
+    startCommand: cd backend && uvicorn main:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.0
+      - key: GEMINI_API_KEY
+        value: dummy_key_replace_with_real
+      - key: JWT_SECRET_KEY
+        value: campusmind_super_secret_jwt_key_2026
+      - key: CORS_ORIGINS
+        value: "*"
+
+  # ----------------------------------------------------------------------------
+  # React / Vite Frontend Static Site
+  # ----------------------------------------------------------------------------
+  - type: web
+    name: campusmind-ui
+    env: static
+    buildCommand: cd frontend && npm install && npm run build
+    staticPublishPath: ./frontend/dist
+    routes:
+      - type: rewrite
+        source: /*
+        destination: /index.html
