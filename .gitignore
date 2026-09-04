@@ -1,0 +1,37 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+backend/venv/
+.pytest_cache/
+ENV/
+.venv/
+*.db
+*.sqlite3
+
+# Vector Store & Logs
+chroma_db/
+backend/chroma_db/
+backend/logs/*.log
+*.log
+
+# Environment & Secrets
+.env
+.env.local
+
+# Node / React Frontend
+frontend/node_modules/
+frontend/dist/
+frontend/.vite/
+.DS_Store
+
+# IDE & OS
+.idea/
+.vscode/
+*.swp
+*.swo
+Thumbs.db

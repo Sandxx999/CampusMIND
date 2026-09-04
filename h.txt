@@ -1,0 +1,128 @@
+ ### Step 2: Backend Setup & Ingestion
+
+  1. Navigate to the backend/ directory:
+    cd C:\Users\pc\Downloads\campus-ai-assistant\backend
+
+  2. Create and activate a Python virtual environment:
+    # Windows PowerShell
+    python -m venv venv
+    .\venv\Scripts\Activate.ps1
+
+  3. Install required Python packages:
+    pip install -r requirements.txt
+
+  4. Ingest the Sample Campus Dataset into ChromaDB:
+    python -m rag.ingest
+    Output should show: Successfully ingested all chunks into ChromaDB!
+  5. Start the FastAPI server:
+    python main.py
+    The backend will start at: http://localhost:8000
+      • API Documentation: http://localhost:8000/docs
+      • Healthcheck endpoint: http://localhost:8000/health
+
+  ──────
+  ### Step 3: Frontend Setup & Execution
+
+  Open a new terminal window:
+
+  1. Navigate to the frontend/ directory:
+    cd C:\Users\pc\Downloads\campus-ai-assistant\frontend
+
+  2. Install Node modules:
+    npm install
+
+  3. Start the Vite development server:
+    npm run dev
+
+  4. Open your browser at http://localhost:5173
+  ──────
+  ### 🧪 Step 4: Testing & Demo Accounts
+
+  Log in with any of the pre-configured demo accounts (Password: password123):
+
+   Role               │ Username           │ Password          │ Accessible Data Scope
+  ────────────────────┼────────────────────┼───────────────────┼───────────────────────────────────────────────────────────────────
+   Student            │ student1           │ password123       │ General campus circulars, timetables, fee rules, library policies
+   Faculty            │ faculty1           │ password123       │ Student data + Faculty research grants & lab circulars
+   Admin              │ admin1             │ password123       │ Full data access + Enterprise Admin Dashboard analytics
+
+  #### Try These Sample Queries in Chat:
+
+  • Fee Deadline Query: "What is the fee payment deadline for Spring 2026?"
+  • Library Policy: "How many books can an undergraduate student borrow?"
+  • RBAC Check (Faculty data query as Student vs Faculty): "What is the maximum research grant funding for faculty?"
+      • As student1: Returns "I don't have information on that in the official campus database." (RBAC boundary enforced).
+      • As faculty1: Returns "$25,000 per department."
+  • Out-of-Domain / Hallucination Guard Test: "What is the campus parking refund policy?"
+      • Returns "I don't have information on that in the official campus database."
+
+  ──────
+  ### 📊 Step 5: Running Unit Tests & Benchmarks
+
+  In the backend virtual environment, run:
+
+    cd C:\Users\pc\Downloads\campus-ai-assistant
+    pytest tests/ -v
+
+  This tests JWT authentication logic, chunking algorithms, and evaluates ground-truth QA benchmark pairs in eval_qa_pairs.json.
+  ──────
+  ## 📚 Part 2: How to Get & Prepare Datasets for CampusMind
+
+  To train/ingest real campus data into ChromaDB, follow these steps:
+
+  ### 1. Types of Data to Collect
+
+  Collect official campus text documents across these categories:
+
+  • Academic Circulars: Fee payment dates, registration deadlines, exam schedules.
+  • Rules & Handbooks: Library borrowing limits, hostel rules, code of conduct, grading policy.
+  • Department Notices: Syllabus guides, placement notices, internship guidelines.
+  • Faculty Notices: Research grant forms, conference funding rules, lab safety requirements.
+  ──────
+  ### 2. How to Source Real Campus Datasets
+
+  #### Option A: Extract from your University Website / PDFs
+
+  If your university publishes PDFs or web pages:
+
+  • PDF Extraction: Convert PDF notices into plain text using Python (pdfplumber or pypdf):
+    import pdfplumber
+
+    with pdfplumber.open("academic_calendar_2026.pdf") as pdf:
+        text = "\n".join([page.extract_text() for page in pdf.pages])
+
+    with open("../data/raw/academic_calendar_2026.txt", "w", encoding="utf-8") as f:
+        f.write(text)
+
+
+  #### Option B: Download Public Datasets (Kaggle & GitHub)
+
+  Search for higher education / university datasets:
+
+  • Kaggle: Search University FAQs dataset, College admission queries, or Campus notice dataset.
+  • HuggingFace Datasets: Search for academic QA datasets such as squad or higher education QA subsets.
+
+  #### Option C: Generate Synthetic Campus Datasets with LLMs
+
+  You can generate clean text circulars using ChatGPT / Gemini with prompts like:
+
+  │ "Generate a 500-word official university circular covering exam timetables, hostel nightout rules, library fines, and placement
+  │ registration deadlines for 2026."
+  ──────
+  ### 3. Adding New Datasets to CampusMind
+
+  1. Place your text files inside :
+    campus-ai-assistant/data/raw/
+    ├── sample_campus_rules.txt
+    ├── library_handbook_2026.txt
+    ├── placement_notice_2026.txt
+    └── faculty_research_policy.txt
+
+  2. Role Scope Naming Conventions (for automatic RBAC tagging):
+      • Files containing "faculty" in their filename (e.g., faculty_research_policy.txt) are tagged for faculty, admin access only.
+      • Files containing "admin" in their filename are tagged for admin access only.
+      • All other files are readable by student, faculty, admin.
+  3. Re-run the Ingestion Pipeline:
+    cd C:\Users\pc\Downloads\campus-ai-assistant\backend
+    python -m rag.ingest
+    ChromaDB will automatically chunk, embed, and update its vector index!

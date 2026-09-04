@@ -1,0 +1,25 @@
+IFHE HYDERABAD (ICFAI FOUNDATION FOR HIGHER EDUCATION)
+OFFICIAL ACADEMIC REGULATORY MANUAL & CALENDAR
+
+1. INSTITUTION OVERVIEW & ACCREDITATION
+The ICFAI Foundation for Higher Education (IFHE), Hyderabad is a Deemed-to-be-University established under Section 3 of the UGC Act, 1956.
+IFHE holds the prestigious NAAC A++ Grade Accreditation with a CGPA of 3.59/4.00, placing it among the top private universities in India.
+It comprises constituent units: ICFAI Business School (IBS), ICFAI Tech School (IcfaiTech), ICFAI Law School (FOL), ICFAI School of Architecture (ISArch), and ICFAI School of Social Sciences (ISoSS).
+
+2. ACADEMIC PROGRAMS OFFERED
+- Undergraduate (Engineering & Technology): B.Tech Computer Science & Engineering (CSE), B.Tech Artificial Intelligence & Machine Learning (AI & ML), B.Tech AI & Data Science, B.Tech Cyber Security, B.Tech Cloud Computing, B.Tech IoT & Blockchain, B.Tech Electronics & Communication (ECE), B.Tech VLSI Design, B.Tech Mechanical Engineering (Robotics & AI).
+- Undergraduate (Computer Applications & Science): BCA AI & ML, BCA AI & DS, B.Sc Data Analytics (Hons), B.Sc Computer Science (Hons), B.Sc Mathematics, B.Sc Physics, B.Sc Robotics & AI.
+- Management & Law: MBA, Executive MBA, BBA (AI & Data Science), BA LLB (Hons), BBA LLB (Hons), LLM.
+- Postgraduate & Doctoral: M.Tech Computer Science, M.Tech VLSI, M.Sc Physics/Chemistry, Ph.D. in Engineering, Management, Law, and Basic Sciences.
+
+3. ACADEMIC EVALUATION & GRADING SYSTEM
+- Grading operates on a 10-point Cumulative Grade Point Average (CGPA) scale.
+- Continuous Internal Evaluation (CIE) accounts for 40% (Quizzes, Mid-Term Examinations, Assignments, Labwork).
+- End-Semester Examination (ESE) accounts for 60% of the total course assessment.
+- Minimum Attendance Requirement: Students must maintain a minimum of 75% attendance in each registered course to be eligible to sit for End-Semester Examinations.
+- Attendance Condonation: Attendance between 65% and 74% may be condoned by the Dean on valid medical grounds upon payment of the condonation fee and submission of approved medical documentation within 3 days of return.
+
+4. EXAMINATION & TIMETABLE POLICY
+- Odd Semester Examinations (Fall): Conducted annually during November – December.
+- Even Semester Examinations (Spring): Conducted annually during April – May.
+- Makeup Examinations: Permitted only for students who miss End-Semester Exams due to official sports representation or documented hospitalization approved by the Academic Council.

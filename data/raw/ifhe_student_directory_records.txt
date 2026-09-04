@@ -1,0 +1,1505 @@
+================================================================================
+IFHE HYDERABAD — OFFICIAL STUDENT ACADEMIC & ENROLLMENT DIRECTORY (CONFIDENTIAL)
+================================================================================
+
+This master document contains official academic transcripts, course registrations, GPA records, and contact details for enrolled students across all departments.
+
+STUDENT ENROLLMENT RECORD: 2024IFHE001
+• Name: Aarav Rao
+• Enrollment No: 2024IFHE001
+• Email: aarav.rao001@ifheindia.edu
+• Mobile Number: +91 9858813998
+• Branch / Department: Computer Science & Engineering (CSE)
+• Academic Year: Year 4 (Semester 7)
+• Enrolled Courses: CS305: Software Engineering, CS304: Computer Networks, CS302: Operating Systems, CS301: Data Structures & Algorithms, CS303: Database Management Systems
+• Current Semester SGPA: 6.87
+• Cumulative CGPA: 7.06
+• Attendance Percentage: 83.9%
+• Active Backlogs: 2
+• Tuition Fee Status: Pending ($900.00)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE002
+• Name: Ananya Chawla
+• Enrollment No: 2024IFHE002
+• Email: ananya.chawla002@ifheindia.edu
+• Mobile Number: +91 9764556815
+• Branch / Department: Artificial Intelligence & Data Science (AI&DS)
+• Academic Year: Year 1 (Semester 1)
+• Enrolled Courses: DS301: Big Data Analytics, DS302: Python Data Science Toolkit, AI302: Neural Networks & Deep Learning, MA202: Applied Probability & Statistics, CS303: Database Management Systems
+• Current Semester SGPA: 6.58
+• Cumulative CGPA: 6.71
+• Attendance Percentage: 81.6%
+• Active Backlogs: 2
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE003
+• Name: Rohan Pandey
+• Enrollment No: 2024IFHE003
+• Email: rohan.pandey003@ifheindia.edu
+• Mobile Number: +91 9998716897
+• Branch / Department: Electronics & Communication Engineering (ECE)
+• Academic Year: Year 4 (Semester 7)
+• Enrolled Courses: EC304: VLSI Design, EC305: Electromagnetic Theory, MA201: Applied Mathematics, EC303: Analog Communication Systems, EC301: Digital Signal Processing
+• Current Semester SGPA: 8.43
+• Cumulative CGPA: 8.59
+• Attendance Percentage: 93.7%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE004
+• Name: Priya Thakur
+• Enrollment No: 2024IFHE004
+• Email: priya.thakur004@ifheindia.edu
+• Mobile Number: +91 8796727317
+• Branch / Department: Electrical & Electronics Engineering (EEE)
+• Academic Year: Year 4 (Semester 7)
+• Enrolled Courses: EE305: Renewable Energy Systems, EE304: Power Electronics, EE303: Electrical Machines II, MA201: Applied Mathematics, EE302: Control Systems
+• Current Semester SGPA: 9.2
+• Cumulative CGPA: 9.14
+• Attendance Percentage: 77.4%
+• Active Backlogs: 0
+• Tuition Fee Status: Pending ($450.00)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE005
+• Name: Aditya Arora
+• Enrollment No: 2024IFHE005
+• Email: aditya.arora005@ifheindia.edu
+• Mobile Number: +91 9802978753
+• Branch / Department: Mechanical Engineering (ME)
+• Academic Year: Year 3 (Semester 5)
+• Enrolled Courses: ME304: Kinematics of Machinery, ME305: Manufacturing Technology, MA201: Applied Mathematics, ME302: Fluid Mechanics & Hydraulics, ME301: Thermodynamics & Heat Transfer
+• Current Semester SGPA: 9.29
+• Cumulative CGPA: 9.18
+• Attendance Percentage: 96.3%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE006
+• Name: Sneha Jain
+• Enrollment No: 2024IFHE006
+• Email: sneha.jain006@ifheindia.edu
+• Mobile Number: +91 9984726714
+• Branch / Department: Civil Engineering (CE)
+• Academic Year: Year 4 (Semester 7)
+• Enrolled Courses: CE301: Structural Analysis, CE302: Geotechnical Engineering, CE304: Environmental Engineering, MA201: Applied Mathematics, CE305: Concrete Technology
+• Current Semester SGPA: 9.57
+• Cumulative CGPA: 9.33
+• Attendance Percentage: 84.0%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE007
+• Name: Vikram Pareek
+• Enrollment No: 2024IFHE007
+• Email: vikram.pareek007@ifheindia.edu
+• Mobile Number: +91 8833190845
+• Branch / Department: Management (MBA)
+• Academic Year: Year 1 (Semester 2)
+• Enrolled Courses: MG403: Human Resource Analytics, MG405: Strategic Decision Making, MG404: Supply Chain & Logistics, MG406: Corporate Governance, MG401: Financial Management
+• Current Semester SGPA: 8.33
+• Cumulative CGPA: 8.31
+• Attendance Percentage: 75.5%
+• Active Backlogs: 0
+• Tuition Fee Status: Pending ($450.00)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE008
+• Name: Kavya Reddy
+• Enrollment No: 2024IFHE008
+• Email: kavya.reddy008@ifheindia.edu
+• Mobile Number: +91 9862294866
+• Branch / Department: Law (BA LLB)
+• Academic Year: Year 1 (Semester 2)
+• Enrolled Courses: LW204: Intellectual Property Rights, LW201: Constitutional Law II, LW205: International Trade Law, LW202: Corporate & Commercial Law, LW206: Environmental Law
+• Current Semester SGPA: 6.67
+• Cumulative CGPA: 6.58
+• Attendance Percentage: 81.4%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE009
+• Name: Rahul Bhat
+• Enrollment No: 2024IFHE009
+• Email: rahul.bhat009@ifheindia.edu
+• Mobile Number: +91 8875475177
+• Branch / Department: Computer Science & Engineering (CSE)
+• Academic Year: Year 2 (Semester 4)
+• Enrolled Courses: CS305: Software Engineering, MA201: Discrete Mathematics, CS302: Operating Systems, CS304: Computer Networks, CS303: Database Management Systems
+• Current Semester SGPA: 8.04
+• Cumulative CGPA: 7.88
+• Attendance Percentage: 90.8%
+• Active Backlogs: 0
+• Tuition Fee Status: Scholarship Approved (100% Fee Waiver)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE010
+• Name: Neha Mishra
+• Enrollment No: 2024IFHE010
+• Email: neha.mishra010@ifheindia.edu
+• Mobile Number: +91 9832080737
+• Branch / Department: Artificial Intelligence & Data Science (AI&DS)
+• Academic Year: Year 1 (Semester 2)
+• Enrolled Courses: MA202: Applied Probability & Statistics, CS303: Database Management Systems, AI302: Neural Networks & Deep Learning, DS301: Big Data Analytics, AI301: Machine Learning Fundamentals
+• Current Semester SGPA: 7.04
+• Cumulative CGPA: 7.25
+• Attendance Percentage: 82.3%
+• Active Backlogs: 2
+• Tuition Fee Status: Scholarship Approved (100% Fee Waiver)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE011
+• Name: Siddharth Jha
+• Enrollment No: 2024IFHE011
+• Email: siddharth.jha011@ifheindia.edu
+• Mobile Number: +91 7916425247
+• Branch / Department: Electronics & Communication Engineering (ECE)
+• Academic Year: Year 4 (Semester 7)
+• Enrolled Courses: EC303: Analog Communication Systems, EC304: VLSI Design, EC302: Microprocessors & Microcontrollers, EC305: Electromagnetic Theory, MA201: Applied Mathematics
+• Current Semester SGPA: 7.99
+• Cumulative CGPA: 8.01
+• Attendance Percentage: 85.9%
+• Active Backlogs: 0
+• Tuition Fee Status: Pending ($450.00)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE012
+• Name: Pooja Bhasin
+• Enrollment No: 2024IFHE012
+• Email: pooja.bhasin012@ifheindia.edu
+• Mobile Number: +91 7913301756
+• Branch / Department: Electrical & Electronics Engineering (EEE)
+• Academic Year: Year 2 (Semester 4)
+• Enrolled Courses: EE303: Electrical Machines II, EE302: Control Systems, MA201: Applied Mathematics, EE304: Power Electronics, EE301: Power Systems & Smart Grids
+• Current Semester SGPA: 6.87
+• Cumulative CGPA: 7.0
+• Attendance Percentage: 86.7%
+• Active Backlogs: 0
+• Tuition Fee Status: Pending ($450.00)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE013
+• Name: Arjun Garg
+• Enrollment No: 2024IFHE013
+• Email: arjun.garg013@ifheindia.edu
+• Mobile Number: +91 8848214162
+• Branch / Department: Mechanical Engineering (ME)
+• Academic Year: Year 1 (Semester 2)
+• Enrolled Courses: ME303: CAD/CAM & Robotics, ME302: Fluid Mechanics & Hydraulics, ME301: Thermodynamics & Heat Transfer, MA201: Applied Mathematics, ME305: Manufacturing Technology
+• Current Semester SGPA: 7.43
+• Cumulative CGPA: 7.63
+• Attendance Percentage: 79.7%
+• Active Backlogs: 0
+• Tuition Fee Status: Pending ($900.00)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE014
+• Name: Ishita Bihani
+• Enrollment No: 2024IFHE014
+• Email: ishita.bihani014@ifheindia.edu
+• Mobile Number: +91 9744106460
+• Branch / Department: Civil Engineering (CE)
+• Academic Year: Year 1 (Semester 2)
+• Enrolled Courses: CE302: Geotechnical Engineering, CE301: Structural Analysis, CE303: Transportation Engineering, CE305: Concrete Technology, CE304: Environmental Engineering
+• Current Semester SGPA: 8.8
+• Cumulative CGPA: 8.85
+• Attendance Percentage: 96.8%
+• Active Backlogs: 0
+• Tuition Fee Status: Pending ($900.00)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE015
+• Name: Karan Patel
+• Enrollment No: 2024IFHE015
+• Email: karan.patel015@ifheindia.edu
+• Mobile Number: +91 9679906593
+• Branch / Department: Management (MBA)
+• Academic Year: Year 2 (Semester 3)
+• Enrolled Courses: MG406: Corporate Governance, MG401: Financial Management, MG403: Human Resource Analytics, MG404: Supply Chain & Logistics, MG402: Marketing Strategy & Digital Media
+• Current Semester SGPA: 7.8
+• Cumulative CGPA: 8.07
+• Attendance Percentage: 81.4%
+• Active Backlogs: 0
+• Tuition Fee Status: Scholarship Approved (100% Fee Waiver)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE016
+• Name: Riya Agarwal
+• Enrollment No: 2024IFHE016
+• Email: riya.agarwal016@ifheindia.edu
+• Mobile Number: +91 9845414659
+• Branch / Department: Law (BA LLB)
+• Academic Year: Year 1 (Semester 1)
+• Enrolled Courses: LW202: Corporate & Commercial Law, LW205: International Trade Law, LW201: Constitutional Law II, LW203: Criminal Law & Procedure, LW204: Intellectual Property Rights
+• Current Semester SGPA: 7.04
+• Cumulative CGPA: 6.81
+• Attendance Percentage: 73.0%
+• Active Backlogs: 1
+• Tuition Fee Status: Pending ($450.00)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE017
+• Name: Dev Chaudhary
+• Enrollment No: 2024IFHE017
+• Email: dev.chaudhary017@ifheindia.edu
+• Mobile Number: +91 9869256663
+• Branch / Department: Computer Science & Engineering (CSE)
+• Academic Year: Year 4 (Semester 8)
+• Enrolled Courses: CS302: Operating Systems, MA201: Discrete Mathematics, CS301: Data Structures & Algorithms, CS303: Database Management Systems, CS305: Software Engineering
+• Current Semester SGPA: 9.48
+• Cumulative CGPA: 9.65
+• Attendance Percentage: 78.0%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE018
+• Name: Divya Dube
+• Enrollment No: 2024IFHE018
+• Email: divya.dube018@ifheindia.edu
+• Mobile Number: +91 9687645291
+• Branch / Department: Artificial Intelligence & Data Science (AI&DS)
+• Academic Year: Year 2 (Semester 4)
+• Enrolled Courses: MA202: Applied Probability & Statistics, CS303: Database Management Systems, DS301: Big Data Analytics, AI302: Neural Networks & Deep Learning, DS302: Python Data Science Toolkit
+• Current Semester SGPA: 6.69
+• Cumulative CGPA: 6.89
+• Attendance Percentage: 88.6%
+• Active Backlogs: 0
+• Tuition Fee Status: Scholarship Approved (50% Fee Waiver)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE019
+• Name: Varun Sethi
+• Enrollment No: 2024IFHE019
+• Email: varun.sethi019@ifheindia.edu
+• Mobile Number: +91 9838265384
+• Branch / Department: Electronics & Communication Engineering (ECE)
+• Academic Year: Year 3 (Semester 6)
+• Enrolled Courses: EC303: Analog Communication Systems, MA201: Applied Mathematics, EC304: VLSI Design, EC305: Electromagnetic Theory, EC302: Microprocessors & Microcontrollers
+• Current Semester SGPA: 8.34
+• Cumulative CGPA: 8.32
+• Attendance Percentage: 92.9%
+• Active Backlogs: 0
+• Tuition Fee Status: Pending ($450.00)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE020
+• Name: Meera Singhal
+• Enrollment No: 2024IFHE020
+• Email: meera.singhal020@ifheindia.edu
+• Mobile Number: +91 9726270586
+• Branch / Department: Electrical & Electronics Engineering (EEE)
+• Academic Year: Year 1 (Semester 2)
+• Enrolled Courses: EE301: Power Systems & Smart Grids, EE303: Electrical Machines II, EE305: Renewable Energy Systems, EE304: Power Electronics, EE302: Control Systems
+• Current Semester SGPA: 6.96
+• Cumulative CGPA: 7.1
+• Attendance Percentage: 98.5%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE021
+• Name: Yash Rathi
+• Enrollment No: 2024IFHE021
+• Email: yash.rathi021@ifheindia.edu
+• Mobile Number: +91 7994906688
+• Branch / Department: Mechanical Engineering (ME)
+• Academic Year: Year 2 (Semester 4)
+• Enrolled Courses: ME301: Thermodynamics & Heat Transfer, ME302: Fluid Mechanics & Hydraulics, ME304: Kinematics of Machinery, ME305: Manufacturing Technology, ME303: CAD/CAM & Robotics
+• Current Semester SGPA: 7.54
+• Cumulative CGPA: 7.68
+• Attendance Percentage: 89.6%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE022
+• Name: Shreya Singh
+• Enrollment No: 2024IFHE022
+• Email: shreya.singh022@ifheindia.edu
+• Mobile Number: +91 9744845263
+• Branch / Department: Civil Engineering (CE)
+• Academic Year: Year 1 (Semester 1)
+• Enrolled Courses: CE304: Environmental Engineering, CE303: Transportation Engineering, CE302: Geotechnical Engineering, CE305: Concrete Technology, CE301: Structural Analysis
+• Current Semester SGPA: 7.1
+• Cumulative CGPA: 7.12
+• Attendance Percentage: 76.3%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE023
+• Name: Tanmay Shah
+• Enrollment No: 2024IFHE023
+• Email: tanmay.shah023@ifheindia.edu
+• Mobile Number: +91 7951543829
+• Branch / Department: Management (MBA)
+• Academic Year: Year 1 (Semester 2)
+• Enrolled Courses: MG401: Financial Management, MG403: Human Resource Analytics, MG404: Supply Chain & Logistics, MG406: Corporate Governance, MG405: Strategic Decision Making
+• Current Semester SGPA: 7.78
+• Cumulative CGPA: 7.85
+• Attendance Percentage: 89.2%
+• Active Backlogs: 0
+• Tuition Fee Status: Pending ($900.00)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE024
+• Name: Anushka Iyengar
+• Enrollment No: 2024IFHE024
+• Email: anushka.iyengar024@ifheindia.edu
+• Mobile Number: +91 9971883579
+• Branch / Department: Law (BA LLB)
+• Academic Year: Year 2 (Semester 4)
+• Enrolled Courses: LW201: Constitutional Law II, LW206: Environmental Law, LW204: Intellectual Property Rights, LW202: Corporate & Commercial Law, LW203: Criminal Law & Procedure
+• Current Semester SGPA: 9.02
+• Cumulative CGPA: 8.86
+• Attendance Percentage: 80.6%
+• Active Backlogs: 0
+• Tuition Fee Status: Pending ($900.00)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE025
+• Name: Nikhil Tiwari
+• Enrollment No: 2024IFHE025
+• Email: nikhil.tiwari025@ifheindia.edu
+• Mobile Number: +91 9676523735
+• Branch / Department: Computer Science & Engineering (CSE)
+• Academic Year: Year 3 (Semester 5)
+• Enrolled Courses: CS305: Software Engineering, CS304: Computer Networks, CS302: Operating Systems, CS301: Data Structures & Algorithms, MA201: Discrete Mathematics
+• Current Semester SGPA: 8.99
+• Cumulative CGPA: 9.08
+• Attendance Percentage: 75.4%
+• Active Backlogs: 0
+• Tuition Fee Status: Pending ($450.00)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE026
+• Name: Simran Khanna
+• Enrollment No: 2024IFHE026
+• Email: simran.khanna026@ifheindia.edu
+• Mobile Number: +91 9615474284
+• Branch / Department: Artificial Intelligence & Data Science (AI&DS)
+• Academic Year: Year 2 (Semester 3)
+• Enrolled Courses: AI302: Neural Networks & Deep Learning, CS303: Database Management Systems, AI301: Machine Learning Fundamentals, MA202: Applied Probability & Statistics, DS301: Big Data Analytics
+• Current Semester SGPA: 8.42
+• Cumulative CGPA: 8.5
+• Attendance Percentage: 82.6%
+• Active Backlogs: 0
+• Tuition Fee Status: Pending ($900.00)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE027
+• Name: Abhinav Goel
+• Enrollment No: 2024IFHE027
+• Email: abhinav.goel027@ifheindia.edu
+• Mobile Number: +91 8765178836
+• Branch / Department: Electronics & Communication Engineering (ECE)
+• Academic Year: Year 3 (Semester 5)
+• Enrolled Courses: EC301: Digital Signal Processing, EC304: VLSI Design, EC302: Microprocessors & Microcontrollers, MA201: Applied Mathematics, EC305: Electromagnetic Theory
+• Current Semester SGPA: 8.37
+• Cumulative CGPA: 8.22
+• Attendance Percentage: 80.9%
+• Active Backlogs: 0
+• Tuition Fee Status: Scholarship Approved (100% Fee Waiver)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE028
+• Name: Aditi Somani
+• Enrollment No: 2024IFHE028
+• Email: aditi.somani028@ifheindia.edu
+• Mobile Number: +91 7977500314
+• Branch / Department: Electrical & Electronics Engineering (EEE)
+• Academic Year: Year 3 (Semester 6)
+• Enrolled Courses: EE302: Control Systems, EE304: Power Electronics, EE303: Electrical Machines II, EE305: Renewable Energy Systems, MA201: Applied Mathematics
+• Current Semester SGPA: 6.76
+• Cumulative CGPA: 6.88
+• Attendance Percentage: 86.3%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE029
+• Name: Manish Kumar
+• Enrollment No: 2024IFHE029
+• Email: manish.kumar029@ifheindia.edu
+• Mobile Number: +91 9753739241
+• Branch / Department: Mechanical Engineering (ME)
+• Academic Year: Year 4 (Semester 8)
+• Enrolled Courses: ME301: Thermodynamics & Heat Transfer, MA201: Applied Mathematics, ME303: CAD/CAM & Robotics, ME302: Fluid Mechanics & Hydraulics, ME305: Manufacturing Technology
+• Current Semester SGPA: 7.12
+• Cumulative CGPA: 7.26
+• Attendance Percentage: 98.2%
+• Active Backlogs: 2
+• Tuition Fee Status: Pending ($900.00)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE030
+• Name: Swati Mehta
+• Enrollment No: 2024IFHE030
+• Email: swati.mehta030@ifheindia.edu
+• Mobile Number: +91 9655974754
+• Branch / Department: Civil Engineering (CE)
+• Academic Year: Year 1 (Semester 1)
+• Enrolled Courses: CE302: Geotechnical Engineering, CE301: Structural Analysis, CE304: Environmental Engineering, MA201: Applied Mathematics, CE303: Transportation Engineering
+• Current Semester SGPA: 9.3
+• Cumulative CGPA: 9.28
+• Attendance Percentage: 81.7%
+• Active Backlogs: 0
+• Tuition Fee Status: Scholarship Approved (100% Fee Waiver)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE031
+• Name: Vivek Iyer
+• Enrollment No: 2024IFHE031
+• Email: vivek.iyer031@ifheindia.edu
+• Mobile Number: +91 9639061884
+• Branch / Department: Management (MBA)
+• Academic Year: Year 2 (Semester 4)
+• Enrolled Courses: MG405: Strategic Decision Making, MG406: Corporate Governance, MG403: Human Resource Analytics, MG402: Marketing Strategy & Digital Media, MG404: Supply Chain & Logistics
+• Current Semester SGPA: 8.71
+• Cumulative CGPA: 8.63
+• Attendance Percentage: 74.1%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE032
+• Name: Preeti Saxena
+• Enrollment No: 2024IFHE032
+• Email: preeti.saxena032@ifheindia.edu
+• Mobile Number: +91 7948861930
+• Branch / Department: Law (BA LLB)
+• Academic Year: Year 2 (Semester 4)
+• Enrolled Courses: LW202: Corporate & Commercial Law, LW204: Intellectual Property Rights, LW206: Environmental Law, LW203: Criminal Law & Procedure, LW201: Constitutional Law II
+• Current Semester SGPA: 9.15
+• Cumulative CGPA: 9.01
+• Attendance Percentage: 95.2%
+• Active Backlogs: 0
+• Tuition Fee Status: Scholarship Approved (50% Fee Waiver)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE033
+• Name: Saurabh Kapoor
+• Enrollment No: 2024IFHE033
+• Email: saurabh.kapoor033@ifheindia.edu
+• Mobile Number: +91 9785568983
+• Branch / Department: Computer Science & Engineering (CSE)
+• Academic Year: Year 2 (Semester 4)
+• Enrolled Courses: MA201: Discrete Mathematics, CS302: Operating Systems, CS305: Software Engineering, CS303: Database Management Systems, CS301: Data Structures & Algorithms
+• Current Semester SGPA: 9.19
+• Cumulative CGPA: 9.41
+• Attendance Percentage: 79.4%
+• Active Backlogs: 0
+• Tuition Fee Status: Pending ($450.00)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE034
+• Name: Tarun Bansal
+• Enrollment No: 2024IFHE034
+• Email: tarun.bansal034@ifheindia.edu
+• Mobile Number: +91 7922485272
+• Branch / Department: Artificial Intelligence & Data Science (AI&DS)
+• Academic Year: Year 2 (Semester 4)
+• Enrolled Courses: AI302: Neural Networks & Deep Learning, MA202: Applied Probability & Statistics, DS302: Python Data Science Toolkit, DS301: Big Data Analytics, CS303: Database Management Systems
+• Current Semester SGPA: 9.56
+• Cumulative CGPA: 9.83
+• Attendance Percentage: 80.0%
+• Active Backlogs: 0
+• Tuition Fee Status: Pending ($900.00)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE035
+• Name: Aakash Mittal
+• Enrollment No: 2024IFHE035
+• Email: aakash.mittal035@ifheindia.edu
+• Mobile Number: +91 8817625280
+• Branch / Department: Electronics & Communication Engineering (ECE)
+• Academic Year: Year 4 (Semester 8)
+• Enrolled Courses: EC301: Digital Signal Processing, MA201: Applied Mathematics, EC303: Analog Communication Systems, EC304: VLSI Design, EC302: Microprocessors & Microcontrollers
+• Current Semester SGPA: 7.6
+• Cumulative CGPA: 7.32
+• Attendance Percentage: 85.3%
+• Active Backlogs: 0
+• Tuition Fee Status: Scholarship Approved (100% Fee Waiver)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE036
+• Name: Deepika Gupta
+• Enrollment No: 2024IFHE036
+• Email: deepika.gupta036@ifheindia.edu
+• Mobile Number: +91 8763233735
+• Branch / Department: Electrical & Electronics Engineering (EEE)
+• Academic Year: Year 2 (Semester 3)
+• Enrolled Courses: MA201: Applied Mathematics, EE304: Power Electronics, EE305: Renewable Energy Systems, EE302: Control Systems, EE301: Power Systems & Smart Grids
+• Current Semester SGPA: 9.74
+• Cumulative CGPA: 9.82
+• Attendance Percentage: 83.7%
+• Active Backlogs: 0
+• Tuition Fee Status: Scholarship Approved (50% Fee Waiver)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE037
+• Name: Harsh Joshi
+• Enrollment No: 2024IFHE037
+• Email: harsh.joshi037@ifheindia.edu
+• Mobile Number: +91 9833115921
+• Branch / Department: Mechanical Engineering (ME)
+• Academic Year: Year 2 (Semester 4)
+• Enrolled Courses: MA201: Applied Mathematics, ME304: Kinematics of Machinery, ME302: Fluid Mechanics & Hydraulics, ME305: Manufacturing Technology, ME301: Thermodynamics & Heat Transfer
+• Current Semester SGPA: 8.33
+• Cumulative CGPA: 8.12
+• Attendance Percentage: 95.7%
+• Active Backlogs: 0
+• Tuition Fee Status: Pending ($450.00)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE038
+• Name: Ritika Kulkarni
+• Enrollment No: 2024IFHE038
+• Email: ritika.kulkarni038@ifheindia.edu
+• Mobile Number: +91 9656078745
+• Branch / Department: Civil Engineering (CE)
+• Academic Year: Year 4 (Semester 8)
+• Enrolled Courses: CE301: Structural Analysis, CE302: Geotechnical Engineering, CE305: Concrete Technology, CE304: Environmental Engineering, CE303: Transportation Engineering
+• Current Semester SGPA: 7.76
+• Cumulative CGPA: 7.84
+• Attendance Percentage: 73.3%
+• Active Backlogs: 0
+• Tuition Fee Status: Pending ($900.00)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE039
+• Name: Gaurav Srivastava
+• Enrollment No: 2024IFHE039
+• Email: gaurav.srivastava039@ifheindia.edu
+• Mobile Number: +91 7941775888
+• Branch / Department: Management (MBA)
+• Academic Year: Year 1 (Semester 1)
+• Enrolled Courses: MG403: Human Resource Analytics, MG401: Financial Management, MG405: Strategic Decision Making, MG406: Corporate Governance, MG404: Supply Chain & Logistics
+• Current Semester SGPA: 6.74
+• Cumulative CGPA: 6.99
+• Attendance Percentage: 87.0%
+• Active Backlogs: 2
+• Tuition Fee Status: Scholarship Approved (50% Fee Waiver)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE040
+• Name: Nisha Malhotra
+• Enrollment No: 2024IFHE040
+• Email: nisha.malhotra040@ifheindia.edu
+• Mobile Number: +91 8878025201
+• Branch / Department: Law (BA LLB)
+• Academic Year: Year 2 (Semester 4)
+• Enrolled Courses: LW202: Corporate & Commercial Law, LW205: International Trade Law, LW203: Criminal Law & Procedure, LW201: Constitutional Law II, LW204: Intellectual Property Rights
+• Current Semester SGPA: 9.01
+• Cumulative CGPA: 8.75
+• Attendance Percentage: 88.0%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE041
+• Name: Pranav Taneja
+• Enrollment No: 2024IFHE041
+• Email: pranav.taneja041@ifheindia.edu
+• Mobile Number: +91 8752473573
+• Branch / Department: Computer Science & Engineering (CSE)
+• Academic Year: Year 4 (Semester 8)
+• Enrolled Courses: CS305: Software Engineering, CS303: Database Management Systems, CS304: Computer Networks, CS301: Data Structures & Algorithms, CS302: Operating Systems
+• Current Semester SGPA: 7.33
+• Cumulative CGPA: 7.14
+• Attendance Percentage: 77.0%
+• Active Backlogs: 0
+• Tuition Fee Status: Scholarship Approved (50% Fee Waiver)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE042
+• Name: Rashmi Khandelwal
+• Enrollment No: 2024IFHE042
+• Email: rashmi.khandelwal042@ifheindia.edu
+• Mobile Number: +91 8867807360
+• Branch / Department: Artificial Intelligence & Data Science (AI&DS)
+• Academic Year: Year 4 (Semester 8)
+• Enrolled Courses: DS301: Big Data Analytics, AI302: Neural Networks & Deep Learning, MA202: Applied Probability & Statistics, CS303: Database Management Systems, DS302: Python Data Science Toolkit
+• Current Semester SGPA: 9.39
+• Cumulative CGPA: 9.44
+• Attendance Percentage: 81.4%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE043
+• Name: Sameer Verma
+• Enrollment No: 2024IFHE043
+• Email: sameer.verma043@ifheindia.edu
+• Mobile Number: +91 8819539182
+• Branch / Department: Electronics & Communication Engineering (ECE)
+• Academic Year: Year 4 (Semester 7)
+• Enrolled Courses: EC301: Digital Signal Processing, MA201: Applied Mathematics, EC304: VLSI Design, EC302: Microprocessors & Microcontrollers, EC305: Electromagnetic Theory
+• Current Semester SGPA: 7.32
+• Cumulative CGPA: 7.05
+• Attendance Percentage: 91.9%
+• Active Backlogs: 0
+• Tuition Fee Status: Pending ($450.00)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE044
+• Name: Bhavna Nair
+• Enrollment No: 2024IFHE044
+• Email: bhavna.nair044@ifheindia.edu
+• Mobile Number: +91 9614203817
+• Branch / Department: Electrical & Electronics Engineering (EEE)
+• Academic Year: Year 1 (Semester 1)
+• Enrolled Courses: MA201: Applied Mathematics, EE304: Power Electronics, EE301: Power Systems & Smart Grids, EE305: Renewable Energy Systems, EE302: Control Systems
+• Current Semester SGPA: 6.66
+• Cumulative CGPA: 6.41
+• Attendance Percentage: 89.3%
+• Active Backlogs: 1
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE045
+• Name: Kunal Deshmukh
+• Enrollment No: 2024IFHE045
+• Email: kunal.deshmukh045@ifheindia.edu
+• Mobile Number: +91 9849074182
+• Branch / Department: Mechanical Engineering (ME)
+• Academic Year: Year 2 (Semester 3)
+• Enrolled Courses: ME301: Thermodynamics & Heat Transfer, ME305: Manufacturing Technology, ME303: CAD/CAM & Robotics, MA201: Applied Mathematics, ME302: Fluid Mechanics & Hydraulics
+• Current Semester SGPA: 8.05
+• Cumulative CGPA: 7.9
+• Attendance Percentage: 72.4%
+• Active Backlogs: 0
+• Tuition Fee Status: Scholarship Approved (100% Fee Waiver)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE046
+• Name: Tanya Tripathi
+• Enrollment No: 2024IFHE046
+• Email: tanya.tripathi046@ifheindia.edu
+• Mobile Number: +91 8817922328
+• Branch / Department: Civil Engineering (CE)
+• Academic Year: Year 2 (Semester 3)
+• Enrolled Courses: CE304: Environmental Engineering, CE303: Transportation Engineering, CE302: Geotechnical Engineering, MA201: Applied Mathematics, CE301: Structural Analysis
+• Current Semester SGPA: 6.56
+• Cumulative CGPA: 6.3
+• Attendance Percentage: 92.0%
+• Active Backlogs: 0
+• Tuition Fee Status: Scholarship Approved (50% Fee Waiver)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE047
+• Name: Akshay Rathore
+• Enrollment No: 2024IFHE047
+• Email: akshay.rathore047@ifheindia.edu
+• Mobile Number: +91 7925278120
+• Branch / Department: Management (MBA)
+• Academic Year: Year 2 (Semester 4)
+• Enrolled Courses: MG406: Corporate Governance, MG404: Supply Chain & Logistics, MG405: Strategic Decision Making, MG403: Human Resource Analytics, MG402: Marketing Strategy & Digital Media
+• Current Semester SGPA: 8.22
+• Cumulative CGPA: 8.13
+• Attendance Percentage: 91.7%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE048
+• Name: Monika Grover
+• Enrollment No: 2024IFHE048
+• Email: monika.grover048@ifheindia.edu
+• Mobile Number: +91 8743163499
+• Branch / Department: Law (BA LLB)
+• Academic Year: Year 1 (Semester 1)
+• Enrolled Courses: LW206: Environmental Law, LW205: International Trade Law, LW201: Constitutional Law II, LW204: Intellectual Property Rights, LW202: Corporate & Commercial Law
+• Current Semester SGPA: 9.58
+• Cumulative CGPA: 9.39
+• Attendance Percentage: 84.1%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE049
+• Name: Chirag Maheshwari
+• Enrollment No: 2024IFHE049
+• Email: chirag.maheshwari049@ifheindia.edu
+• Mobile Number: +91 9772987112
+• Branch / Department: Computer Science & Engineering (CSE)
+• Academic Year: Year 1 (Semester 1)
+• Enrolled Courses: CS302: Operating Systems, CS304: Computer Networks, CS303: Database Management Systems, CS301: Data Structures & Algorithms, MA201: Discrete Mathematics
+• Current Semester SGPA: 8.54
+• Cumulative CGPA: 8.81
+• Attendance Percentage: 82.1%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE050
+• Name: Payal Sharma
+• Enrollment No: 2024IFHE050
+• Email: payal.sharma050@ifheindia.edu
+• Mobile Number: +91 9991135716
+• Branch / Department: Artificial Intelligence & Data Science (AI&DS)
+• Academic Year: Year 3 (Semester 5)
+• Enrolled Courses: DS302: Python Data Science Toolkit, DS301: Big Data Analytics, CS303: Database Management Systems, AI302: Neural Networks & Deep Learning, MA202: Applied Probability & Statistics
+• Current Semester SGPA: 8.07
+• Cumulative CGPA: 8.29
+• Attendance Percentage: 93.7%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE051
+• Name: Rajesh Rao
+• Enrollment No: 2024IFHE051
+• Email: rajesh.rao051@ifheindia.edu
+• Mobile Number: +91 8880334635
+• Branch / Department: Electronics & Communication Engineering (ECE)
+• Academic Year: Year 2 (Semester 4)
+• Enrolled Courses: EC302: Microprocessors & Microcontrollers, EC304: VLSI Design, MA201: Applied Mathematics, EC303: Analog Communication Systems, EC305: Electromagnetic Theory
+• Current Semester SGPA: 8.66
+• Cumulative CGPA: 8.6
+• Attendance Percentage: 88.3%
+• Active Backlogs: 0
+• Tuition Fee Status: Pending ($450.00)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE052
+• Name: Sonam Chawla
+• Enrollment No: 2024IFHE052
+• Email: sonam.chawla052@ifheindia.edu
+• Mobile Number: +91 8886457328
+• Branch / Department: Electrical & Electronics Engineering (EEE)
+• Academic Year: Year 3 (Semester 6)
+• Enrolled Courses: MA201: Applied Mathematics, EE305: Renewable Energy Systems, EE302: Control Systems, EE304: Power Electronics, EE301: Power Systems & Smart Grids
+• Current Semester SGPA: 9.34
+• Cumulative CGPA: 9.44
+• Attendance Percentage: 75.3%
+• Active Backlogs: 0
+• Tuition Fee Status: Scholarship Approved (100% Fee Waiver)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE053
+• Name: Alok Pandey
+• Enrollment No: 2024IFHE053
+• Email: alok.pandey053@ifheindia.edu
+• Mobile Number: +91 8770940985
+• Branch / Department: Mechanical Engineering (ME)
+• Academic Year: Year 3 (Semester 5)
+• Enrolled Courses: ME302: Fluid Mechanics & Hydraulics, ME305: Manufacturing Technology, ME303: CAD/CAM & Robotics, ME304: Kinematics of Machinery, MA201: Applied Mathematics
+• Current Semester SGPA: 9.29
+• Cumulative CGPA: 9.2
+• Attendance Percentage: 82.3%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE054
+• Name: Kirti Thakur
+• Enrollment No: 2024IFHE054
+• Email: kirti.thakur054@ifheindia.edu
+• Mobile Number: +91 9868669538
+• Branch / Department: Civil Engineering (CE)
+• Academic Year: Year 4 (Semester 7)
+• Enrolled Courses: MA201: Applied Mathematics, CE301: Structural Analysis, CE305: Concrete Technology, CE304: Environmental Engineering, CE303: Transportation Engineering
+• Current Semester SGPA: 7.09
+• Cumulative CGPA: 7.16
+• Attendance Percentage: 84.5%
+• Active Backlogs: 0
+• Tuition Fee Status: Scholarship Approved (100% Fee Waiver)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE055
+• Name: Mayank Arora
+• Enrollment No: 2024IFHE055
+• Email: mayank.arora055@ifheindia.edu
+• Mobile Number: +91 8835081113
+• Branch / Department: Management (MBA)
+• Academic Year: Year 2 (Semester 4)
+• Enrolled Courses: MG404: Supply Chain & Logistics, MG405: Strategic Decision Making, MG403: Human Resource Analytics, MG406: Corporate Governance, MG401: Financial Management
+• Current Semester SGPA: 7.89
+• Cumulative CGPA: 7.78
+• Attendance Percentage: 95.8%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE056
+• Name: Shikha Jain
+• Enrollment No: 2024IFHE056
+• Email: shikha.jain056@ifheindia.edu
+• Mobile Number: +91 9852761138
+• Branch / Department: Law (BA LLB)
+• Academic Year: Year 2 (Semester 3)
+• Enrolled Courses: LW205: International Trade Law, LW202: Corporate & Commercial Law, LW201: Constitutional Law II, LW204: Intellectual Property Rights, LW206: Environmental Law
+• Current Semester SGPA: 7.29
+• Cumulative CGPA: 7.26
+• Attendance Percentage: 97.2%
+• Active Backlogs: 0
+• Tuition Fee Status: Scholarship Approved (100% Fee Waiver)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE057
+• Name: Nitin Pareek
+• Enrollment No: 2024IFHE057
+• Email: nitin.pareek057@ifheindia.edu
+• Mobile Number: +91 7921076177
+• Branch / Department: Computer Science & Engineering (CSE)
+• Academic Year: Year 1 (Semester 1)
+• Enrolled Courses: CS304: Computer Networks, CS303: Database Management Systems, CS301: Data Structures & Algorithms, MA201: Discrete Mathematics, CS302: Operating Systems
+• Current Semester SGPA: 7.11
+• Cumulative CGPA: 7.19
+• Attendance Percentage: 78.8%
+• Active Backlogs: 0
+• Tuition Fee Status: Scholarship Approved (100% Fee Waiver)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE058
+• Name: Richa Reddy
+• Enrollment No: 2024IFHE058
+• Email: richa.reddy058@ifheindia.edu
+• Mobile Number: +91 9852029944
+• Branch / Department: Artificial Intelligence & Data Science (AI&DS)
+• Academic Year: Year 4 (Semester 8)
+• Enrolled Courses: MA202: Applied Probability & Statistics, AI302: Neural Networks & Deep Learning, DS301: Big Data Analytics, AI301: Machine Learning Fundamentals, CS303: Database Management Systems
+• Current Semester SGPA: 9.44
+• Cumulative CGPA: 9.19
+• Attendance Percentage: 92.4%
+• Active Backlogs: 0
+• Tuition Fee Status: Pending ($450.00)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE059
+• Name: Sanjay Bhat
+• Enrollment No: 2024IFHE059
+• Email: sanjay.bhat059@ifheindia.edu
+• Mobile Number: +91 9669943982
+• Branch / Department: Electronics & Communication Engineering (ECE)
+• Academic Year: Year 4 (Semester 7)
+• Enrolled Courses: EC301: Digital Signal Processing, EC305: Electromagnetic Theory, EC303: Analog Communication Systems, EC304: VLSI Design, EC302: Microprocessors & Microcontrollers
+• Current Semester SGPA: 7.47
+• Cumulative CGPA: 7.61
+• Attendance Percentage: 95.0%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE060
+• Name: Komal Mishra
+• Enrollment No: 2024IFHE060
+• Email: komal.mishra060@ifheindia.edu
+• Mobile Number: +91 8797258444
+• Branch / Department: Electrical & Electronics Engineering (EEE)
+• Academic Year: Year 1 (Semester 2)
+• Enrolled Courses: EE301: Power Systems & Smart Grids, EE302: Control Systems, EE303: Electrical Machines II, EE304: Power Electronics, EE305: Renewable Energy Systems
+• Current Semester SGPA: 8.94
+• Cumulative CGPA: 9.22
+• Attendance Percentage: 75.3%
+• Active Backlogs: 0
+• Tuition Fee Status: Pending ($900.00)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE061
+• Name: Ashish Jha
+• Enrollment No: 2024IFHE061
+• Email: ashish.jha061@ifheindia.edu
+• Mobile Number: +91 9969796156
+• Branch / Department: Mechanical Engineering (ME)
+• Academic Year: Year 4 (Semester 7)
+• Enrolled Courses: ME305: Manufacturing Technology, ME304: Kinematics of Machinery, ME303: CAD/CAM & Robotics, ME301: Thermodynamics & Heat Transfer, ME302: Fluid Mechanics & Hydraulics
+• Current Semester SGPA: 7.79
+• Cumulative CGPA: 7.7
+• Attendance Percentage: 78.7%
+• Active Backlogs: 0
+• Tuition Fee Status: Scholarship Approved (50% Fee Waiver)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE062
+• Name: Anjali Bhasin
+• Enrollment No: 2024IFHE062
+• Email: anjali.bhasin062@ifheindia.edu
+• Mobile Number: +91 9856709048
+• Branch / Department: Civil Engineering (CE)
+• Academic Year: Year 1 (Semester 2)
+• Enrolled Courses: CE303: Transportation Engineering, CE304: Environmental Engineering, MA201: Applied Mathematics, CE302: Geotechnical Engineering, CE305: Concrete Technology
+• Current Semester SGPA: 9.56
+• Cumulative CGPA: 9.83
+• Attendance Percentage: 78.8%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE063
+• Name: Dinesh Garg
+• Enrollment No: 2024IFHE063
+• Email: dinesh.garg063@ifheindia.edu
+• Mobile Number: +91 9701320598
+• Branch / Department: Management (MBA)
+• Academic Year: Year 2 (Semester 4)
+• Enrolled Courses: MG406: Corporate Governance, MG405: Strategic Decision Making, MG401: Financial Management, MG402: Marketing Strategy & Digital Media, MG404: Supply Chain & Logistics
+• Current Semester SGPA: 6.86
+• Cumulative CGPA: 6.81
+• Attendance Percentage: 75.1%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE064
+• Name: Pallavi Bihani
+• Enrollment No: 2024IFHE064
+• Email: pallavi.bihani064@ifheindia.edu
+• Mobile Number: +91 7919602780
+• Branch / Department: Law (BA LLB)
+• Academic Year: Year 2 (Semester 3)
+• Enrolled Courses: LW203: Criminal Law & Procedure, LW205: International Trade Law, LW204: Intellectual Property Rights, LW201: Constitutional Law II, LW206: Environmental Law
+• Current Semester SGPA: 7.89
+• Cumulative CGPA: 7.68
+• Attendance Percentage: 88.9%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE065
+• Name: Gautam Patel
+• Enrollment No: 2024IFHE065
+• Email: gautam.patel065@ifheindia.edu
+• Mobile Number: +91 8860179677
+• Branch / Department: Computer Science & Engineering (CSE)
+• Academic Year: Year 2 (Semester 4)
+• Enrolled Courses: CS303: Database Management Systems, CS301: Data Structures & Algorithms, CS302: Operating Systems, CS304: Computer Networks, CS305: Software Engineering
+• Current Semester SGPA: 7.4
+• Cumulative CGPA: 7.54
+• Attendance Percentage: 85.9%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE066
+• Name: Jyoti Agarwal
+• Enrollment No: 2024IFHE066
+• Email: jyoti.agarwal066@ifheindia.edu
+• Mobile Number: +91 9752401376
+• Branch / Department: Artificial Intelligence & Data Science (AI&DS)
+• Academic Year: Year 1 (Semester 1)
+• Enrolled Courses: DS302: Python Data Science Toolkit, AI301: Machine Learning Fundamentals, CS303: Database Management Systems, AI302: Neural Networks & Deep Learning, MA202: Applied Probability & Statistics
+• Current Semester SGPA: 7.43
+• Cumulative CGPA: 7.26
+• Attendance Percentage: 81.0%
+• Active Backlogs: 0
+• Tuition Fee Status: Pending ($450.00)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE067
+• Name: Hemant Chaudhary
+• Enrollment No: 2024IFHE067
+• Email: hemant.chaudhary067@ifheindia.edu
+• Mobile Number: +91 8881813785
+• Branch / Department: Electronics & Communication Engineering (ECE)
+• Academic Year: Year 2 (Semester 4)
+• Enrolled Courses: EC302: Microprocessors & Microcontrollers, MA201: Applied Mathematics, EC303: Analog Communication Systems, EC304: VLSI Design, EC301: Digital Signal Processing
+• Current Semester SGPA: 7.81
+• Cumulative CGPA: 7.86
+• Attendance Percentage: 84.5%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE068
+• Name: Nandini Dube
+• Enrollment No: 2024IFHE068
+• Email: nandini.dube068@ifheindia.edu
+• Mobile Number: +91 9725719294
+• Branch / Department: Electrical & Electronics Engineering (EEE)
+• Academic Year: Year 1 (Semester 1)
+• Enrolled Courses: EE302: Control Systems, EE303: Electrical Machines II, EE304: Power Electronics, EE305: Renewable Energy Systems, EE301: Power Systems & Smart Grids
+• Current Semester SGPA: 9.57
+• Cumulative CGPA: 9.36
+• Attendance Percentage: 84.0%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE069
+• Name: Lokesh Sethi
+• Enrollment No: 2024IFHE069
+• Email: lokesh.sethi069@ifheindia.edu
+• Mobile Number: +91 9741461754
+• Branch / Department: Mechanical Engineering (ME)
+• Academic Year: Year 3 (Semester 6)
+• Enrolled Courses: MA201: Applied Mathematics, ME301: Thermodynamics & Heat Transfer, ME305: Manufacturing Technology, ME302: Fluid Mechanics & Hydraulics, ME303: CAD/CAM & Robotics
+• Current Semester SGPA: 6.8
+• Cumulative CGPA: 6.62
+• Attendance Percentage: 77.4%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE070
+• Name: Kavita Singhal
+• Enrollment No: 2024IFHE070
+• Email: kavita.singhal070@ifheindia.edu
+• Mobile Number: +91 9630514786
+• Branch / Department: Civil Engineering (CE)
+• Academic Year: Year 3 (Semester 6)
+• Enrolled Courses: CE301: Structural Analysis, CE303: Transportation Engineering, CE304: Environmental Engineering, CE305: Concrete Technology, CE302: Geotechnical Engineering
+• Current Semester SGPA: 8.81
+• Cumulative CGPA: 8.55
+• Attendance Percentage: 89.3%
+• Active Backlogs: 0
+• Tuition Fee Status: Pending ($900.00)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE071
+• Name: Mohit Rathi
+• Enrollment No: 2024IFHE071
+• Email: mohit.rathi071@ifheindia.edu
+• Mobile Number: +91 9784885681
+• Branch / Department: Management (MBA)
+• Academic Year: Year 1 (Semester 1)
+• Enrolled Courses: MG404: Supply Chain & Logistics, MG401: Financial Management, MG405: Strategic Decision Making, MG402: Marketing Strategy & Digital Media, MG406: Corporate Governance
+• Current Semester SGPA: 9.41
+• Cumulative CGPA: 9.39
+• Attendance Percentage: 75.2%
+• Active Backlogs: 0
+• Tuition Fee Status: Pending ($900.00)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE072
+• Name: Poonam Singh
+• Enrollment No: 2024IFHE072
+• Email: poonam.singh072@ifheindia.edu
+• Mobile Number: +91 9841363343
+• Branch / Department: Law (BA LLB)
+• Academic Year: Year 2 (Semester 4)
+• Enrolled Courses: LW201: Constitutional Law II, LW206: Environmental Law, LW204: Intellectual Property Rights, LW202: Corporate & Commercial Law, LW205: International Trade Law
+• Current Semester SGPA: 7.82
+• Cumulative CGPA: 8.0
+• Attendance Percentage: 89.0%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE073
+• Name: Pankaj Shah
+• Enrollment No: 2024IFHE073
+• Email: pankaj.shah073@ifheindia.edu
+• Mobile Number: +91 8794246466
+• Branch / Department: Computer Science & Engineering (CSE)
+• Academic Year: Year 4 (Semester 8)
+• Enrolled Courses: CS301: Data Structures & Algorithms, CS304: Computer Networks, CS305: Software Engineering, CS302: Operating Systems, MA201: Discrete Mathematics
+• Current Semester SGPA: 8.54
+• Cumulative CGPA: 8.68
+• Attendance Percentage: 87.2%
+• Active Backlogs: 0
+• Tuition Fee Status: Scholarship Approved (50% Fee Waiver)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE074
+• Name: Rachna Iyengar
+• Enrollment No: 2024IFHE074
+• Email: rachna.iyengar074@ifheindia.edu
+• Mobile Number: +91 9653581342
+• Branch / Department: Artificial Intelligence & Data Science (AI&DS)
+• Academic Year: Year 1 (Semester 1)
+• Enrolled Courses: AI302: Neural Networks & Deep Learning, MA202: Applied Probability & Statistics, CS303: Database Management Systems, DS302: Python Data Science Toolkit, DS301: Big Data Analytics
+• Current Semester SGPA: 8.06
+• Cumulative CGPA: 8.03
+• Attendance Percentage: 97.1%
+• Active Backlogs: 0
+• Tuition Fee Status: Pending ($450.00)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE075
+• Name: Rakesh Tiwari
+• Enrollment No: 2024IFHE075
+• Email: rakesh.tiwari075@ifheindia.edu
+• Mobile Number: +91 8710475168
+• Branch / Department: Electronics & Communication Engineering (ECE)
+• Academic Year: Year 4 (Semester 7)
+• Enrolled Courses: EC304: VLSI Design, EC301: Digital Signal Processing, EC305: Electromagnetic Theory, EC303: Analog Communication Systems, EC302: Microprocessors & Microcontrollers
+• Current Semester SGPA: 6.9
+• Cumulative CGPA: 6.63
+• Attendance Percentage: 94.9%
+• Active Backlogs: 0
+• Tuition Fee Status: Pending ($900.00)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE076
+• Name: Sangeeta Khanna
+• Enrollment No: 2024IFHE076
+• Email: sangeeta.khanna076@ifheindia.edu
+• Mobile Number: +91 7995349404
+• Branch / Department: Electrical & Electronics Engineering (EEE)
+• Academic Year: Year 2 (Semester 3)
+• Enrolled Courses: EE304: Power Electronics, EE303: Electrical Machines II, MA201: Applied Mathematics, EE305: Renewable Energy Systems, EE301: Power Systems & Smart Grids
+• Current Semester SGPA: 9.07
+• Cumulative CGPA: 8.85
+• Attendance Percentage: 93.3%
+• Active Backlogs: 0
+• Tuition Fee Status: Scholarship Approved (100% Fee Waiver)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE077
+• Name: Sachin Goel
+• Enrollment No: 2024IFHE077
+• Email: sachin.goel077@ifheindia.edu
+• Mobile Number: +91 9826195680
+• Branch / Department: Mechanical Engineering (ME)
+• Academic Year: Year 1 (Semester 2)
+• Enrolled Courses: ME301: Thermodynamics & Heat Transfer, MA201: Applied Mathematics, ME305: Manufacturing Technology, ME303: CAD/CAM & Robotics, ME302: Fluid Mechanics & Hydraulics
+• Current Semester SGPA: 8.63
+• Cumulative CGPA: 8.34
+• Attendance Percentage: 85.0%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE078
+• Name: Sunita Somani
+• Enrollment No: 2024IFHE078
+• Email: sunita.somani078@ifheindia.edu
+• Mobile Number: +91 8817039273
+• Branch / Department: Civil Engineering (CE)
+• Academic Year: Year 2 (Semester 4)
+• Enrolled Courses: CE303: Transportation Engineering, CE304: Environmental Engineering, CE301: Structural Analysis, CE305: Concrete Technology, MA201: Applied Mathematics
+• Current Semester SGPA: 7.54
+• Cumulative CGPA: 7.83
+• Attendance Percentage: 84.7%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE079
+• Name: Tushar Kumar
+• Enrollment No: 2024IFHE079
+• Email: tushar.kumar079@ifheindia.edu
+• Mobile Number: +91 9961146351
+• Branch / Department: Management (MBA)
+• Academic Year: Year 1 (Semester 2)
+• Enrolled Courses: MG402: Marketing Strategy & Digital Media, MG401: Financial Management, MG406: Corporate Governance, MG403: Human Resource Analytics, MG405: Strategic Decision Making
+• Current Semester SGPA: 9.67
+• Cumulative CGPA: 9.4
+• Attendance Percentage: 80.1%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE080
+• Name: Vandana Mehta
+• Enrollment No: 2024IFHE080
+• Email: vandana.mehta080@ifheindia.edu
+• Mobile Number: +91 9804263716
+• Branch / Department: Law (BA LLB)
+• Academic Year: Year 2 (Semester 4)
+• Enrolled Courses: LW203: Criminal Law & Procedure, LW206: Environmental Law, LW202: Corporate & Commercial Law, LW205: International Trade Law, LW201: Constitutional Law II
+• Current Semester SGPA: 9.56
+• Cumulative CGPA: 9.31
+• Attendance Percentage: 98.5%
+• Active Backlogs: 0
+• Tuition Fee Status: Scholarship Approved (100% Fee Waiver)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE081
+• Name: Vijay Iyer
+• Enrollment No: 2024IFHE081
+• Email: vijay.iyer081@ifheindia.edu
+• Mobile Number: +91 9908129770
+• Branch / Department: Computer Science & Engineering (CSE)
+• Academic Year: Year 3 (Semester 5)
+• Enrolled Courses: CS305: Software Engineering, CS302: Operating Systems, MA201: Discrete Mathematics, CS301: Data Structures & Algorithms, CS303: Database Management Systems
+• Current Semester SGPA: 8.96
+• Cumulative CGPA: 9.2
+• Attendance Percentage: 77.2%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE082
+• Name: Varsha Saxena
+• Enrollment No: 2024IFHE082
+• Email: varsha.saxena082@ifheindia.edu
+• Mobile Number: +91 7927186158
+• Branch / Department: Artificial Intelligence & Data Science (AI&DS)
+• Academic Year: Year 1 (Semester 2)
+• Enrolled Courses: CS303: Database Management Systems, MA202: Applied Probability & Statistics, AI301: Machine Learning Fundamentals, AI302: Neural Networks & Deep Learning, DS301: Big Data Analytics
+• Current Semester SGPA: 9.6
+• Cumulative CGPA: 9.7
+• Attendance Percentage: 84.5%
+• Active Backlogs: 0
+• Tuition Fee Status: Pending ($900.00)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE083
+• Name: Yogesh Kapoor
+• Enrollment No: 2024IFHE083
+• Email: yogesh.kapoor083@ifheindia.edu
+• Mobile Number: +91 9648506635
+• Branch / Department: Electronics & Communication Engineering (ECE)
+• Academic Year: Year 1 (Semester 1)
+• Enrolled Courses: EC304: VLSI Design, MA201: Applied Mathematics, EC302: Microprocessors & Microcontrollers, EC305: Electromagnetic Theory, EC303: Analog Communication Systems
+• Current Semester SGPA: 7.16
+• Cumulative CGPA: 7.19
+• Attendance Percentage: 74.4%
+• Active Backlogs: 1
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE084
+• Name: Archana Bansal
+• Enrollment No: 2024IFHE084
+• Email: archana.bansal084@ifheindia.edu
+• Mobile Number: +91 9926436628
+• Branch / Department: Electrical & Electronics Engineering (EEE)
+• Academic Year: Year 2 (Semester 4)
+• Enrolled Courses: MA201: Applied Mathematics, EE305: Renewable Energy Systems, EE302: Control Systems, EE301: Power Systems & Smart Grids, EE303: Electrical Machines II
+• Current Semester SGPA: 8.86
+• Cumulative CGPA: 8.75
+• Attendance Percentage: 88.7%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE085
+• Name: Deepak Mittal
+• Enrollment No: 2024IFHE085
+• Email: deepak.mittal085@ifheindia.edu
+• Mobile Number: +91 8742628370
+• Branch / Department: Mechanical Engineering (ME)
+• Academic Year: Year 3 (Semester 6)
+• Enrolled Courses: ME304: Kinematics of Machinery, ME301: Thermodynamics & Heat Transfer, ME305: Manufacturing Technology, ME303: CAD/CAM & Robotics, ME302: Fluid Mechanics & Hydraulics
+• Current Semester SGPA: 6.54
+• Cumulative CGPA: 6.31
+• Attendance Percentage: 75.2%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE086
+• Name: Geeta Gupta
+• Enrollment No: 2024IFHE086
+• Email: geeta.gupta086@ifheindia.edu
+• Mobile Number: +91 9732526956
+• Branch / Department: Civil Engineering (CE)
+• Academic Year: Year 2 (Semester 3)
+• Enrolled Courses: CE305: Concrete Technology, CE302: Geotechnical Engineering, CE304: Environmental Engineering, MA201: Applied Mathematics, CE301: Structural Analysis
+• Current Semester SGPA: 8.65
+• Cumulative CGPA: 8.43
+• Attendance Percentage: 90.2%
+• Active Backlogs: 0
+• Tuition Fee Status: Scholarship Approved (100% Fee Waiver)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE087
+• Name: Kamal Joshi
+• Enrollment No: 2024IFHE087
+• Email: kamal.joshi087@ifheindia.edu
+• Mobile Number: +91 8712138560
+• Branch / Department: Management (MBA)
+• Academic Year: Year 2 (Semester 4)
+• Enrolled Courses: MG401: Financial Management, MG402: Marketing Strategy & Digital Media, MG405: Strategic Decision Making, MG406: Corporate Governance, MG404: Supply Chain & Logistics
+• Current Semester SGPA: 9.84
+• Cumulative CGPA: 9.95
+• Attendance Percentage: 82.4%
+• Active Backlogs: 0
+• Tuition Fee Status: Pending ($900.00)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE088
+• Name: Lata Kulkarni
+• Enrollment No: 2024IFHE088
+• Email: lata.kulkarni088@ifheindia.edu
+• Mobile Number: +91 9743274655
+• Branch / Department: Law (BA LLB)
+• Academic Year: Year 1 (Semester 2)
+• Enrolled Courses: LW202: Corporate & Commercial Law, LW203: Criminal Law & Procedure, LW201: Constitutional Law II, LW204: Intellectual Property Rights, LW205: International Trade Law
+• Current Semester SGPA: 7.96
+• Cumulative CGPA: 8.19
+• Attendance Percentage: 91.1%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE089
+• Name: Mukesh Srivastava
+• Enrollment No: 2024IFHE089
+• Email: mukesh.srivastava089@ifheindia.edu
+• Mobile Number: +91 8771124335
+• Branch / Department: Computer Science & Engineering (CSE)
+• Academic Year: Year 1 (Semester 1)
+• Enrolled Courses: CS303: Database Management Systems, CS305: Software Engineering, MA201: Discrete Mathematics, CS301: Data Structures & Algorithms, CS302: Operating Systems
+• Current Semester SGPA: 9.79
+• Cumulative CGPA: 9.5
+• Attendance Percentage: 74.8%
+• Active Backlogs: 0
+• Tuition Fee Status: Pending ($450.00)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE090
+• Name: Nirmala Malhotra
+• Enrollment No: 2024IFHE090
+• Email: nirmala.malhotra090@ifheindia.edu
+• Mobile Number: +91 9716103022
+• Branch / Department: Artificial Intelligence & Data Science (AI&DS)
+• Academic Year: Year 3 (Semester 6)
+• Enrolled Courses: AI302: Neural Networks & Deep Learning, AI301: Machine Learning Fundamentals, DS301: Big Data Analytics, CS303: Database Management Systems, DS302: Python Data Science Toolkit
+• Current Semester SGPA: 7.73
+• Cumulative CGPA: 7.86
+• Attendance Percentage: 74.2%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE091
+• Name: Pawan Taneja
+• Enrollment No: 2024IFHE091
+• Email: pawan.taneja091@ifheindia.edu
+• Mobile Number: +91 8841834190
+• Branch / Department: Electronics & Communication Engineering (ECE)
+• Academic Year: Year 2 (Semester 4)
+• Enrolled Courses: EC305: Electromagnetic Theory, EC304: VLSI Design, EC301: Digital Signal Processing, MA201: Applied Mathematics, EC302: Microprocessors & Microcontrollers
+• Current Semester SGPA: 9.18
+• Cumulative CGPA: 9.32
+• Attendance Percentage: 96.0%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE092
+• Name: Rekha Khandelwal
+• Enrollment No: 2024IFHE092
+• Email: rekha.khandelwal092@ifheindia.edu
+• Mobile Number: +91 9723863787
+• Branch / Department: Electrical & Electronics Engineering (EEE)
+• Academic Year: Year 4 (Semester 7)
+• Enrolled Courses: EE301: Power Systems & Smart Grids, EE303: Electrical Machines II, MA201: Applied Mathematics, EE302: Control Systems, EE305: Renewable Energy Systems
+• Current Semester SGPA: 9.55
+• Cumulative CGPA: 9.42
+• Attendance Percentage: 82.3%
+• Active Backlogs: 0
+• Tuition Fee Status: Pending ($900.00)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE093
+• Name: Satish Verma
+• Enrollment No: 2024IFHE093
+• Email: satish.verma093@ifheindia.edu
+• Mobile Number: +91 9624276412
+• Branch / Department: Mechanical Engineering (ME)
+• Academic Year: Year 4 (Semester 7)
+• Enrolled Courses: ME303: CAD/CAM & Robotics, ME304: Kinematics of Machinery, ME305: Manufacturing Technology, ME302: Fluid Mechanics & Hydraulics, ME301: Thermodynamics & Heat Transfer
+• Current Semester SGPA: 7.42
+• Cumulative CGPA: 7.72
+• Attendance Percentage: 91.8%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE094
+• Name: Sarita Nair
+• Enrollment No: 2024IFHE094
+• Email: sarita.nair094@ifheindia.edu
+• Mobile Number: +91 9793605504
+• Branch / Department: Civil Engineering (CE)
+• Academic Year: Year 4 (Semester 7)
+• Enrolled Courses: CE304: Environmental Engineering, CE301: Structural Analysis, MA201: Applied Mathematics, CE305: Concrete Technology, CE302: Geotechnical Engineering
+• Current Semester SGPA: 7.93
+• Cumulative CGPA: 8.05
+• Attendance Percentage: 78.0%
+• Active Backlogs: 0
+• Tuition Fee Status: Scholarship Approved (50% Fee Waiver)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE095
+• Name: Suresh Deshmukh
+• Enrollment No: 2024IFHE095
+• Email: suresh.deshmukh095@ifheindia.edu
+• Mobile Number: +91 7992687710
+• Branch / Department: Management (MBA)
+• Academic Year: Year 2 (Semester 3)
+• Enrolled Courses: MG403: Human Resource Analytics, MG406: Corporate Governance, MG404: Supply Chain & Logistics, MG405: Strategic Decision Making, MG402: Marketing Strategy & Digital Media
+• Current Semester SGPA: 9.2
+• Cumulative CGPA: 8.93
+• Attendance Percentage: 78.5%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE096
+• Name: Usha Tripathi
+• Enrollment No: 2024IFHE096
+• Email: usha.tripathi096@ifheindia.edu
+• Mobile Number: +91 9856832660
+• Branch / Department: Law (BA LLB)
+• Academic Year: Year 2 (Semester 3)
+• Enrolled Courses: LW204: Intellectual Property Rights, LW205: International Trade Law, LW206: Environmental Law, LW202: Corporate & Commercial Law, LW201: Constitutional Law II
+• Current Semester SGPA: 7.87
+• Cumulative CGPA: 7.75
+• Attendance Percentage: 73.5%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE097
+• Name: Vinod Rathore
+• Enrollment No: 2024IFHE097
+• Email: vinod.rathore097@ifheindia.edu
+• Mobile Number: +91 9839622098
+• Branch / Department: Computer Science & Engineering (CSE)
+• Academic Year: Year 4 (Semester 7)
+• Enrolled Courses: CS305: Software Engineering, CS303: Database Management Systems, CS302: Operating Systems, MA201: Discrete Mathematics, CS304: Computer Networks
+• Current Semester SGPA: 6.8
+• Cumulative CGPA: 6.5
+• Attendance Percentage: 92.6%
+• Active Backlogs: 2
+• Tuition Fee Status: Scholarship Approved (100% Fee Waiver)
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE098
+• Name: Anita Grover
+• Enrollment No: 2024IFHE098
+• Email: anita.grover098@ifheindia.edu
+• Mobile Number: +91 8700282207
+• Branch / Department: Artificial Intelligence & Data Science (AI&DS)
+• Academic Year: Year 1 (Semester 2)
+• Enrolled Courses: MA202: Applied Probability & Statistics, DS302: Python Data Science Toolkit, AI302: Neural Networks & Deep Learning, DS301: Big Data Analytics, CS303: Database Management Systems
+• Current Semester SGPA: 7.55
+• Cumulative CGPA: 7.84
+• Attendance Percentage: 85.7%
+• Active Backlogs: 0
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE099
+• Name: Sunil Maheshwari
+• Enrollment No: 2024IFHE099
+• Email: sunil.maheshwari099@ifheindia.edu
+• Mobile Number: +91 8762443177
+• Branch / Department: Electronics & Communication Engineering (ECE)
+• Academic Year: Year 3 (Semester 5)
+• Enrolled Courses: EC304: VLSI Design, EC303: Analog Communication Systems, EC302: Microprocessors & Microcontrollers, EC301: Digital Signal Processing, EC305: Electromagnetic Theory
+• Current Semester SGPA: 6.88
+• Cumulative CGPA: 7.0
+• Attendance Percentage: 95.9%
+• Active Backlogs: 2
+• Tuition Fee Status: Paid
+------------------------------------------------------------
+
+STUDENT ENROLLMENT RECORD: 2024IFHE100
+• Name: Aarti Sharma
+• Enrollment No: 2024IFHE100
+• Email: aarti.sharma100@ifheindia.edu
+• Mobile Number: +91 9841534479
+• Branch / Department: Electrical & Electronics Engineering (EEE)
+• Academic Year: Year 4 (Semester 7)
+• Enrolled Courses: EE302: Control Systems, EE303: Electrical Machines II, MA201: Applied Mathematics, EE301: Power Systems & Smart Grids, EE305: Renewable Energy Systems
+• Current Semester SGPA: 9.17
+• Cumulative CGPA: 9.0
+• Attendance Percentage: 73.9%
+• Active Backlogs: 0
+• Tuition Fee Status: Scholarship Approved (100% Fee Waiver)
+------------------------------------------------------------

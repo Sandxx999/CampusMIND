@@ -1,0 +1,37 @@
+IFHE HYDERABAD (ICFAI FOUNDATION FOR HIGHER EDUCATION)
+OFFICIAL GRADE SHEETS, SGPA/CGPA CALCULATION, TRANSCRIPTS & ACADEMIC EVALUATION POLICY
+
+1. GRADE SHEETS & SEMESTER MARKSHEETS
+- Semester Grade Sheets (Grade Cards) are officially issued by the Controller of Examinations (CoE) within 14 calendar days following the conclusion of End-Semester Examinations.
+- Students can view, download, and print digital grade sheets from the IFHE Student ERP Portal (https://ifheindia.org/erp).
+- Standard Grading Scale & Grade Point Equivalents:
+  * Grade O (Outstanding): Marks >= 90% | Grade Points: 10
+  * Grade A+ (Excellent): Marks 80-89% | Grade Points: 9
+  * Grade A (Very Good): Marks 70-79% | Grade Points: 8
+  * Grade B+ (Good): Marks 60-69% | Grade Points: 7
+  * Grade B (Above Average): Marks 55-59% | Grade Points: 6
+  * Grade C (Average): Marks 50-54% | Grade Points: 5
+  * Grade P (Pass): Marks 40-49% | Grade Points: 4
+  * Grade F (Fail/Ab): Marks < 40% | Grade Points: 0
+
+2. SGPA & CGPA FORMULA CALCULATION
+- Semester Grade Point Average (SGPA) = Sum(Course Credit Units x Grade Points Earned) / Total Semester Credit Units Registered.
+- Cumulative Grade Point Average (CGPA) = Aggregate Grade Points Earned across all successfully completed semesters / Cumulative Total Credits Completed.
+- Conversion from CGPA to Equivalent Percentage: Equivalent Percentage (%) = (CGPA - 0.5) x 10. (e.g., CGPA 8.0 = 75.0%).
+
+3. OFFICIAL TRANSCRIPTS & WES / DEGREE VERIFICATION
+- Official Academic Transcripts: Required for foreign university higher education, WES credential evaluation, and visa applications.
+- Processing Fee: INR 1,000 for the first original set; INR 300 per additional official copy.
+- Express Processing (48-hour expedited delivery): INR 2,500 per set.
+- Sealed Envelope Policy: Transcripts are issued in officially stamped, tamper-proof sealed envelopes. Digital transcripts can also be dispatched directly to WES, National Student Clearinghouse, or foreign universities via secure electronic transfer.
+- Provisional Degree Certificate (PDC): Issued automatically within 10 days of final semester results declaration to all eligible graduating students with zero financial or library dues.
+- Convocation & Degree Scroll: Conferred annually at the IFHE Annual Convocation ceremony held in October.
+
+4. RE-EVALUATION, RE-COUNTING & GRADE IMPROVEMENT EXAMINATIONS
+- Re-counting Application: Students dissatisfied with semester marks may apply within 7 days of result publication. Fee: INR 500 per paper.
+- Re-evaluation Application: Script is re-evaluated by an independent external senior examiner. Fee: INR 1,500 per paper. If mark variation is >= 5%, higher revised grade is awarded.
+- Grade Improvement Examination: Passed students wishing to improve CGPA may re-appear for a maximum of 2 courses during the supplementary examination window. Higher grade is retained on the transcript.
+
+5. DUPLICATE GRADE SHEET & NAME CORRECTION PROCEDURE
+- Duplicate Grade Sheet Fee: INR 1,500 per semester grade card upon submission of a Police FIR copy and a notarized indemnity affidavit.
+- Name/Spelling Correction: Requests for correction on grade cards or transcripts must be submitted to the Academic Registry within 30 days of grade publication along with 10th Class Board Certificate copy.

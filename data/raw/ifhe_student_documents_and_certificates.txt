@@ -1,0 +1,33 @@
+IFHE HYDERABAD (ICFAI FOUNDATION FOR HIGHER EDUCATION)
+STUDENT CERTIFICATES, OFFICIAL BONAFIDE DOCUMENTS, VERIFICATION & ID CARD POLICY
+
+1. OFFICIAL BONAFIDE CERTIFICATES & ISSUANCE WORKFLOW
+- Bonafide Certificates are official documents issued by the Academic Registry certifying a student's active enrollment, academic year, and discipline.
+- Types of Bonafide Certificates & Standard Processing Times:
+  * Educational Bank Loan Bonafide: Issued in 24-48 hours (includes fee structure breakdown).
+  * Passport / Police Verification Bonafide: Issued in 48 hours.
+  * Bus & Railway Concession Bonafide: Issued in 24 hours.
+  * Visa / Travel Concession Bonafide: Issued in 48 hours.
+  * Summer/Winter Internship No-Objection Certificate (NOC): Issued in 48 hours upon department head approval.
+- How to Apply: Log into IFHE Student ERP -> Student Services -> Request Certificate -> Select Purpose & Upload supporting docs (if required). Standard fee: Free for first copy, INR 100 for duplicate copy.
+
+2. CONDUCT, CHARACTER, TRANSFER & MIGRATION CERTIFICATES
+- Conduct & Character Certificate: Issued automatically upon degree completion certifying moral conduct and adherence to academic regulations.
+- Transfer Certificate (TC) & Migration Certificate (MC):
+  * Issued to graduating students or students withdrawing from the university.
+  * Prerequisites: Submission of completed No-Dues Clearance Certificate signed by Library, Accounts, Hostel Warden, Sports Department, and Department HOD.
+  * Processing time: 3 business days post No-Dues submission. Fee: INR 300.
+
+3. SMART RFID STUDENT ID CARD REPLACEMENT & PRIVILEGES
+- The IFHE Smart Student ID Card serves as campus access pass, library checkout token, exam hall entry pass, and hostel mess access card.
+- Lost or Damaged ID Card Replacement:
+  * Step 1: File an online Lost Card Report on IFHE Student ERP or submit a written application at Security Desk.
+  * Step 2: Pay ID Card Replacement Fee of INR 500 online or at the Accounts Counter.
+  * Step 3: Temporary gate pass is issued immediately; new RFID Smart ID Card is printed and dispatched within 24 hours by the IT & Security Helpdesk.
+
+4. WES ATTestation, DEGREE APOSTILLE & THIRD-PARTY VERIFICATION
+- WES (World Education Services) & Foreign Credential Attestation:
+  * IFHE is officially registered on WES Access for direct electronic document transmission.
+  * Students can submit WES reference number via ERP for direct digital transcript dispatch.
+- Third-Party Employer / Background Verification:
+  * Employers and background verification agencies must send verification requests to backgroundverif@ifheindia.org along with student consent form and payment of INR 1,000 verification fee. Standard turnaround time: 3-5 business days.

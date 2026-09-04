@@ -1,0 +1,45 @@
+[
+  {
+    "id": "qa_001",
+    "question": "What is the fee payment deadline for Spring 2026?",
+    "expected_answer": "March 15, 2026",
+    "expected_document": "sample_campus_rules.txt",
+    "min_role": "student"
+  },
+  {
+    "id": "qa_002",
+    "question": "What is the late fee penalty amount for late fee payments?",
+    "expected_answer": "$50 per week",
+    "expected_document": "sample_campus_rules.txt",
+    "min_role": "student"
+  },
+  {
+    "id": "qa_003",
+    "question": "How many books can an undergraduate student borrow from the library?",
+    "expected_answer": "4 books for 14 days",
+    "expected_document": "sample_campus_rules.txt",
+    "min_role": "student"
+  },
+  {
+    "id": "qa_004",
+    "question": "When do final examinations begin for Spring 2026?",
+    "expected_answer": "June 1, 2026",
+    "expected_document": "sample_campus_rules.txt",
+    "min_role": "student"
+  },
+  {
+    "id": "qa_005",
+    "question": "What is the maximum research grant funding per department for faculty?",
+    "expected_answer": "$25,000",
+    "expected_document": "sample_campus_rules.txt",
+    "min_role": "faculty"
+  },
+  {
+    "id": "qa_006",
+    "question": "What is the policy for parking pass refunds?",
+    "expected_answer": "I don't have information on that in the official campus database.",
+    "expected_document": null,
+    "min_role": "student",
+    "is_out_of_domain": true
+  }
+]
