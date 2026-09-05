@@ -36,13 +36,16 @@ app.include_router(admin_router)
 app.include_router(students_router)
 
 
+import threading
+
 @app.on_event("startup")
 def startup_event():
-    logger.info("Initializing CampusMind RAG system and auto-ingesting documents...")
+    logger.info("Initializing CampusMind RAG system (background ingestion enabled)...")
     try:
-        ingest_campus_data()
+        thread = threading.Thread(target=ingest_campus_data, daemon=True)
+        thread.start()
     except Exception as e:
-        logger.error(f"Error during startup ingestion: {e}")
+        logger.error(f"Error starting background ingestion: {e}")
 
 @app.get("/", tags=["Root"])
 def root():
