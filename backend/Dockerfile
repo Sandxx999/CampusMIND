@@ -25,6 +25,9 @@ RUN groupadd -r campusmind && useradd -r -g campusmind appuser
 COPY --from=builder /root/.local /home/appuser/.local
 ENV PATH=/home/appuser/.local/bin:$PATH
 ENV PYTHONUNBUFFERED=1
+ENV HF_HOME=/app/data/hf_cache
+ENV CHROMA_DB_DIR=/app/data/chroma_db
+ENV DATABASE_URL=sqlite:////app/data/campusmind.db
 
 # Copy backend application source
 COPY backend/ .

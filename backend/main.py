@@ -40,15 +40,11 @@ from api.routes_institution import router_v1 as institution_router_v1
 async def lifespan(app: FastAPI):
     """Lifespan context manager for application startup and shutdown tasks."""
     logger.info("Initializing CampusMind 2.0 RAG system foundation...")
-    try:
-        def run_ingestion():
-            from rag.ingest import ingest_campus_data
-            ingest_campus_data()
-
-        thread = threading.Thread(target=run_ingestion, daemon=True)
-        thread.start()
-    except Exception as e:
-        logger.error(f"Error starting background document ingestion worker: {e}")
+    
+    # Run ingestion synchronously. Do not hide errors.
+    # If this fails, the server should not start in a broken state.
+    from rag.ingest import ingest_campus_data
+    ingest_campus_data()
     
     yield
     logger.info("Shutting down CampusMind 2.0 API server cleanly...")

@@ -204,18 +204,26 @@ class DocumentIngestionEngine:
     def ingest_directory(self, data_dir: Optional[str] = None) -> List[Dict[str, Any]]:
         """Scans directory and ingests all matching .txt / .md files."""
         target_dir = os.path.abspath(data_dir or self.data_dir)
-        logger.info(f"Starting batch ingestion from: {target_dir}")
-
+        
         files = glob.glob(os.path.join(target_dir, "*.txt")) + glob.glob(os.path.join(target_dir, "*.md"))
+        
+        logger.info(f"Raw data directory being used: {target_dir}")
+        logger.info(f"Number of raw documents discovered: {len(files)}")
+        logger.info(f"ChromaDB persistence directory being used: {self.vector_store.storage_dir}")
+        
         if not files:
             logger.warning(f"No raw .txt / .md files found in {target_dir}")
             return []
 
         results = []
+        success_count = 0
         for file_path in files:
             res = self.ingest_single_document(file_path)
             results.append(res)
-
+            if res.get("status") in ("indexed", "unchanged"):
+                success_count += 1
+                
+        logger.info(f"Successful ingestion/upsert count: {success_count}")
         return results
 
 

@@ -34,12 +34,12 @@ services:
       - GEMINI_API_KEY=${GEMINI_API_KEY:-}
       - JWT_SECRET_KEY=${JWT_SECRET_KEY:-}
       - CORS_ORIGINS=${CORS_ORIGINS:-http://localhost:5173,http://localhost:3000,http://localhost:80}
-      - DATABASE_URL=${DATABASE_URL:-sqlite:///./backend/campusmind.db}
-      - CHROMA_DB_DIR=./backend/chroma_db
+      - DATABASE_URL=${DATABASE_URL:-sqlite:////app/data/campusmind.db}
+      - CHROMA_DB_DIR=/app/data/chroma_db
       - LOG_LEVEL=${LOG_LEVEL:-INFO}
     volumes:
-      - ./backend/chroma_db:/app/chroma_db
-      - ./backend/campusmind.db:/app/campusmind.db
+      - ./backend/chroma_db:/app/data/chroma_db
+      - ./backend/campusmind.db:/app/data/campusmind.db
     healthcheck:
       test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://localhost:8000/health')"]
       interval: 15s
