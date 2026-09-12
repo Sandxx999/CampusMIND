@@ -10,7 +10,7 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     && rm -rf /var/lib/apt/lists/*
 
 # Copy dependency definition and pre-build wheels
-COPY requirements.txt .
+COPY backend/requirements.txt .
 RUN pip install --no-cache-dir --user -r requirements.txt
 
 # Runner Stage
@@ -27,10 +27,13 @@ ENV PATH=/home/appuser/.local/bin:$PATH
 ENV PYTHONUNBUFFERED=1
 
 # Copy backend application source
-COPY . .
+COPY backend/ .
+
+# Copy raw data files so they are available at /data/raw
+COPY data/ /data/
 
 # Adjust permissions for non-root execution
-RUN chown -R appuser:campusmind /app
+RUN chown -R appuser:campusmind /app && chown -R appuser:campusmind /data
 
 USER appuser
 
