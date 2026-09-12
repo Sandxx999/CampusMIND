@@ -10,6 +10,7 @@ import {
   Sparkles,
   UserCheck,
 } from 'lucide-react';
+import { fetchNotifications, markNotificationsRead, subscribeToNotificationStream } from '../lib/api';
 
 const ROLE_DISPLAY = {
   student: { icon: GraduationCap, label: 'Student Role', badge: 'bg-sky-500/15 text-sky-700 border-sky-300/60' },
@@ -122,7 +123,6 @@ function NotificationBell() {
 
   const loadNotifications = async () => {
     try {
-      const { fetchNotifications } = await import('../lib/api');
       const data = await fetchNotifications();
       setNotifications(data.notifications || []);
       setUnreadCount(data.unread_count || 0);
@@ -133,13 +133,24 @@ function NotificationBell() {
 
   React.useEffect(() => {
     loadNotifications();
-    const interval = setInterval(loadNotifications, 30000);
-    return () => clearInterval(interval);
+
+    const eventSource = subscribeToNotificationStream((newNotif) => {
+      setNotifications(prev => [newNotif, ...prev.filter(n => n.id !== newNotif.id)]);
+      setUnreadCount(prev => prev + 1);
+    });
+
+    const interval = setInterval(loadNotifications, 60000);
+
+    return () => {
+      if (eventSource && eventSource.close) {
+        eventSource.close();
+      }
+      clearInterval(interval);
+    };
   }, []);
 
   const handleMarkAllRead = async () => {
     try {
-      const { markNotificationsRead } = await import('../lib/api');
       const ids = notifications.filter(n => !n.is_read).map(n => n.id);
       if (ids.length > 0) {
         await markNotificationsRead(ids);
@@ -214,3 +225,4 @@ function NotificationBell() {
     </div>
   );
 }
+

@@ -7,7 +7,7 @@ import os
 import sqlite3
 from contextlib import contextmanager
 from typing import Generator, Optional
-from sqlalchemy import create_engine, event
+from sqlalchemy import create_engine, event, text
 from sqlalchemy.engine import Engine
 from sqlalchemy.orm import sessionmaker, Session
 from core.config import settings
@@ -39,6 +39,7 @@ def get_engine(database_url: Optional[str] = None) -> Engine:
         engine = create_engine(
             url,
             connect_args={"check_same_thread": False},
+            pool_pre_ping=settings.DB_POOL_PRE_PING,
             echo=False,
         )
     elif url.startswith("postgresql://") or url.startswith("postgresql+psycopg2://"):
@@ -48,14 +49,32 @@ def get_engine(database_url: Optional[str] = None) -> Engine:
             max_overflow=settings.DB_MAX_OVERFLOW,
             pool_timeout=settings.DB_POOL_TIMEOUT,
             pool_recycle=settings.DB_POOL_RECYCLE,
-            pool_pre_ping=True,
+            pool_pre_ping=settings.DB_POOL_PRE_PING,
             echo=False,
         )
     else:
-        engine = create_engine(url, echo=False)
+        engine = create_engine(url, pool_pre_ping=settings.DB_POOL_PRE_PING, echo=False)
 
     _engine_cache[url] = engine
     return engine
+
+
+def check_database_health(database_url: Optional[str] = None) -> tuple[bool, str]:
+    """
+    Executes a lightweight ping check to verify database connectivity.
+    Returns (is_healthy, status_details).
+    """
+    try:
+        engine = get_engine(database_url)
+        with engine.connect() as conn:
+            conn.execute(text("SELECT 1"))
+
+        dialect = "postgresql" if settings.DATABASE_URL.startswith("postgresql") else "sqlite"
+        return True, f"connected ({dialect})"
+    except Exception as e:
+        logger.error(f"Database health ping failed: {e}")
+        return False, f"unhealthy: {str(e)}"
+
 
 
 def get_session_factory(database_url: Optional[str] = None) -> sessionmaker:

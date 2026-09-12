@@ -70,6 +70,11 @@ class Settings:
         self.DB_MAX_OVERFLOW = int(os.getenv("DB_MAX_OVERFLOW", "10"))
         self.DB_POOL_TIMEOUT = int(os.getenv("DB_POOL_TIMEOUT", "30"))
         self.DB_POOL_RECYCLE = int(os.getenv("DB_POOL_RECYCLE", "1800"))
+        self.DB_POOL_PRE_PING = _parse_bool(os.getenv("DB_POOL_PRE_PING", "true"))
+
+        self.TASK_QUEUE_PROVIDER = os.getenv("TASK_QUEUE_PROVIDER", "threaded").strip().lower()
+        self.REDIS_URL = os.getenv("REDIS_URL", "redis://localhost:6379/0").strip()
+        self.NOTIFICATION_TRANSPORT = os.getenv("NOTIFICATION_TRANSPORT", "sse").strip().lower()
 
         self.RETRIEVAL_TOP_K = int(os.getenv("RETRIEVAL_TOP_K", "5"))
         self.SIMILARITY_THRESHOLD = float(os.getenv("SIMILARITY_THRESHOLD", "0.25"))

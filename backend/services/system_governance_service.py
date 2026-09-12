@@ -141,42 +141,25 @@ class SystemGovernanceService:
         )
 
     def trigger_reindex(self, actor_username: str) -> SystemTaskSchema:
-        """Triggers background document ingestion and vector store re-indexing."""
-        task = self.task_repo.create_task(
+        """Triggers background document ingestion and vector store re-indexing using production task manager."""
+        def reindex_worker():
+            from rag.ingest import ingest_campus_data
+            ingest_campus_data()
+
+        from core.tasks import task_manager
+        task_info = task_manager.submit_task(
             task_type="VECTOR_REINDEX",
+            target_fn=reindex_worker,
             initiated_by=actor_username,
             details="Re-indexing ChromaDB vector collection from data/ directory",
         )
 
-        def reindex_worker():
-            try:
-                from rag.ingest import ingest_campus_data
-                ingest_campus_data()
-                self.task_repo.update_task(
-                    task_id=task["id"],
-                    status="completed",
-                    progress_pct=100.0,
-                    details="Successfully re-indexed all document chunks in ChromaDB",
-                )
-            except Exception as e:
-                logger.error(f"Re-indexing worker failed: {e}")
-                self.task_repo.update_task(
-                    task_id=task["id"],
-                    status="failed",
-                    progress_pct=0.0,
-                    details=f"Re-indexing failed: {e}",
-                )
-
-        thread = threading.Thread(target=reindex_worker, daemon=True)
-        thread.start()
-
         self.audit_repo.log_audit_event(
             event_type="VECTOR_REINDEX_INITIATED",
             actor_username=actor_username,
-            details=f"Initiated background vector store re-index job {task['id']}",
+            details=f"Initiated background vector store re-index job {task_info['id']}",
         )
 
-        task_info = self.task_repo.get_task(task["id"]) or task
         return SystemTaskSchema(**task_info)
 
     def get_task_status(self, task_id: str) -> SystemTaskSchema:

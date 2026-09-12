@@ -90,6 +90,25 @@ class InterventionService:
             session.add(notification)
             session.commit()
 
+            # Publish real-time alert event via notification_transport
+            try:
+                from core.notifications import notification_transport
+                notification_transport.publish_notification(
+                    user_id=student.user_id,
+                    notification={
+                        "id": notification.id,
+                        "category": notification.category,
+                        "severity": notification.severity,
+                        "title": notification.title,
+                        "message": notification.message,
+                        "is_read": False,
+                        "link": notification.link,
+                        "created_at": notification.created_at.isoformat(),
+                    },
+                )
+            except Exception as e:
+                logger.warning(f"Failed to publish real-time notification SSE: {e}")
+
             audit_repository.log_audit_event(
                 event_type="INTERVENTION_CREATED",
                 actor_username=current_user.username,

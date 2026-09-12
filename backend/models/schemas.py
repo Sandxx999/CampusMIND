@@ -111,11 +111,25 @@ class HealthCheckResponse(BaseModel):
     environment: str
 
 
+class LivenessCheckResponse(BaseModel):
+    status: str = "alive"
+    service: str = "CampusMind RAG Assistant"
+    version: str = "2.0.0"
+    environment: str
+
+
 class ReadinessCheckResponse(BaseModel):
     status: str = "ready"
     database: str = "connected"
     chroma_db: str = "connected"
+    task_queue: str = "operational"
     details: Dict[str, Any] = {}
+
+
+class DependencyHealthResponse(BaseModel):
+    status: str = "healthy"
+    dependencies: Dict[str, Any] = {}
+
 
 
 class ErrorDetail(BaseModel):

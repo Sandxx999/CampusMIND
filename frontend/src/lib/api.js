@@ -386,3 +386,29 @@ export async function createActionPlan(data, studentProfileId = null) {
   });
   return response.data;
 }
+
+export function subscribeToNotificationStream(onNotification, onError) {
+  const token = localStorage.getItem('campusmind_token');
+  if (!token) return null;
+
+  const url = `${API_V1_URL}/notifications/stream?token=${encodeURIComponent(token)}`;
+  const eventSource = new EventSource(url);
+
+  eventSource.onmessage = (event) => {
+    try {
+      const data = JSON.parse(event.data);
+      if (data.type === 'notification' && onNotification) {
+        onNotification(data.data);
+      }
+    } catch {
+      // Ignore heartbeat or parse errors
+    }
+  };
+
+  eventSource.onerror = (err) => {
+    if (onError) onError(err);
+  };
+
+  return eventSource;
+}
+
