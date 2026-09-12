@@ -357,3 +357,107 @@ class UnifiedSearchResponse(BaseModel):
     announcements: List[dict]
     events: List[dict]
     documents: List[dict]
+
+
+# Phase 5 Analytics Domain Schemas
+class AttendanceRiskSchema(BaseModel):
+    risk_level: str
+    attendance_percentage: float
+    required_percentage: float
+    classes_attended: int
+    classes_conducted: int
+    classes_missed: int
+    deficit_percentage: float
+    classes_needed_to_recover: int
+    is_recoverable: bool
+    insufficient_data: bool
+    explanation: str
+
+
+class RecommendationSchema(BaseModel):
+    recommendation: str
+    reason: str
+    supporting_metrics: Dict[str, Any]
+    severity: str
+    source: str
+
+
+class StudentAttendanceAnalyticsResponse(BaseModel):
+    overall_attendance_pct: float
+    total_conducted: int
+    total_attended: int
+    total_missed: int
+    course_breakdown: List[Dict[str, Any]]
+    attendance_trend: List[Dict[str, Any]]
+    risk_analysis: AttendanceRiskSchema
+    insufficient_data: bool
+
+
+class StudentPerformanceAnalyticsResponse(BaseModel):
+    assessment_average: Optional[float] = None
+    total_assessments: int
+    cgpa: float
+    sgpa: float
+    backlogs: int
+    performance_by_course: List[Dict[str, Any]]
+    performance_by_type: Dict[str, float]
+    strongest_subjects: List[Dict[str, Any]]
+    weakest_subjects: List[Dict[str, Any]]
+    insufficient_data: bool
+
+
+class StudentAnalyticsSummaryResponse(BaseModel):
+    student_profile: Dict[str, Any]
+    attendance_summary: StudentAttendanceAnalyticsResponse
+    performance_summary: StudentPerformanceAnalyticsResponse
+    risk_analysis: AttendanceRiskSchema
+    recommendations: List[RecommendationSchema]
+    insufficient_data: bool
+
+
+class FacultyOfferingAnalyticsResponse(BaseModel):
+    offering_id: str
+    course_code: str
+    course_title: str
+    section: str
+    total_enrolled: int
+    average_attendance_pct: float
+    average_assessment_pct: float
+    students_requiring_attention: List[Dict[str, Any]]
+    attendance_distribution: Dict[str, int]
+    assessments: List[Dict[str, Any]]
+    insufficient_data: bool
+
+
+class AdminOverviewAnalyticsResponse(BaseModel):
+    total_students: int
+    total_faculty: int
+    total_departments: int
+    total_course_offerings: int
+    average_cgpa: float
+    average_attendance_pct: float
+    students_below_attendance_threshold: int
+    students_in_critical_risk: int
+    students_with_backlogs: int
+
+
+class AdminDepartmentAnalyticsResponse(BaseModel):
+    department_id: str
+    department_code: str
+    department_name: str
+    total_students: int
+    total_faculty: int
+    total_courses: int
+    average_cgpa: float
+    average_attendance_pct: float
+    students_at_risk: int
+
+
+class AdminProgramAnalyticsResponse(BaseModel):
+    program_id: str
+    program_code: str
+    program_name: str
+    duration_years: int
+    total_students: int
+    average_cgpa: float
+    average_attendance_pct: float

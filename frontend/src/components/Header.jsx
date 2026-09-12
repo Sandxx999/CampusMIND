@@ -63,6 +63,15 @@ export default function Header({ user, onLogout, activeTab, onSelectTab }) {
             <GraduationCap className="w-4 h-4" />
             <span>Campus Intelligence</span>
           </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            onClick={() => onSelectTab('analytics')}
+            className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-extrabold tracking-wide transition-all ${activeTab === 'analytics' ? 'border border-white/60 bg-gradient-to-r from-emerald-500 via-teal-600 to-sky-600 text-white shadow-md shadow-emerald-500/30' : 'text-slate-700 hover:bg-white/60 hover:text-slate-900'}`}
+          >
+            <BarChart3 className="w-4 h-4" />
+            <span>Academic Analytics</span>
+          </motion.button>
           {user?.role === 'admin' && (
             <motion.button
               whileHover={{ scale: 1.03 }}
@@ -70,8 +79,8 @@ export default function Header({ user, onLogout, activeTab, onSelectTab }) {
               onClick={() => onSelectTab('admin')}
               className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-extrabold tracking-wide transition-all ${activeTab === 'admin' ? 'border border-white/60 bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md shadow-purple-500/30' : 'text-slate-700 hover:bg-white/60 hover:text-slate-900'}`}
             >
-              <BarChart3 className="w-4 h-4" />
-              <span>Analytics & System</span>
+              <Cpu className="w-4 h-4" />
+              <span>System & Audit</span>
             </motion.button>
           )}
         </nav>

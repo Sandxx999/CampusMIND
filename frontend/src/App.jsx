@@ -3,12 +3,13 @@ import LoginPage from './pages/LoginPage';
 import ChatPage from './pages/ChatPage';
 import AdminDashboard from './pages/AdminDashboard';
 import InstitutionalHub from './pages/InstitutionalHub';
+import AnalyticsPage from './pages/AnalyticsPage';
 import Header from './components/Header';
 import { getStoredUser, logoutUser } from './lib/api';
 
 export default function App() {
   const [user, setUser] = useState(null);
-  const [activeTab, setActiveTab] = useState('chat'); // 'chat', 'hub', 'admin'
+  const [activeTab, setActiveTab] = useState('chat'); // 'chat', 'hub', 'analytics', 'admin'
 
   useEffect(() => {
     const existingUser = getStoredUser();
@@ -42,6 +43,8 @@ export default function App() {
           <ChatPage user={user} />
         ) : activeTab === 'hub' ? (
           <InstitutionalHub user={user} />
+        ) : activeTab === 'analytics' ? (
+          <AnalyticsPage user={user} />
         ) : (
           <AdminDashboard user={user} />
         )}

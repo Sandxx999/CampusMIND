@@ -201,3 +201,67 @@ export async function performUnifiedSearch(query) {
   });
   return response.data;
 }
+
+// Phase 5 Academic Analytics API Helpers
+export async function fetchStudentAnalyticsMe() {
+  const response = await axios.get(`${API_V1_URL}/analytics/student/me`, {
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}
+
+export async function fetchStudentAttendanceAnalytics() {
+  const response = await axios.get(`${API_V1_URL}/analytics/student/me/attendance`, {
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}
+
+export async function fetchStudentPerformanceAnalytics() {
+  const response = await axios.get(`${API_V1_URL}/analytics/student/me/performance`, {
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}
+
+export async function fetchStudentRiskAnalytics() {
+  const response = await axios.get(`${API_V1_URL}/analytics/student/me/risk`, {
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}
+
+export async function fetchStudentRecommendations() {
+  const response = await axios.get(`${API_V1_URL}/analytics/student/me/recommendations`, {
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}
+
+export async function fetchFacultyOfferingAnalytics(offeringId) {
+  const response = await axios.get(`${API_V1_URL}/analytics/faculty/offerings/${offeringId}`, {
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}
+
+export async function fetchAdminAnalyticsOverview() {
+  const response = await axios.get(`${API_V1_URL}/analytics/admin/overview`, {
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}
+
+export async function fetchAdminDepartmentAnalytics(departmentId) {
+  const response = await axios.get(`${API_V1_URL}/analytics/admin/departments/${departmentId}`, {
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}
+
+export async function fetchAdminProgramAnalytics(programId) {
+  const response = await axios.get(`${API_V1_URL}/analytics/admin/programs/${programId}`, {
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}
