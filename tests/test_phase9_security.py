@@ -826,3 +826,41 @@ class TestExportContentIntegrity:
         assert data["generated_by"] == "student1"
         # Student 2's data must be absent
         assert "2024IFHE002" not in data["content"]
+
+    def test_export_is_not_empty_or_truncated(self):
+        """Export content must be substantial and not truncated."""
+        resp = client.get("/api/v1/export/student/me", headers=auth(STUDENT_TOKEN))
+        data = resp.json()
+        assert len(data["content"]) > 200, "Export content is suspiciously short or truncated"
+        assert "CAMPUSMIND 2.0" in data["content"]
+
+    def test_sensitive_secrets_are_not_present_in_export(self):
+        """Exported content must not contain database URLs, Redis URLs, or JWT secrets."""
+        resp = client.get("/api/v1/export/student/me", headers=auth(STUDENT_TOKEN))
+        content = resp.json()["content"]
+        
+        # We explicitly check that configuration secrets are absent from the export text
+        from core.config import settings
+        if settings.JWT_SECRET_KEY != "test_secret_key_override_for_local_dev_only":
+            assert settings.JWT_SECRET_KEY not in content
+        if settings.REDIS_URL:
+            assert settings.REDIS_URL not in content
+        assert "sqlite://" not in content
+        assert "postgresql://" not in content
+        
+    def test_audit_event_is_created_for_export_operations(self):
+        """Verify that downloading an export creates an audit log entry."""
+        from repositories.audit_repository import audit_repository
+        
+        # Clear or get baseline count of export logs
+        baseline_logs = audit_repository.get_audit_events(limit=100)
+        baseline_count = sum(1 for log in baseline_logs if log["event_type"] == "STUDENT_REPORT_EXPORTED")
+        
+        # Perform export
+        resp = client.get("/api/v1/export/student/me", headers=auth(STUDENT_TOKEN))
+        assert resp.status_code == 200
+        
+        # Verify count increased
+        new_logs = audit_repository.get_audit_events(limit=100)
+        new_count = sum(1 for log in new_logs if log["event_type"] == "STUDENT_REPORT_EXPORTED")
+        assert new_count > baseline_count, "An audit event must be created when an export is generated."
