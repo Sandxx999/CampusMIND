@@ -111,14 +111,13 @@ class BackgroundTaskManager:
         if self.provider in {"inline", "sync", "test"}:
             runner()
         elif self.provider in {"redis", "distributed"}:
-            try:
-                logger.info(f"Dispatched task '{task_id}' to distributed queue provider at {settings.REDIS_URL}")
-                t = threading.Thread(target=runner, daemon=True)
-                t.start()
-            except Exception as e:
-                logger.warning(f"Distributed queue fallback to threaded runner: {e}")
-                t = threading.Thread(target=runner, daemon=True)
-                t.start()
+            logger.warning(
+                "Distributed task queue (Celery/ARQ) is not fully implemented. "
+                f"Task '{task_id}' will execute in local threaded mode (DEGRADED). "
+                "This is not safe for multi-worker distributed execution."
+            )
+            t = threading.Thread(target=runner, daemon=True)
+            t.start()
         else:  # "threaded" / default
             t = threading.Thread(target=runner, daemon=True)
             t.start()
