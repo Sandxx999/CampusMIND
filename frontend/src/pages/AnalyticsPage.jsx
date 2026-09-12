@@ -17,6 +17,7 @@ import {
   fetchFacultyOfferingAnalytics,
   fetchAdminAnalyticsOverview,
   fetchCourseOfferings,
+  exportStudentReport,
 } from '../lib/api';
 import RiskIndicator from '../components/analytics/RiskIndicator';
 import AttendanceSummary from '../components/analytics/AttendanceSummary';
@@ -24,6 +25,7 @@ import PerformanceSummary from '../components/analytics/PerformanceSummary';
 import RecommendationCard from '../components/analytics/RecommendationCard';
 import CoursePerformance from '../components/analytics/CoursePerformance';
 import AnalyticsEmptyState from '../components/analytics/AnalyticsEmptyState';
+import { Download } from 'lucide-react';
 
 export default function AnalyticsPage({ user }) {
   const [loading, setLoading] = useState(true);
@@ -81,6 +83,24 @@ export default function AnalyticsPage({ user }) {
     }
   };
 
+  const handleExportReport = async () => {
+    try {
+      const data = await exportStudentReport();
+      const blob = new Blob([data.content], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = data.title || `Academic_Audit_${user.enrollment_no}.txt`;
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error('Export failed:', err);
+      alert('Failed to export report: ' + (err.response?.data?.detail || err.message));
+    }
+  };
+
   return (
     <div className="flex-1 overflow-y-auto bg-[#080B14] px-4 py-6 md:px-8">
       <div className="mx-auto max-w-[1700px] space-y-6">
@@ -94,15 +114,27 @@ export default function AnalyticsPage({ user }) {
               Deterministic, explainable performance & risk insights derived from canonical campus records.
             </p>
           </div>
-          <button
-            onClick={loadAnalyticsData}
-            disabled={loading}
-            className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3.5 py-2 text-xs font-bold text-slate-200 transition-all hover:bg-white/10"
-          >
-            <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin text-sky-400' : ''}`} />
-            <span>Refresh</span>
-          </button>
+          <div className="flex items-center gap-3">
+            {user.role === 'student' && (
+              <button
+                onClick={handleExportReport}
+                className="flex items-center gap-2 rounded-xl bg-gradient-to-r from-sky-500 to-blue-600 px-3.5 py-2 text-xs font-bold text-white shadow-md shadow-sky-500/20 transition-all hover:from-sky-400 hover:to-blue-500"
+              >
+                <Download className="h-4 w-4" />
+                <span>Export Audit Report</span>
+              </button>
+            )}
+            <button
+              onClick={loadAnalyticsData}
+              disabled={loading}
+              className="flex items-center gap-2 rounded-xl border border-white/10 bg-white/5 px-3.5 py-2 text-xs font-bold text-slate-200 transition-all hover:bg-white/10"
+            >
+              <RefreshCw className={`h-4 w-4 ${loading ? 'animate-spin text-sky-400' : ''}`} />
+              <span>Refresh</span>
+            </button>
+          </div>
         </div>
+
 
         {/* Loading State */}
         {loading && (

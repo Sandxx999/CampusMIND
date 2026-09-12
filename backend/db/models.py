@@ -490,3 +490,37 @@ class AuditEvent(Base):
     timestamp = Column(DateTime(timezone=True), default=utc_now, nullable=False, index=True)
 
     user = relationship("User", back_populates="audit_events")
+
+
+class SSOProviderConfig(Base):
+    """Institutional Single Sign-On (OIDC/SAML) provider configuration."""
+
+    __tablename__ = "sso_provider_configs"
+
+    id = Column(String(36), primary_key=True)
+    provider_name = Column(String(100), nullable=False)
+    issuer_url = Column(String(255), nullable=False)
+    client_id = Column(String(100), nullable=False)
+    is_active = Column(Boolean, default=True, nullable=False, index=True)
+    allow_jit_provisioning = Column(Boolean, default=True, nullable=False)
+    created_at = Column(DateTime(timezone=True), default=utc_now, nullable=False)
+    updated_at = Column(
+        DateTime(timezone=True), default=utc_now, onupdate=utc_now, nullable=False
+    )
+
+
+class SystemTask(Base):
+    """Background system task and worker job status tracking."""
+
+    __tablename__ = "system_tasks"
+
+    id = Column(String(36), primary_key=True)
+    task_type = Column(String(50), nullable=False, index=True)
+    status = Column(String(20), default="pending", nullable=False, index=True)
+    progress_pct = Column(Float, default=0.0, nullable=False)
+    details = Column(Text, nullable=True)
+    initiated_by = Column(String(50), nullable=False, index=True)
+    created_at = Column(DateTime(timezone=True), default=utc_now, nullable=False)
+    updated_at = Column(
+        DateTime(timezone=True), default=utc_now, onupdate=utc_now, nullable=False
+    )

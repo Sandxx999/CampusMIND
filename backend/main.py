@@ -27,8 +27,9 @@ from api.routes_events import router_v1 as events_router_v1
 from api.routes_knowledge import router_v1 as knowledge_router_v1
 from api.routes_search import router_v1 as search_router_v1
 from api.routes_analytics import router_v1 as analytics_router_v1
-
-
+from api.routes_sso import router_v1 as sso_router_v1
+from api.routes_governance import router_v1 as governance_router_v1
+from api.routes_export import router_v1 as export_router_v1
 
 
 @asynccontextmanager
@@ -117,6 +118,9 @@ app.include_router(events_router_v1)
 app.include_router(knowledge_router_v1)
 app.include_router(search_router_v1)
 app.include_router(analytics_router_v1)
+app.include_router(sso_router_v1)
+app.include_router(governance_router_v1)
+app.include_router(export_router_v1)
 
 
 # Unversioned API Routers (for Phase 0 client compatibility)

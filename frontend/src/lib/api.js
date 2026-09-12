@@ -265,3 +265,68 @@ export async function fetchAdminProgramAnalytics(programId) {
   });
   return response.data;
 }
+
+// Phase 6 Single Sign-On, System Governance & Export Helpers
+export async function fetchSSOConfig() {
+  const response = await axios.get(`${API_V1_URL}/auth/sso/config`);
+  return response.data;
+}
+
+export async function updateSSOConfig(data) {
+  const response = await axios.put(`${API_V1_URL}/auth/sso/config`, null, {
+    params: data,
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}
+
+export async function loginSSO(payload) {
+  const response = await axios.post(`${API_V1_URL}/auth/sso/login`, payload);
+  const { access_token, user } = response.data;
+  localStorage.setItem('campusmind_token', access_token);
+  localStorage.setItem('campusmind_user', JSON.stringify(user));
+  return user;
+}
+
+export async function fetchSystemStatus() {
+  const response = await axios.get(`${API_V1_URL}/admin/governance/system-status`, {
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}
+
+export async function fetchAuditEvents(params = {}) {
+  const response = await axios.get(`${API_V1_URL}/admin/governance/audit-events`, {
+    params,
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}
+
+export async function runRAGEval() {
+  const response = await axios.post(`${API_V1_URL}/admin/governance/eval`, {}, {
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}
+
+export async function triggerVectorReindex() {
+  const response = await axios.post(`${API_V1_URL}/admin/governance/reindex`, {}, {
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}
+
+export async function exportStudentReport() {
+  const response = await axios.get(`${API_V1_URL}/export/student/me`, {
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}
+
+export async function exportAdminReport() {
+  const response = await axios.get(`${API_V1_URL}/export/admin/overview`, {
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}

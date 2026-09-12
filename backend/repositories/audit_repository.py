@@ -297,6 +297,39 @@ class AuditRepository:
         except Exception as e:
             logger.debug(f"Failed to log audit event ({event_type}): {e}")
 
+    def get_audit_events(
+        self,
+        actor_username: Optional[str] = None,
+        event_type: Optional[str] = None,
+        limit: int = 50
+    ) -> List[Dict[str, Any]]:
+        """Queries security audit events filtered by actor username or event_type."""
+        try:
+            with get_db_session() as session:
+                stmt = select(AuditEvent)
+                if actor_username:
+                    stmt = stmt.where(AuditEvent.actor_username == actor_username)
+                if event_type:
+                    stmt = stmt.where(AuditEvent.event_type == event_type)
+                stmt = stmt.order_by(desc(AuditEvent.timestamp)).limit(limit)
+
+                events = session.scalars(stmt).all()
+                return [
+                    {
+                        "id": e.id,
+                        "event_type": e.event_type,
+                        "actor_username": e.actor_username,
+                        "user_id": e.user_id,
+                        "ip_address": e.ip_address,
+                        "details": e.details,
+                        "timestamp": e.timestamp.isoformat() if hasattr(e.timestamp, "isoformat") else str(e.timestamp),
+                    }
+                    for e in events
+                ]
+        except Exception as e:
+            logger.debug(f"Failed to query audit events: {e}")
+            return []
+
 
 audit_repository = AuditRepository()
 try:

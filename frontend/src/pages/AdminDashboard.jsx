@@ -1,18 +1,30 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  BarChart3, 
-  RefreshCw, 
-  CheckCircle2, 
-  Clock, 
-  ShieldCheck, 
-  FileText, 
-  Zap, 
-  Search, 
-  Layers, 
-  GraduationCap
+import {
+  BarChart3,
+  RefreshCw,
+  CheckCircle2,
+  Clock,
+  ShieldCheck,
+  FileText,
+  Zap,
+  Search,
+  Layers,
+  GraduationCap,
+  Play,
+  Download,
+  Lock,
+  Activity
 } from 'lucide-react';
-import { fetchAdminStats } from '../lib/api';
+import {
+  fetchAdminStats,
+  fetchAuditEvents,
+  runRAGEval,
+  triggerVectorReindex,
+  exportAdminReport,
+  fetchSSOConfig,
+  fetchSystemStatus
+} from '../lib/api';
 
 export default function AdminDashboard({ user }) {
   const [stats, setStats] = useState(null);
@@ -22,11 +34,27 @@ export default function AdminDashboard({ user }) {
   const [filterRole, setFilterRole] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
 
+  // Phase 6 Governance State
+  const [auditEvents, setAuditEventList] = useState([]);
+  const [ssoConfig, setSsoConfig] = useState(null);
+  const [evaluating, setEvaluating] = useState(false);
+  const [evalMetrics, setEvalMetrics] = useState(null);
+
   const loadStats = async () => {
     setLoading(true);
     try {
       const data = await fetchAdminStats();
       setStats(data);
+
+      try {
+        const eventsData = await fetchAuditEvents();
+        setAuditEventList(eventsData.events || []);
+
+        const ssoData = await fetchSSOConfig();
+        setSsoConfig(ssoData);
+      } catch (err) {
+        console.debug('Governance details fetch optional error:', err);
+      }
     } catch (err) {
       console.error('Failed to load admin stats:', err);
     } finally {
@@ -42,7 +70,7 @@ export default function AdminDashboard({ user }) {
     setIngesting(true);
     setIngestSuccess(false);
     try {
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      await triggerVectorReindex();
       setIngestSuccess(true);
       await loadStats();
       setTimeout(() => setIngestSuccess(false), 4000);
@@ -50,6 +78,37 @@ export default function AdminDashboard({ user }) {
       console.error('Ingestion error:', err);
     } finally {
       setIngesting(false);
+    }
+  };
+
+  const handleRunRAGEval = async () => {
+    setEvaluating(true);
+    try {
+      const metrics = await runRAGEval();
+      setEvalMetrics(metrics);
+    } catch (err) {
+      console.error('RAG Eval error:', err);
+      alert('Failed to run RAG benchmark evaluation: ' + (err.response?.data?.detail || err.message));
+    } finally {
+      setEvaluating(false);
+    }
+  };
+
+  const handleExportAdminReport = async () => {
+    try {
+      const data = await exportAdminReport();
+      const blob = new Blob([data.content], { type: 'text/plain;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      const link = document.createElement('a');
+      link.href = url;
+      link.download = data.title || 'Institutional_Overview_Report.txt';
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+      URL.revokeObjectURL(url);
+    } catch (err) {
+      console.error('Export failed:', err);
+      alert('Failed to export admin report: ' + (err.response?.data?.detail || err.message));
     }
   };
 
@@ -92,25 +151,82 @@ export default function AdminDashboard({ user }) {
           <div className="flex items-center gap-2.5">
             <BarChart3 className="w-6 h-6 text-sky-700" />
             <h2 className="font-display text-xl md:text-2xl font-black text-slate-900">
-              RAG Analytics & Knowledge Base Manager
+              Enterprise System Hub & RAG Governance
             </h2>
           </div>
           <p className="text-xs text-slate-600 font-medium mt-1 font-sans">
-            Real-time telemetry, RBAC retrieval metrics & ChromaDB vector database index.
+            Real-time telemetry, audit trails, OIDC SSO status & dynamic benchmark metrics.
           </p>
         </div>
 
-        <motion.button
-          whileHover={{ scale: 1.04 }}
-          whileTap={{ scale: 0.96 }}
-          onClick={handleReingest}
-          disabled={ingesting}
-          className="flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-display font-extrabold text-xs rounded-2xl shadow-md shadow-sky-500/30 transition-all disabled:opacity-50 border border-white/40"
-        >
-          <RefreshCw className={`w-4 h-4 ${ingesting ? 'animate-spin' : ''}`} />
-          <span>{ingesting ? 'Re-Indexing ChromaDB...' : 'Re-Ingest Campus Knowledge Base'}</span>
-        </motion.button>
+        <div className="flex items-center gap-3">
+          <motion.button
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.96 }}
+            onClick={handleExportAdminReport}
+            className="flex items-center gap-2 px-4 py-2.5 bg-slate-800 hover:bg-slate-900 text-white font-display font-bold text-xs rounded-2xl border border-slate-700 shadow-md"
+          >
+            <Download className="w-4 h-4 text-sky-400" />
+            <span>Export Institutional Report</span>
+          </motion.button>
+
+          <motion.button
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.96 }}
+            onClick={handleRunRAGEval}
+            disabled={evaluating}
+            className="flex items-center gap-2 px-4 py-2.5 bg-indigo-600 hover:bg-indigo-700 text-white font-display font-bold text-xs rounded-2xl border border-white/30 shadow-md disabled:opacity-50"
+          >
+            <Play className={`w-4 h-4 ${evaluating ? 'animate-spin' : ''}`} />
+            <span>{evaluating ? 'Evaluating Benchmark...' : 'Run RAG Benchmark'}</span>
+          </motion.button>
+
+          <motion.button
+            whileHover={{ scale: 1.04 }}
+            whileTap={{ scale: 0.96 }}
+            onClick={handleReingest}
+            disabled={ingesting}
+            className="flex items-center gap-2 px-5 py-3 bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-display font-extrabold text-xs rounded-2xl shadow-md shadow-sky-500/30 transition-all disabled:opacity-50 border border-white/40"
+          >
+            <RefreshCw className={`w-4 h-4 ${ingesting ? 'animate-spin' : ''}`} />
+            <span>{ingesting ? 'Re-Indexing ChromaDB...' : 'Re-Ingest Knowledge Base'}</span>
+          </motion.button>
+        </div>
       </div>
+
+      {evalMetrics && (
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          className="glass-mirror-panel p-5 rounded-3xl border border-indigo-300/80 bg-indigo-50/50 shadow-xl grid grid-cols-2 md:grid-cols-4 gap-4"
+        >
+          <div>
+            <div className="text-[11px] font-bold text-slate-500 uppercase">Context Precision</div>
+            <div className="font-display text-2xl font-black text-indigo-900">
+              {(evalMetrics.context_precision * 100).toFixed(1)}%
+            </div>
+          </div>
+          <div>
+            <div className="text-[11px] font-bold text-slate-500 uppercase">Context Recall</div>
+            <div className="font-display text-2xl font-black text-indigo-900">
+              {(evalMetrics.context_recall * 100).toFixed(1)}%
+            </div>
+          </div>
+          <div>
+            <div className="text-[11px] font-bold text-slate-500 uppercase">Faithfulness</div>
+            <div className="font-display text-2xl font-black text-indigo-900">
+              {(evalMetrics.faithfulness * 100).toFixed(1)}%
+            </div>
+          </div>
+          <div>
+            <div className="text-[11px] font-bold text-slate-500 uppercase">Fallback Accuracy</div>
+            <div className="font-display text-2xl font-black text-emerald-800">
+              {(evalMetrics.fallback_accuracy * 100).toFixed(1)}%
+            </div>
+          </div>
+        </motion.div>
+      )}
+
 
       {ingestSuccess && (
         <motion.div 
@@ -296,6 +412,60 @@ export default function AdminDashboard({ user }) {
                     </td>
                     <td className="p-3.5 font-mono text-slate-500 font-semibold">
                       {log.latency_ms || 12} ms
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      {/* SECURITY AUDIT EVENTS TABLE */}
+      <div className="glass-mirror-panel p-6 rounded-3xl border border-white/90 shadow-2xl space-y-4">
+        <div className="flex items-center justify-between">
+          <div className="flex items-center gap-2">
+            <Lock className="w-5 h-5 text-indigo-700" />
+            <h3 className="font-display text-base font-extrabold text-slate-900">
+              Security & Institutional Audit Trail
+            </h3>
+          </div>
+          <span className="text-xs text-indigo-800 font-mono font-bold">
+            {auditEvents.length} Audit Events Recorded
+          </span>
+        </div>
+
+        <div className="overflow-x-auto rounded-2xl border border-slate-200">
+          <table className="w-full text-left text-xs font-sans">
+            <thead className="bg-slate-100/90 text-slate-700 text-[11px] font-extrabold uppercase tracking-wider border-b border-slate-200">
+              <tr>
+                <th className="p-3.5">Event Type</th>
+                <th className="p-3.5">Actor</th>
+                <th className="p-3.5">Details</th>
+                <th className="p-3.5">Timestamp</th>
+              </tr>
+            </thead>
+            <tbody className="divide-y divide-slate-200 text-slate-800 font-medium">
+              {auditEvents.length === 0 ? (
+                <tr>
+                  <td colSpan={4} className="p-6 text-center text-slate-500 italic">
+                    No security audit events logged yet.
+                  </td>
+                </tr>
+              ) : (
+                auditEvents.slice(0, 10).map((evt, idx) => (
+                  <tr key={idx} className="hover:bg-white/80 transition-colors">
+                    <td className="p-3.5 font-bold font-mono text-indigo-800">
+                      {evt.event_type}
+                    </td>
+                    <td className="p-3.5 font-semibold text-slate-900">
+                      {evt.actor_username}
+                    </td>
+                    <td className="p-3.5 text-slate-700 max-w-lg truncate">
+                      {evt.details || 'N/A'}
+                    </td>
+                    <td className="p-3.5 text-slate-500 font-mono text-[11px]">
+                      {evt.timestamp}
                     </td>
                   </tr>
                 ))

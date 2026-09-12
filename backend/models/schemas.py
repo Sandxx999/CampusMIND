@@ -461,3 +461,80 @@ class AdminProgramAnalyticsResponse(BaseModel):
     total_students: int
     average_cgpa: float
     average_attendance_pct: float
+
+
+# Phase 6 Governance, SSO, & System Enterprise Schemas
+class SSOConfigSchema(BaseModel):
+    id: str
+    provider_name: str
+    issuer_url: str
+    client_id: str
+    is_active: bool
+    allow_jit_provisioning: bool
+    created_at: str
+    updated_at: str
+
+
+class SSOLoginRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    provider_id: str
+    token_assertion: str
+    username: str
+    email: str
+    role: str = "student"
+    enrollment_no: Optional[str] = None
+
+
+class AuditEventSchema(BaseModel):
+    id: str
+    event_type: str
+    actor_username: str
+    user_id: Optional[str] = None
+    ip_address: Optional[str] = None
+    details: Optional[str] = None
+    timestamp: str
+
+
+class AuditEventListResponse(BaseModel):
+    total: int
+    events: List[AuditEventSchema]
+
+
+class RAGEvalMetricsSchema(BaseModel):
+    context_precision: float
+    context_recall: float
+    faithfulness: float
+    fallback_accuracy: float
+    total_evaluated_queries: int
+    evaluated_at: str
+
+
+class SystemTaskSchema(BaseModel):
+    id: str
+    task_type: str
+    status: str
+    progress_pct: float
+    details: Optional[str] = None
+    initiated_by: str
+    created_at: str
+    updated_at: str
+
+
+class DetailedSystemStatusResponse(BaseModel):
+    status: str
+    environment: str
+    database: Dict[str, Any]
+    vector_store: Dict[str, Any]
+    active_sso_provider: Optional[str] = None
+    rag_benchmark_latest: Optional[RAGEvalMetricsSchema] = None
+    active_tasks: List[SystemTaskSchema]
+
+
+class ReportExportResponse(BaseModel):
+    report_type: str
+    title: str
+    generated_at: str
+    generated_by: str
+    checksum: str
+    format: str
+    content: str
