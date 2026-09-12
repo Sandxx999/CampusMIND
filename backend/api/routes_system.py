@@ -1,5 +1,5 @@
 import os
-from fastapi import APIRouter, HTTPException, status
+from fastapi import APIRouter, HTTPException, status, Request
 from core.config import settings
 from db.session import check_database_health
 from models.schemas import (
@@ -44,11 +44,17 @@ def liveness_check():
 @router.get("/health/readiness", response_model=ReadinessCheckResponse)
 @router.get("/api/v1/ready", response_model=ReadinessCheckResponse)
 @router.get("/api/v1/health/readiness", response_model=ReadinessCheckResponse)
-def readiness_check():
+def readiness_check(req: Request):
     """
     Readiness probe. Verifies database, vector store, and task queue readiness.
     Fails with 503 HTTP status if critical dependencies are not ready.
     """
+    if not getattr(req.app.state, "is_ready", True):
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="System initialization in progress."
+        )
+
     db_ok, db_msg = check_database_health()
     db_status = "connected" if db_ok else "unhealthy"
 
