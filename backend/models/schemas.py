@@ -479,10 +479,11 @@ class SSOLoginRequest(BaseModel):
     model_config = ConfigDict(extra="forbid")
     provider_id: str
     token_assertion: str
-    username: str
-    email: str
-    role: str = "student"
+    username: Optional[str] = None
+    email: Optional[str] = None
+    role: Optional[str] = None
     enrollment_no: Optional[str] = None
+
 
 
 class AuditEventSchema(BaseModel):

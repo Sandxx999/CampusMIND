@@ -31,13 +31,24 @@ def test_sso_config_public_endpoint():
 
 def test_sso_login_assertion():
     """Verifies valid OIDC token assertion login."""
+    import jwt
+    from datetime import UTC, datetime, timedelta
+    from core.config import settings
+
+    now = datetime.now(UTC)
+    assertion_payload = {
+        "sub": "student1",
+        "iss": "https://auth.ifheindia.org/oidc",
+        "aud": "campusmind_app_client",
+        "exp": now + timedelta(minutes=15),
+        "iat": now,
+    }
+    valid_jwt_assertion = jwt.encode(assertion_payload, settings.JWT_SECRET_KEY, algorithm="HS256")
+
     payload = {
         "provider_id": "sso_ifhe_oidc",
-        "token_assertion": "valid_oidc_mock_token_assertion_123456",
+        "token_assertion": valid_jwt_assertion,
         "username": "student1",
-        "email": "student1@ifheindia.org",
-        "role": "student",
-        "enrollment_no": "2024IFHE001",
     }
     response = client.post("/api/v1/auth/sso/login", json=payload)
     assert response.status_code == 200
@@ -45,6 +56,7 @@ def test_sso_login_assertion():
     assert "access_token" in data
     assert data["user"]["username"] == "student1"
     assert data["user"]["role"] == "student"
+
 
 
 def test_sso_login_invalid_assertion():
