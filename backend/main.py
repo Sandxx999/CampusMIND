@@ -1,24 +1,88 @@
-import sys
 import os
+import sys
+import threading
+from contextlib import asynccontextmanager
+
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 import uvicorn
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException, Request
+from fastapi.exceptions import RequestValidationError
 from fastapi.middleware.cors import CORSMiddleware
-from config import settings
-from api.routes_auth import router as auth_router
-from api.routes_chat import router as chat_router
-from api.routes_admin import router as admin_router
-from api.routes_students import router as students_router
-from logs.logger import logger
+from fastapi.responses import JSONResponse
+
+from core.config import settings
+from core.logging import logger
+from core.middleware import RequestCorrelationMiddleware
+from api.routes_auth import router as auth_router, router_v1 as auth_router_v1
+from api.routes_chat import router as chat_router, router_v1 as chat_router_v1
+from api.routes_admin import router as admin_router, router_v1 as admin_router_v1
+from api.routes_students import router as students_router, router_v1 as students_router_v1
+from api.routes_system import router as system_router
+
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    """Lifespan context manager for application startup and shutdown tasks."""
+    logger.info("Initializing CampusMind 2.0 RAG system foundation...")
+    try:
+        def run_ingestion():
+            from rag.ingest import ingest_campus_data
+            ingest_campus_data()
+
+        thread = threading.Thread(target=run_ingestion, daemon=True)
+        thread.start()
+    except Exception as e:
+        logger.error(f"Error starting background document ingestion worker: {e}")
+    
+    yield
+    logger.info("Shutting down CampusMind 2.0 API server cleanly...")
+
 
 app = FastAPI(
-    title="CampusMind Enterprise RAG API",
-    description="Backend API for Retrieval-Augmented Generation Campus Assistant with RBAC and citation tracking.",
-    version="1.0.0"
+    title="CampusMIND 2.0 Intelligence Platform API",
+    description="Modular Enterprise RAG Campus Assistant with RBAC, structured logging, repository abstractions, and citation tracking.",
+    version="2.0.0",
+    lifespan=lifespan,
 )
 
-# Configure CORS
+# Custom Exception Handlers for consistent API error responses
+@app.exception_handler(HTTPException)
+async def http_exception_handler(request: Request, exc: HTTPException):
+    request_id = getattr(request.state, "request_id", None)
+    return JSONResponse(
+        status_code=exc.status_code,
+        content={
+            "detail": exc.detail,
+            "error": {
+                "code": f"HTTP_{exc.status_code}",
+                "message": str(exc.detail),
+                "request_id": request_id,
+            },
+        },
+        headers=exc.headers,
+    )
+
+
+@app.exception_handler(Exception)
+async def unhandled_exception_handler(request: Request, exc: Exception):
+    request_id = getattr(request.state, "request_id", None)
+    logger.error(f"Unhandled server error on {request.method} {request.url.path}: {exc}")
+    return JSONResponse(
+        status_code=500,
+        content={
+            "detail": "Internal server error occurred.",
+            "error": {
+                "code": "INTERNAL_SERVER_ERROR",
+                "message": "An unexpected error occurred on the server.",
+                "request_id": request_id,
+            },
+        },
+    )
+
+
+# Middlewares
+app.add_middleware(RequestCorrelationMiddleware)
 app.add_middleware(
     CORSMiddleware,
     allow_origins=settings.CORS_ORIGINS,
@@ -27,47 +91,34 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-# Register API Routers
+# Register System & Core Routers
+app.include_router(system_router)
+
+# Versioned API v1 Routers
+app.include_router(auth_router_v1)
+app.include_router(chat_router_v1)
+app.include_router(admin_router_v1)
+app.include_router(students_router_v1)
+
+# Unversioned API Routers (for Phase 0 client compatibility)
 app.include_router(auth_router)
 app.include_router(chat_router)
 app.include_router(admin_router)
 app.include_router(students_router)
 
 
-import threading
-
-@app.on_event("startup")
-def startup_event():
-    logger.info("Initializing CampusMind RAG system (background ingestion enabled)...")
-    try:
-        def run_ingestion():
-            from rag.ingest import ingest_campus_data
-
-            ingest_campus_data()
-
-        thread = threading.Thread(target=run_ingestion, daemon=True)
-        thread.start()
-    except Exception as e:
-        logger.error(f"Error starting background ingestion: {e}")
-
 @app.get("/", tags=["Root"])
 def root():
-    """Welcome endpoint pointing to docs and healthcheck."""
+    """Welcome endpoint pointing to API documentation and health check."""
     return {
-        "message": "Welcome to CampusMind Enterprise RAG API",
+        "message": "Welcome to CampusMIND 2.0 Enterprise API",
         "health": "/health",
-        "documentation": "/docs"
+        "readiness": "/ready",
+        "documentation": "/docs",
+        "version": "2.0.0",
     }
 
-@app.get("/health", tags=["Health"])
-def health_check():
-    """System health check endpoint returning API operational status."""
-    return {
-        "status": "healthy",
-        "service": "CampusMind RAG Assistant",
-        "version": "1.0.0"
-    }
 
 if __name__ == "__main__":
-    logger.info("Starting CampusMind FastAPI server on http://0.0.0.0:8000")
+    logger.info("Starting CampusMIND FastAPI server on http://0.0.0.0:8000")
     uvicorn.run("main:app", host="0.0.0.0", port=8000, reload=True)

@@ -1,30 +1,80 @@
-# CampusMind System Architecture
+# CampusMIND 2.0 — System Architecture Document
 
-## Architecture Diagram
+## Overview
+
+CampusMIND 2.0 is designed as a modular monolith campus intelligence platform. The system decouples presentation, route handling, business logic, data persistence, and vector retrieval into explicit, clean architectural boundaries.
 
 ```mermaid
 graph TD
-    Client[React + Vite Frontend] -->|HTTP REST / JWT| FastAPI[FastAPI Backend Server]
-    FastAPI -->|JWT & Role Check| RBAC[RBAC Authorization Middleware]
-    FastAPI -->|Query Vector Search| ChromaDB[(ChromaDB Local Vector Store)]
-    FastAPI -->|Formatted Prompt| LLM[Google Gemini 1.5 Flash API]
-    FastAPI -->|Log Metrics & Feedback| SQLite[(SQLite Query & Audit DB)]
-    
-    subgraph Data Pipeline
-        RawDocs[Raw Campus Documents .txt] -->|Chunking & Overlap| Chunker[Recursive Character Splitter]
-        Chunker -->|Embeddings| VectorStore[ChromaDB Ingestion]
+    subgraph Presentation Layer
+        UI[React 18 / Vite Frontend]
     end
+
+    subgraph API & Core Layer
+        Router[FastAPI Route Handlers /api/v1/]
+        Middleware[Correlation & Secret Masking Middleware]
+        ErrorHandler[Centralized Exception Handlers]
+    end
+
+    subgraph Service Layer
+        AuthSvc[Auth Service]
+        StudentSvc[Student Service]
+        AdminSvc[Admin Service]
+        ChatSvc[Chat & RAG Service]
+    end
+
+    subgraph Data & Persistence Layer
+        StudentRepo[Student Repository]
+        AuditRepo[Audit Repository]
+        SQLite[(SQLite DB: campusmind.db)]
+        Chroma[(ChromaDB Vector Store)]
+    end
+
+    subgraph External Systems
+        Gemini[Google Gemini 1.5 Flash API]
+    end
+
+    UI -->|HTTP / JWT| Router
+    Router --> Middleware
+    Middleware --> ErrorHandler
+    Router --> AuthSvc
+    Router --> StudentSvc
+    Router --> AdminSvc
+    Router --> ChatSvc
+
+    StudentSvc --> StudentRepo
+    AdminSvc --> AuditRepo
+    ChatSvc --> AuditRepo
+    ChatSvc --> StudentRepo
+
+    StudentRepo --> SQLite
+    AuditRepo --> SQLite
+    ChatSvc --> Chroma
+    ChatSvc --> Gemini
 ```
 
-## System Breakdown
+---
 
-1. **Ingestion & Vector Indexing**:
-   - `rag/chunker.py`: Splits documents into 500-character chunks with an 80-character overlap.
-   - `rag/ingest.py`: Encodes text using `sentence-transformers` (`all-MiniLM-L6-v2`) and upserts to ChromaDB with metadata (document_name, allowed_roles).
+## Key Architectural Principles
 
-2. **Role-Based Access Control (RBAC)**:
-   - Server-side filtering enforces role boundaries (`student`, `faculty`, `admin`).
-   - If a student queries a faculty-restricted notice, ChromaDB metadata filter omits the chunk.
+1. **Modular Monolith Layout**: Single backend repository organized by responsibility (`core/`, `db/`, `repositories/`, `services/`, `api/`, `models/`, `auth/`, `rag/`).
+2. **Repository Pattern**: All database persistence is encapsulated inside repositories (`StudentRepository`, `AuditRepository`). Raw SQL statements are forbidden inside API route handlers.
+3. **Service Layer**: Business rules, role authorization logic, and rate limiting reside inside domain services.
+4. **Environment-Based Configuration**: Fail-closed configuration (`core/config.py`) enforcing strict production security rules (unique secrets, no demo mode in production, explicit CORS origins).
+5. **API Versioning**: Standardized `/api/v1/` prefix with backwards-compatible `/api/` alias mounts for legacy callers.
+6. **Structured Observability**: Centralized logging (`core/logging.py`) equipped with an automated `SecretMaskingFilter` that redacts passwords, JWTs, and API keys. Every request is assigned a unique `X-Request-ID`.
 
-3. **Hallucination Prevention**:
-   - Cosine similarity scores below `0.45` trigger an immediate fallback response ("I don't have information on that in the official campus database.") without calling the LLM.
+---
+
+## Component Boundaries
+
+| Module | Responsibility |
+| :--- | :--- |
+| `backend/core/` | Global settings, secret-masking logging, request correlation middleware. |
+| `backend/db/` | Database connection management and connection session factories. |
+| `backend/repositories/` | Direct SQL data access and persistence abstraction layer. |
+| `backend/services/` | Business logic processing, rate-limiting, and domain workflows. |
+| `backend/api/` | FastAPI routes, input validation, and HTTP status code formatting. |
+| `backend/models/` | Pydantic request/response schemas and domain data contracts. |
+| `backend/auth/` | JWT token generation, decoding, and server-side RBAC validation. |
+| `backend/rag/` | Document chunking, embedding generation, and ChromaDB vector retrieval. |

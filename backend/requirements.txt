@@ -1,18 +1,21 @@
+# CampusMIND 2.0 Production Dependencies
+# Target Runtime: Python 3.11.x (Recommended for PyTorch/SentenceTransformers cross-platform compatibility)
+
 --extra-index-url https://download.pytorch.org/whl/cpu
-torch
-fastapi>=0.110.0
-uvicorn>=0.28.0
-pydantic>=2.6.0
-pydantic-settings>=2.2.0
-pyjwt>=2.8.0
-passlib[bcrypt]>=1.7.4
-python-multipart>=0.0.9
-langchain>=0.1.13
-langchain-community>=0.0.29
-langchain-text-splitters>=0.0.1
-chromadb>=0.4.24
-sentence-transformers>=2.6.0
-google-generativeai>=0.4.1
-python-dotenv>=1.0.1
-pytest>=8.1.0
-requests>=2.31.0
+torch>=2.2.0,<2.5.0
+fastapi>=0.110.0,<0.116.0
+uvicorn[standard]>=0.28.0,<0.35.0
+pydantic>=2.6.0,<3.0.0
+pydantic-settings>=2.2.0,<3.0.0
+pyjwt>=2.8.0,<3.0.0
+passlib[bcrypt]>=1.7.4,<2.0.0
+python-multipart>=0.0.9,<0.1.0
+langchain>=0.1.13,<0.4.0
+langchain-community>=0.0.29,<0.4.0
+langchain-text-splitters>=0.0.1,<0.4.0
+chromadb>=0.4.24,<0.6.0
+sentence-transformers>=2.6.0,<4.0.0
+google-generativeai>=0.4.1,<1.0.0
+google-genai>=0.1.0,<1.0.0
+python-dotenv>=1.0.1,<2.0.0
+requests>=2.31.0,<3.0.0
