@@ -74,6 +74,7 @@ class User(Base):
     organized_events = relationship("CampusEvent", back_populates="organizer")
     event_registrations = relationship("EventRegistration", back_populates="user", cascade="all, delete-orphan")
     uploaded_documents = relationship("KnowledgeDocument", back_populates="uploader")
+    notifications = relationship("NotificationAlert", back_populates="user", cascade="all, delete-orphan")
 
 
 class Department(Base):
@@ -205,6 +206,8 @@ class StudentProfile(Base):
     enrollments = relationship("Enrollment", back_populates="student_profile")
     attendance_records = relationship("AttendanceRecord", back_populates="student_profile", cascade="all, delete-orphan")
     assessment_grades = relationship("AssessmentGrade", back_populates="student_profile", cascade="all, delete-orphan")
+    interventions = relationship("AcademicIntervention", back_populates="student_profile", cascade="all, delete-orphan")
+    action_plans = relationship("StudentActionPlan", back_populates="student_profile", cascade="all, delete-orphan")
 
 
 class FacultyProfile(Base):
@@ -524,3 +527,60 @@ class SystemTask(Base):
     updated_at = Column(
         DateTime(timezone=True), default=utc_now, onupdate=utc_now, nullable=False
     )
+
+
+class AcademicIntervention(Base):
+    """Phase 7: Academic Intervention notice issued by faculty or administration for at-risk students."""
+
+    __tablename__ = "academic_interventions"
+
+    id = Column(String(36), primary_key=True)
+    student_profile_id = Column(String(36), ForeignKey("student_profiles.id"), nullable=False, index=True)
+    issued_by_id = Column(String(36), ForeignKey("users.id"), nullable=False, index=True)
+    risk_category = Column(String(30), nullable=False, index=True)  # 'attendance', 'performance', 'backlog', 'general'
+    title = Column(String(150), nullable=False)
+    description = Column(Text, nullable=False)
+    recommended_action = Column(Text, nullable=False)
+    status = Column(String(20), default="pending", nullable=False, index=True)  # 'pending', 'acknowledged', 'resolved'
+    resolution_notes = Column(Text, nullable=True)
+    created_at = Column(DateTime(timezone=True), default=utc_now, nullable=False)
+    updated_at = Column(DateTime(timezone=True), default=utc_now, onupdate=utc_now, nullable=False)
+
+    student_profile = relationship("StudentProfile", back_populates="interventions")
+    issued_by = relationship("User")
+
+
+class StudentActionPlan(Base):
+    """Phase 7: Structured academic recovery action plan agreed upon by student and advisors."""
+
+    __tablename__ = "student_action_plans"
+
+    id = Column(String(36), primary_key=True)
+    student_profile_id = Column(String(36), ForeignKey("student_profiles.id"), nullable=False, index=True)
+    title = Column(String(150), nullable=False)
+    target_attendance_pct = Column(Float, nullable=True)
+    target_sgpa = Column(Float, nullable=True)
+    milestones = Column(Text, nullable=False)  # JSON-encoded array of milestone items
+    status = Column(String(20), default="active", nullable=False, index=True)  # 'active', 'completed', 'cancelled'
+    created_at = Column(DateTime(timezone=True), default=utc_now, nullable=False)
+    updated_at = Column(DateTime(timezone=True), default=utc_now, onupdate=utc_now, nullable=False)
+
+    student_profile = relationship("StudentProfile", back_populates="action_plans")
+
+
+class NotificationAlert(Base):
+    """Phase 7: Real-time system alert and notification entry for users."""
+
+    __tablename__ = "notification_alerts"
+
+    id = Column(String(36), primary_key=True)
+    user_id = Column(String(36), ForeignKey("users.id"), nullable=False, index=True)
+    category = Column(String(40), default="academic", nullable=False, index=True)  # 'academic', 'system', 'governance', 'event'
+    severity = Column(String(20), default="info", nullable=False, index=True)  # 'info', 'warning', 'critical'
+    title = Column(String(150), nullable=False)
+    message = Column(Text, nullable=False)
+    is_read = Column(Boolean, default=False, nullable=False, index=True)
+    link = Column(String(255), nullable=True)
+    created_at = Column(DateTime(timezone=True), default=utc_now, nullable=False)
+
+    user = relationship("User", back_populates="notifications")

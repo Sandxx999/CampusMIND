@@ -539,3 +539,96 @@ class ReportExportResponse(BaseModel):
     checksum: str
     format: str
     content: str
+
+
+# Phase 7 Interventions, Action Plans & Notification Schemas
+class AcademicInterventionCreateRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    student_profile_id: str
+    risk_category: str  # 'attendance', 'performance', 'backlog', 'general'
+    title: str
+    description: str
+    recommended_action: str
+
+
+class AcademicInterventionUpdateRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    status: str  # 'pending', 'acknowledged', 'resolved'
+    resolution_notes: Optional[str] = None
+
+
+class AcademicInterventionResponse(BaseModel):
+    id: str
+    student_profile_id: str
+    enrollment_no: str
+    student_name: str
+    issued_by_id: str
+    issued_by_name: str
+    risk_category: str
+    title: str
+    description: str
+    recommended_action: str
+    status: str
+    resolution_notes: Optional[str] = None
+    created_at: str
+    updated_at: str
+
+
+class AcademicInterventionListResponse(BaseModel):
+    total: int
+    interventions: List[AcademicInterventionResponse]
+
+
+class StudentActionPlanCreateRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    title: str
+    target_attendance_pct: Optional[float] = None
+    target_sgpa: Optional[float] = None
+    milestones: List[str]
+
+
+class StudentActionPlanUpdateRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    status: str  # 'active', 'completed', 'cancelled'
+    milestones: Optional[List[str]] = None
+
+
+class StudentActionPlanResponse(BaseModel):
+    id: str
+    student_profile_id: str
+    enrollment_no: str
+    title: str
+    target_attendance_pct: Optional[float] = None
+    target_sgpa: Optional[float] = None
+    milestones: List[str]
+    status: str
+    created_at: str
+    updated_at: str
+
+
+class StudentActionPlanListResponse(BaseModel):
+    total: int
+    plans: List[StudentActionPlanResponse]
+
+
+class NotificationAlertResponse(BaseModel):
+    id: str
+    user_id: str
+    category: str
+    severity: str
+    title: str
+    message: str
+    is_read: bool
+    link: Optional[str] = None
+    created_at: str
+
+
+class NotificationAlertListResponse(BaseModel):
+    unread_count: int
+    total: int
+    notifications: List[NotificationAlertResponse]
+
+
+class NotificationMarkReadRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+    notification_ids: List[str]

@@ -99,6 +99,7 @@ export default function Header({ user, onLogout, activeTab, onSelectTab }) {
             </div>
             <span className="hidden text-xs font-bold text-slate-800 md:inline">{user?.username}</span>
           </div>
+          <NotificationBell />
           <motion.button
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.92 }}
@@ -111,5 +112,105 @@ export default function Header({ user, onLogout, activeTab, onSelectTab }) {
         </div>
       </div>
     </header>
+  );
+}
+
+function NotificationBell() {
+  const [open, setOpen] = React.useState(false);
+  const [notifications, setNotifications] = React.useState([]);
+  const [unreadCount, setUnreadCount] = React.useState(0);
+
+  const loadNotifications = async () => {
+    try {
+      const { fetchNotifications } = await import('../lib/api');
+      const data = await fetchNotifications();
+      setNotifications(data.notifications || []);
+      setUnreadCount(data.unread_count || 0);
+    } catch {
+      // Ignore background errors
+    }
+  };
+
+  React.useEffect(() => {
+    loadNotifications();
+    const interval = setInterval(loadNotifications, 30000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const handleMarkAllRead = async () => {
+    try {
+      const { markNotificationsRead } = await import('../lib/api');
+      const ids = notifications.filter(n => !n.is_read).map(n => n.id);
+      if (ids.length > 0) {
+        await markNotificationsRead(ids);
+        loadNotifications();
+      }
+    } catch {}
+  };
+
+  return (
+    <div className="relative">
+      <motion.button
+        whileHover={{ scale: 1.08 }}
+        whileTap={{ scale: 0.92 }}
+        onClick={() => { setOpen(!open); if (!open) loadNotifications(); }}
+        className="relative rounded-2xl border border-slate-200 bg-white/80 p-2.5 text-slate-600 transition-all hover:border-sky-300 hover:text-sky-600"
+        title="System Alerts & Notifications"
+      >
+        <span className="sr-only">Notifications</span>
+        <svg className="w-4.5 h-4.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+        </svg>
+        {unreadCount > 0 && (
+          <span className="absolute -top-1 -right-1 flex h-4 w-4 items-center justify-center rounded-full bg-rose-500 text-[10px] font-bold text-white shadow-sm">
+            {unreadCount}
+          </span>
+        )}
+      </motion.button>
+
+      {open && (
+        <div className="absolute right-0 mt-2 w-80 rounded-2xl border border-slate-200 bg-white p-4 shadow-xl z-50">
+          <div className="flex items-center justify-between border-b border-slate-100 pb-2.5 mb-2">
+            <h4 className="text-xs font-black text-slate-800 uppercase tracking-wider">Alerts & Notifications</h4>
+            {unreadCount > 0 && (
+              <button
+                onClick={handleMarkAllRead}
+                className="text-[11px] font-bold text-sky-600 hover:underline"
+              >
+                Mark all read
+              </button>
+            )}
+          </div>
+          <div className="max-h-64 overflow-y-auto space-y-2">
+            {notifications.length === 0 ? (
+              <p className="text-xs text-slate-400 py-4 text-center">No alerts or notifications</p>
+            ) : (
+              notifications.map((item) => (
+                <div
+                  key={item.id}
+                  className={`p-2.5 rounded-xl border text-xs transition-all ${
+                    item.is_read ? 'bg-slate-50 border-slate-100 opacity-75' : 'bg-sky-50/50 border-sky-200 font-medium'
+                  }`}
+                >
+                  <div className="flex items-center justify-between gap-1 mb-1">
+                    <span className={`text-[10px] font-extrabold uppercase px-1.5 py-0.5 rounded ${
+                      item.severity === 'critical' ? 'bg-rose-100 text-rose-700' :
+                      item.severity === 'warning' ? 'bg-amber-100 text-amber-700' : 'bg-sky-100 text-sky-700'
+                    }`}>
+                      {item.severity}
+                    </span>
+                    <span className="text-[10px] text-slate-400">
+                      {new Date(item.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}
+                    </span>
+                  </div>
+                  <h5 className="font-bold text-slate-800">{item.title}</h5>
+                  <p className="text-slate-600 mt-0.5 text-[11px] leading-relaxed">{item.message}</p>
+                </div>
+              ))
+            )}
+          </div>
+        </div>
+      )}
+    </div>
   );
 }

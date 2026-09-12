@@ -330,3 +330,59 @@ export async function exportAdminReport() {
   });
   return response.data;
 }
+
+// Phase 7 Interventions, Action Plans & Notifications Helpers
+export async function fetchNotifications(unreadOnly = false) {
+  const response = await axios.get(`${API_V1_URL}/notifications`, {
+    params: { unread_only: unreadOnly },
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}
+
+export async function markNotificationsRead(notificationIds) {
+  const response = await axios.post(`${API_V1_URL}/notifications/mark-read`, {
+    notification_ids: notificationIds,
+  }, {
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}
+
+export async function fetchInterventions(params = {}) {
+  const response = await axios.get(`${API_V1_URL}/interventions`, {
+    params,
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}
+
+export async function createIntervention(data) {
+  const response = await axios.post(`${API_V1_URL}/interventions`, data, {
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}
+
+export async function updateIntervention(id, data) {
+  const response = await axios.patch(`${API_V1_URL}/interventions/${id}`, data, {
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}
+
+export async function fetchActionPlans(studentProfileId = null) {
+  const response = await axios.get(`${API_V1_URL}/plans`, {
+    params: studentProfileId ? { student_profile_id: studentProfileId } : {},
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}
+
+export async function createActionPlan(data, studentProfileId = null) {
+  const response = await axios.post(`${API_V1_URL}/plans`, data, {
+    params: studentProfileId ? { student_profile_id: studentProfileId } : {},
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}
