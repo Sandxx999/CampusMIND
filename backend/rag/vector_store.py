@@ -21,6 +21,19 @@ class CustomChromaEmbeddingAdapter:
     def __call__(self, input: List[str]) -> List[List[float]]:
         return self.provider.embed_documents(input)
 
+    def embed_query(self, *args, **kwargs) -> List[float]:
+        text = kwargs.get('input', args[0] if args else "")
+        if isinstance(text, list):
+            return self.provider.embed_documents(text)
+        return self.provider.embed_query(text)
+
+    def embed_documents(self, *args, **kwargs) -> List[List[float]]:
+        texts = kwargs.get(
+            'input',
+            kwargs.get('texts', args[0] if args else [])
+        )
+        return self.provider.embed_documents(texts)
+
     def name(self) -> str:
         return "sentence_transformer"
 

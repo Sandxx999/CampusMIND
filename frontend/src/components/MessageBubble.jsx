@@ -124,7 +124,9 @@ export default function MessageBubble({ message, onSelectSources }) {
     );
   }
 
-  const confidenceScore = Math.round((message.confidence || 0.85) * 100);
+  const confidenceScore = Math.round(
+    (message.confidence !== undefined ? message.confidence : 0.85) * 100
+  );
 
   return (
     <motion.div 
