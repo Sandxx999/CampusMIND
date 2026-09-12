@@ -197,4 +197,9 @@ def create_raw_txt_file(students):
 if __name__ == "__main__":
     stus = generate_100_students()
     seed_database(stus)
+    try:
+        from seed_canonical_db import seed_canonical_data
+        seed_canonical_data()
+    except Exception as e:
+        print(f"Canonical seed note: {e}")
     create_raw_txt_file(stus)

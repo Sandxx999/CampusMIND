@@ -66,6 +66,10 @@ class Settings:
         self.DATABASE_URL = self._resolve_database_url(
             os.getenv("DATABASE_URL", "sqlite:///./backend/campusmind.db")
         )
+        self.DB_POOL_SIZE = int(os.getenv("DB_POOL_SIZE", "5"))
+        self.DB_MAX_OVERFLOW = int(os.getenv("DB_MAX_OVERFLOW", "10"))
+        self.DB_POOL_TIMEOUT = int(os.getenv("DB_POOL_TIMEOUT", "30"))
+        self.DB_POOL_RECYCLE = int(os.getenv("DB_POOL_RECYCLE", "1800"))
 
         self.RETRIEVAL_TOP_K = int(os.getenv("RETRIEVAL_TOP_K", "5"))
         self.SIMILARITY_THRESHOLD = float(os.getenv("SIMILARITY_THRESHOLD", "0.25"))
@@ -101,6 +105,8 @@ class Settings:
 
     @staticmethod
     def _resolve_database_url(value: str) -> str:
+        if value.startswith("postgres://"):
+            value = value.replace("postgres://", "postgresql://", 1)
         if not value.startswith("sqlite:///"):
             return value
         db_path = value.replace("sqlite:///", "", 1)

@@ -37,9 +37,8 @@ def setup_test_database():
         pass
         
     try:
-        import logs.logger
-        logs.logger.DB_PATH = temp_db_path
-        logs.logger.init_db()
+        from scripts.seed_canonical_db import seed_canonical_data
+        seed_canonical_data()
     except Exception:
         pass
 

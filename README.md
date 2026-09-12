@@ -71,5 +71,6 @@ docker-compose up --build
 ## Documentation
 
 - [System Architecture](docs/ARCHITECTURE.md)
+- [Production Data & Identity Architecture](docs/DATABASE_ARCHITECTURE.md)
 - [Local Development Guide](docs/DEVELOPMENT.md)
 - [Database & Infrastructure Migration Strategy](docs/MIGRATION_STRATEGY.md)

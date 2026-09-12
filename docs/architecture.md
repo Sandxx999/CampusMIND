@@ -24,9 +24,12 @@ graph TD
     end
 
     subgraph Data & Persistence Layer
+        UserRepo[User Repository]
         StudentRepo[Student Repository]
         AuditRepo[Audit Repository]
-        SQLite[(SQLite DB: campusmind.db)]
+        SQLAlchemy[SQLAlchemy 2.x Session & Engine Abstraction]
+        PostgreSQL[(PostgreSQL Production DB)]
+        SQLite[(SQLite Local/Test DB)]
         Chroma[(ChromaDB Vector Store)]
     end
 
@@ -42,13 +45,17 @@ graph TD
     Router --> AdminSvc
     Router --> ChatSvc
 
+    AuthSvc --> UserRepo
     StudentSvc --> StudentRepo
     AdminSvc --> AuditRepo
     ChatSvc --> AuditRepo
     ChatSvc --> StudentRepo
 
-    StudentRepo --> SQLite
-    AuditRepo --> SQLite
+    UserRepo --> SQLAlchemy
+    StudentRepo --> SQLAlchemy
+    AuditRepo --> SQLAlchemy
+    SQLAlchemy --> PostgreSQL
+    SQLAlchemy --> SQLite
     ChatSvc --> Chroma
     ChatSvc --> Gemini
 ```

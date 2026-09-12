@@ -1,6 +1,26 @@
 version: '3.8'
 
 services:
+  postgres:
+    image: postgres:15-alpine
+    container_name: campusmind_postgres
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:-campusmind_dev}
+      POSTGRES_USER: ${POSTGRES_USER:-campusmind_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-campusmind_dev_password}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER:-campusmind_user} -d $${POSTGRES_DB:-campusmind_dev}"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    restart: unless-stopped
+    networks:
+      - campusmind-net
+
   backend:
     build:
       context: ./backend
@@ -14,7 +34,7 @@ services:
       - GEMINI_API_KEY=${GEMINI_API_KEY:-}
       - JWT_SECRET_KEY=${JWT_SECRET_KEY:-}
       - CORS_ORIGINS=${CORS_ORIGINS:-http://localhost:5173,http://localhost:3000,http://localhost:80}
-      - DATABASE_URL=sqlite:///./backend/campusmind.db
+      - DATABASE_URL=${DATABASE_URL:-sqlite:///./backend/campusmind.db}
       - CHROMA_DB_DIR=./backend/chroma_db
       - LOG_LEVEL=${LOG_LEVEL:-INFO}
     volumes:
@@ -52,3 +72,6 @@ services:
 networks:
   campusmind-net:
     driver: bridge
+
+volumes:
+  postgres-data:

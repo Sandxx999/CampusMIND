@@ -1,11 +1,13 @@
 """
-Authentication Service.
-Encapsulates user authentication, demo identity management, and JWT token issuance.
+Authentication Service for CampusMIND 2.0.
+Encapsulates user authentication, institutional identity lookup, and JWT token issuance.
+Prepared for future OIDC/SSO institutional identity integration.
 """
 from fastapi import HTTPException, status
 from auth.jwt_handler import create_access_token
 from core.config import settings
 from models.schemas import LoginRequest, TokenResponse, UserSchema
+from repositories.user_repository import user_repository, UserRepository
 
 DEMO_USERS = {
     "student1": {"role": "student", "enrollment_no": "2024IFHE001"},
@@ -15,7 +17,10 @@ DEMO_USERS = {
 
 
 class AuthService:
-    """Service class managing login and credential validation."""
+    """Service class managing login, identity resolution, and credential validation."""
+
+    def __init__(self, user_repo: UserRepository = user_repository):
+        self.user_repo = user_repo
 
     def authenticate_user(self, request: LoginRequest) -> TokenResponse:
         """Validates login credentials and returns signed access token and user metadata."""
@@ -25,7 +30,27 @@ class AuthService:
                 detail="Production authentication is not configured. Demo authentication is disabled.",
             )
 
-        user_info = DEMO_USERS.get(request.username)
+        user_info = None
+        try:
+            db_user = self.user_repo.get_by_username(request.username)
+            if db_user:
+                if db_user.get("status") != "active":
+                    raise HTTPException(
+                        status_code=status.HTTP_403_FORBIDDEN,
+                        detail="User account is inactive or suspended.",
+                    )
+                user_info = {
+                    "role": db_user["role"],
+                    "enrollment_no": db_user["enrollment_no"],
+                }
+        except HTTPException:
+            raise
+        except Exception:
+            pass
+
+        if not user_info:
+            user_info = DEMO_USERS.get(request.username)
+
         if not user_info or request.password != settings.DEMO_PASSWORD:
             raise HTTPException(
                 status_code=status.HTTP_401_UNAUTHORIZED,
