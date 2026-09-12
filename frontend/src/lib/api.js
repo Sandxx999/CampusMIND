@@ -8,6 +8,10 @@ function getAuthHeader() {
   return token ? { Authorization: `Bearer ${token}` } : {};
 }
 
+export async function sseConnectUrl() {
+  return `${API_BASE_URL}/v1/notifications/stream?token=${localStorage.getItem('campusmind_token')}`;
+}
+
 // Add Axios response interceptor for automatic 401 token invalidation handling
 axios.interceptors.response.use(
   (response) => response,
@@ -412,3 +416,33 @@ export function subscribeToNotificationStream(onNotification, onError) {
   return eventSource;
 }
 
+// Phase 10 Institutional Intelligence
+export async function fetchInstitutionOverview() {
+  const response = await axios.get(`${API_V1_URL}/institution/overview`, { headers: getAuthHeader() });
+  return response.data;
+}
+
+export async function fetchInstitutionRiskSummary() {
+  const response = await axios.get(`${API_V1_URL}/institution/risk-summary`, { headers: getAuthHeader() });
+  return response.data;
+}
+
+export async function fetchInstitutionInterventionsSummary() {
+  const response = await axios.get(`${API_V1_URL}/institution/interventions-summary`, { headers: getAuthHeader() });
+  return response.data;
+}
+
+export async function fetchInstitutionDepartmentPerformance() {
+  const response = await axios.get(`${API_V1_URL}/institution/department-performance`, { headers: getAuthHeader() });
+  return response.data;
+}
+
+export async function fetchInstitutionAttendanceTrends() {
+  const response = await axios.get(`${API_V1_URL}/institution/attendance-trends`, { headers: getAuthHeader() });
+  return response.data;
+}
+
+export async function fetchInstitutionDecisionSupport() {
+  const response = await axios.get(`${API_V1_URL}/institution/decision-support`, { headers: getAuthHeader() });
+  return response.data;
+}

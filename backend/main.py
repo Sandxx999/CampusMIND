@@ -33,6 +33,7 @@ from api.routes_export import router_v1 as export_router_v1
 from api.routes_interventions import router_v1 as interventions_router_v1
 from api.routes_notifications import router_v1 as notifications_router_v1
 from api.routes_action_plans import router_v1 as plans_router_v1
+from api.routes_institution import router_v1 as institution_router_v1
 
 
 @asynccontextmanager
@@ -127,6 +128,7 @@ app.include_router(export_router_v1)
 app.include_router(interventions_router_v1)
 app.include_router(notifications_router_v1)
 app.include_router(plans_router_v1)
+app.include_router(institution_router_v1)
 
 
 # Unversioned API Routers (for Phase 0 client compatibility)

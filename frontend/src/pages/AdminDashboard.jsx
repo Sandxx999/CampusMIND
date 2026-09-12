@@ -23,7 +23,12 @@ import {
   triggerVectorReindex,
   exportAdminReport,
   fetchSSOConfig,
-  fetchSystemStatus
+  fetchSystemStatus,
+  fetchInstitutionOverview,
+  fetchInstitutionRiskSummary,
+  fetchInstitutionInterventionsSummary,
+  fetchInstitutionDepartmentPerformance,
+  fetchInstitutionDecisionSupport
 } from '../lib/api';
 
 export default function AdminDashboard({ user }) {
@@ -33,6 +38,12 @@ export default function AdminDashboard({ user }) {
   const [ingestSuccess, setIngestSuccess] = useState(false);
   const [filterRole, setFilterRole] = useState('all');
   const [searchQuery, setSearchQuery] = useState('');
+  const [activeTab, setActiveTab] = useState('system');
+  const [instOverview, setInstOverview] = useState(null);
+  const [instRisk, setInstRisk] = useState(null);
+  const [instInterventions, setInstInterventions] = useState(null);
+  const [instDeptPerf, setInstDeptPerf] = useState(null);
+  const [instDecisionSupport, setInstDecisionSupport] = useState(null);
 
   // Phase 6 Governance State
   const [auditEvents, setAuditEventList] = useState([]);
@@ -52,6 +63,18 @@ export default function AdminDashboard({ user }) {
 
         const ssoData = await fetchSSOConfig();
         setSsoConfig(ssoData);
+        try {
+          const overview = await fetchInstitutionOverview();
+          setInstOverview(overview);
+          const risk = await fetchInstitutionRiskSummary();
+          setInstRisk(risk);
+          const interventions = await fetchInstitutionInterventionsSummary();
+          setInstInterventions(interventions);
+          const dept = await fetchInstitutionDepartmentPerformance();
+          setInstDeptPerf(dept);
+          const decision = await fetchInstitutionDecisionSupport();
+          setInstDecisionSupport(decision);
+        } catch(e) { console.debug('Inst error', e); }
       } catch (err) {
         console.debug('Governance details fetch optional error:', err);
       }
@@ -144,7 +167,14 @@ export default function AdminDashboard({ user }) {
 
   return (
     <div className="flex-1 overflow-y-auto p-4 md:p-8 max-w-[1700px] mx-auto w-full space-y-6">
-      
+
+      <div className="flex gap-4 border-b border-slate-200/50 pb-2 mb-4">
+        <button onClick={() => setActiveTab('system')} className={`font-display text-sm font-bold ${activeTab === 'system' ? 'text-sky-700 border-b-2 border-sky-700' : 'text-slate-500'}`}>System & Governance</button>
+        <button onClick={() => setActiveTab('institutional')} className={`font-display text-sm font-bold ${activeTab === 'institutional' ? 'text-sky-700 border-b-2 border-sky-700' : 'text-slate-500'}`}>Institutional Intelligence</button>
+      </div>
+
+      {activeTab === 'system' ? (
+        <>
       {/* HEADER BAR WITH ALL-WHITE MIRROR GLASS */}
       <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4 glass-mirror-panel p-6 rounded-3xl border border-white/90 shadow-2xl">
         <div>
@@ -229,7 +259,7 @@ export default function AdminDashboard({ user }) {
 
 
       {ingestSuccess && (
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0, y: -10 }}
           animate={{ opacity: 1, y: 0 }}
           className="p-4 bg-emerald-500/15 border border-emerald-300/60 rounded-2xl text-xs text-emerald-900 font-bold flex items-center gap-2 font-sans"
@@ -241,8 +271,8 @@ export default function AdminDashboard({ user }) {
 
       {/* METRICS CARDS GRID */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        
-        <motion.div 
+
+        <motion.div
           whileHover={{ y: -4, scale: 1.02 }}
           className="glass-mirror-card p-5 rounded-3xl border border-white/90 shadow-xl"
         >
@@ -258,7 +288,7 @@ export default function AdminDashboard({ user }) {
           <p className="text-[11px] text-slate-500 font-medium mt-1">Logged RAG user requests</p>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           whileHover={{ y: -4, scale: 1.02 }}
           className="glass-mirror-card p-5 rounded-3xl border border-white/90 shadow-xl"
         >
@@ -274,7 +304,7 @@ export default function AdminDashboard({ user }) {
           <p className="text-[11px] text-slate-500 font-medium mt-1">Sub-second response retrieval</p>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           whileHover={{ y: -4, scale: 1.02 }}
           className="glass-mirror-card p-5 rounded-3xl border border-white/90 shadow-xl"
         >
@@ -290,7 +320,7 @@ export default function AdminDashboard({ user }) {
           <p className="text-[11px] text-slate-500 font-medium mt-1">Grounded non-fallback queries</p>
         </motion.div>
 
-        <motion.div 
+        <motion.div
           whileHover={{ y: -4, scale: 1.02 }}
           className="glass-mirror-card p-5 rounded-3xl border border-white/90 shadow-xl"
         >
@@ -322,8 +352,8 @@ export default function AdminDashboard({ user }) {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3.5">
           {rawDocs.map((doc, idx) => (
-            <motion.div 
-              key={idx} 
+            <motion.div
+              key={idx}
               whileHover={{ scale: 1.02 }}
               className="glass-mirror-card p-4 rounded-2xl border border-white/90 hover:border-sky-400 transition-colors"
             >
@@ -475,6 +505,86 @@ export default function AdminDashboard({ user }) {
         </div>
       </div>
 
+            </>
+      ) : (
+        <div className="space-y-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+             <div className="glass-mirror-card p-5 rounded-3xl border border-white/90 shadow-xl">
+               <h3 className="text-xs text-slate-600 font-extrabold uppercase tracking-wider">Total Students</h3>
+               <div className="font-display text-3xl font-black text-slate-900">{instOverview?.total_students || 0}</div>
+             </div>
+             <div className="glass-mirror-card p-5 rounded-3xl border border-white/90 shadow-xl">
+               <h3 className="text-xs text-slate-600 font-extrabold uppercase tracking-wider">Avg CGPA</h3>
+               <div className="font-display text-3xl font-black text-emerald-800">{instOverview?.average_cgpa || 0}</div>
+             </div>
+             <div className="glass-mirror-card p-5 rounded-3xl border border-white/90 shadow-xl">
+               <h3 className="text-xs text-slate-600 font-extrabold uppercase tracking-wider">Avg Attendance</h3>
+               <div className="font-display text-3xl font-black text-sky-800">{instOverview?.average_attendance_pct || 0}%</div>
+             </div>
+             <div className="glass-mirror-card p-5 rounded-3xl border border-white/90 shadow-xl">
+               <h3 className="text-xs text-slate-600 font-extrabold uppercase tracking-wider">Students At Risk</h3>
+               <div className="font-display text-3xl font-black text-amber-600">{instOverview?.students_at_risk || 0}</div>
+             </div>
+          </div>
+
+          <div className="glass-mirror-panel p-6 rounded-3xl border border-white/90 shadow-2xl space-y-4">
+             <h3 className="font-display text-base font-extrabold text-slate-900">Academic Risk & Interventions</h3>
+             {instDecisionSupport?.risk_signals?.length > 0 && (
+               <div className="flex flex-col gap-2 my-4">
+                 {instDecisionSupport.risk_signals.map((signal, idx) => (
+                   <div key={idx} className={`p-3 rounded-xl border ${signal.severity === 'high' ? 'bg-red-50/50 border-red-200' : 'bg-amber-50/50 border-amber-200'}`}>
+                     <div className="flex items-center gap-2">
+                       <span className={`font-bold ${signal.severity === 'high' ? 'text-red-800' : 'text-amber-800'}`}>{signal.indicator}</span>
+                       <span className="text-xs text-slate-500 font-mono">({signal.value.toFixed(1)}%)</span>
+                     </div>
+                     <p className="text-sm text-slate-700 mt-1">{signal.explanation}</p>
+                   </div>
+                 ))}
+               </div>
+             )}
+             {instDecisionSupport?.recommendations?.length > 0 && (
+               <div className="flex flex-col gap-2 mb-4">
+                 <h4 className="text-sm font-bold text-slate-700">Recommended Actions</h4>
+                 {instDecisionSupport.recommendations.map((rec, idx) => (
+                   <div key={idx} className="p-3 rounded-xl border border-indigo-200 bg-indigo-50/30 flex items-start gap-2">
+                     <span className="text-indigo-600 shrink-0 font-bold text-xs uppercase bg-indigo-100 px-2 py-0.5 rounded">{rec.category}</span>
+                     <p className="text-sm text-slate-800">{rec.recommendation}</p>
+                   </div>
+                 ))}
+               </div>
+             )}
+             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+               <div><span className="text-[11px] font-bold text-slate-500 uppercase">Critical Risk</span><div className="text-2xl font-black text-red-600">{instRisk?.critical_risk_count || 0}</div></div>
+               <div><span className="text-[11px] font-bold text-slate-500 uppercase">Total Interventions</span><div className="text-2xl font-black text-indigo-900">{instInterventions?.total_interventions || 0}</div></div>
+               <div><span className="text-[11px] font-bold text-slate-500 uppercase">Resolved</span><div className="text-2xl font-black text-emerald-600">{instInterventions?.resolved_interventions || 0}</div></div>
+               <div><span className="text-[11px] font-bold text-slate-500 uppercase">Action Plans</span><div className="text-2xl font-black text-sky-800">{instInterventions?.total_action_plans || 0}</div></div>
+             </div>
+          </div>
+
+          <div className="glass-mirror-panel p-6 rounded-3xl border border-white/90 shadow-2xl space-y-4">
+            <h3 className="font-display text-base font-extrabold text-slate-900">Department Performance</h3>
+            <div className="overflow-x-auto rounded-2xl border border-slate-200">
+              <table className="w-full text-left text-xs font-sans">
+                <thead className="bg-slate-100/90 text-slate-700 text-[11px] font-extrabold uppercase tracking-wider border-b border-slate-200">
+                  <tr><th className="p-3.5">Department</th><th className="p-3.5">Population</th><th className="p-3.5">Avg CGPA</th></tr>
+                </thead>
+                <tbody className="divide-y divide-slate-200">
+                  {(instDeptPerf || []).map((d, i) => (
+                    <tr key={i} className="hover:bg-white/80 transition-colors">
+                      <td className="p-3.5 font-bold text-slate-900">{d.department}</td>
+                      <td className="p-3.5 font-mono text-slate-700">{d.population}</td>
+                      <td className="p-3.5 font-mono text-emerald-800 font-bold">{d.average_cgpa}</td>
+                    </tr>
+                  ))}
+                  {(!instDeptPerf || instDeptPerf.length === 0) && (
+                    <tr><td colSpan={3} className="p-6 text-center text-slate-500 italic">No departmental aggregate data available. Population size may be below privacy threshold.</td></tr>
+                  )}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

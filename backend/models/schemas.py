@@ -646,3 +646,48 @@ class NotificationAlertListResponse(BaseModel):
 class NotificationMarkReadRequest(BaseModel):
     model_config = ConfigDict(extra="forbid")
     notification_ids: List[str]
+
+# Phase 10 Institutional Intelligence Schemas
+class InstitutionOverviewResponse(BaseModel):
+    total_students: int
+    average_cgpa: float
+    average_attendance_pct: float
+    students_at_risk: int
+    students_critical: int
+
+class TrendData(BaseModel):
+    department: str
+    average_attendance_pct: Optional[float] = None
+    average_cgpa: Optional[float] = None
+    population: int
+
+class InstitutionRiskSummaryResponse(BaseModel):
+    total_students: int
+    at_risk_count: int
+    critical_risk_count: int
+    backlog_count: int
+
+class InstitutionInterventionsSummaryResponse(BaseModel):
+    total_interventions: int
+    pending_interventions: int
+    resolved_interventions: int
+    total_action_plans: int
+    completed_action_plans: int
+    intervention_resolution_rate: float
+    plan_completion_rate: float
+
+# Phase 11 Decision Support Schemas
+class RiskSignal(BaseModel):
+    indicator: str
+    value: float
+    severity: str
+    explanation: str
+
+class DecisionSupportRecommendation(BaseModel):
+    category: str
+    recommendation: str
+    priority: str
+
+class DecisionSupportResponse(BaseModel):
+    risk_signals: List[RiskSignal]
+    recommendations: List[DecisionSupportRecommendation]
