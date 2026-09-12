@@ -152,13 +152,20 @@ class DocumentIngestionEngine:
                 self.vector_store.delete_document_chunks(doc_id)
                 self.vector_store.delete_document_chunks(doc_name)
 
-            ids = [c["id"] for c in chunks]
-            texts = [c["text"] for c in chunks]
-            metadatas = [c["metadata"] for c in chunks]
-
-            # Upsert into vector database
+            # Upsert into vector database in small batches to save memory
+            batch_size = 32
             try:
-                self.vector_store.upsert(ids=ids, documents=texts, metadatas=metadatas)
+                import gc
+                for i in range(0, len(chunks), batch_size):
+                    batch_chunks = chunks[i:i + batch_size]
+                    batch_ids = [c["id"] for c in batch_chunks]
+                    batch_texts = [c["text"] for c in batch_chunks]
+                    batch_metadatas = [c["metadata"] for c in batch_chunks]
+                    self.vector_store.upsert(ids=batch_ids, documents=batch_texts, metadatas=batch_metadatas)
+                    
+                    # Force garbage collection to free temporary embeddings and arrays
+                    del batch_chunks, batch_ids, batch_texts, batch_metadatas
+                    gc.collect()
             except Exception as e:
                 logger.error(f"Vector store upsert failed for '{doc_name}': {e}")
                 return {"status": "failed", "file": file_path, "error": str(e)}

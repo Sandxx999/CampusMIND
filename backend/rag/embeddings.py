@@ -114,7 +114,7 @@ class SentenceTransformerEmbeddingProvider(EmbeddingProvider):
         if self._fallback_provider:
             return self._fallback_provider.embed_documents(texts)
         try:
-            embeddings = self._model.encode(texts, convert_to_numpy=True, show_progress_bar=False)
+            embeddings = self._model.encode(texts, convert_to_numpy=True, show_progress_bar=False, batch_size=8)
             return embeddings.tolist()
         except (Exception, BaseException) as e:
             self._handle_failure("document embedding", e)
@@ -129,7 +129,7 @@ class SentenceTransformerEmbeddingProvider(EmbeddingProvider):
         if self._fallback_provider:
             return self._fallback_provider.embed_query(text)
         try:
-            embedding = self._model.encode(text, convert_to_numpy=True, show_progress_bar=False)
+            embedding = self._model.encode(text, convert_to_numpy=True, show_progress_bar=False, batch_size=8)
             return embedding.tolist()
         except (Exception, BaseException) as e:
             self._handle_failure("query embedding", e)
