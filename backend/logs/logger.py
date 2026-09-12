@@ -89,3 +89,16 @@ def log_feedback_to_db(query_id: str, is_positive: bool):
         conn.close()
     except Exception as e:
         logger.error(f"Error writing feedback to database: {e}")
+
+def get_query_owner(query_id: str):
+    """Returns the owning username for a query, or None when it is absent/unavailable."""
+    try:
+        conn = sqlite3.connect(DB_PATH)
+        cursor = conn.cursor()
+        cursor.execute("SELECT username FROM query_logs WHERE id = ?", (query_id,))
+        row = cursor.fetchone()
+        conn.close()
+        return row[0] if row else None
+    except Exception as e:
+        logger.error(f"Error reading query owner: {e}")
+        return None

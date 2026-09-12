@@ -72,7 +72,7 @@ export default function AdminDashboard({ user }) {
   });
 
   const rawDocs = [
-    { name: 'ifhe_student_directory_records.txt', scope: 'student,faculty,admin', chunks: 9, status: 'Indexed (100 Students)' },
+    { name: 'ifhe_student_directory_records.txt', scope: 'faculty,admin', chunks: 9, status: 'DEMO DATA (100 synthetic students)' },
     { name: 'ifhe_grade_sheets_and_transcripts.txt', scope: 'student,faculty,admin', chunks: 8, status: 'Indexed' },
     { name: 'ifhe_exam_schedules_and_hall_tickets.txt', scope: 'student,faculty,admin', chunks: 10, status: 'Indexed' },
     { name: 'ifhe_student_documents_and_certificates.txt', scope: 'student,faculty,admin', chunks: 7, status: 'Indexed' },
@@ -187,7 +187,7 @@ export default function AdminDashboard({ user }) {
           <div className="font-display text-3xl font-black text-amber-900">
             100 <span className="text-xs font-semibold text-slate-500">Students</span>
           </div>
-          <p className="text-[11px] text-slate-500 font-medium mt-1">Active in SQLite & ChromaDB</p>
+          <p className="text-[11px] text-slate-500 font-medium mt-1">Synthetic demo records in SQLite & ChromaDB</p>
         </motion.div>
 
       </div>
@@ -198,7 +198,7 @@ export default function AdminDashboard({ user }) {
           <div className="flex items-center gap-2">
             <Layers className="w-5 h-5 text-sky-700" />
             <h3 className="font-display text-base font-extrabold text-slate-900">
-              Ingested Raw Campus Documents & Student Records
+              Ingested Campus Documents & DEMO Student Records
             </h3>
           </div>
           <span className="text-xs text-sky-800 font-mono font-bold">10 Master Documents</span>

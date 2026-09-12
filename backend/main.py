@@ -27,8 +27,6 @@ app.add_middleware(
     allow_headers=["*"],
 )
 
-from rag.ingest import ingest_campus_data
-
 # Register API Routers
 app.include_router(auth_router)
 app.include_router(chat_router)
@@ -42,7 +40,12 @@ import threading
 def startup_event():
     logger.info("Initializing CampusMind RAG system (background ingestion enabled)...")
     try:
-        thread = threading.Thread(target=ingest_campus_data, daemon=True)
+        def run_ingestion():
+            from rag.ingest import ingest_campus_data
+
+            ingest_campus_data()
+
+        thread = threading.Thread(target=run_ingestion, daemon=True)
         thread.start()
     except Exception as e:
         logger.error(f"Error starting background ingestion: {e}")

@@ -6,7 +6,7 @@ import { loginUser } from '../lib/api';
 export default function LoginPage({ onLoginSuccess }) {
   const [username, setUsername] = useState('student1');
   const [password, setPassword] = useState('password123');
-  const [role, setRole] = useState('student');
+  const [selectedDemo, setSelectedDemo] = useState('student');
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
 
@@ -16,7 +16,7 @@ export default function LoginPage({ onLoginSuccess }) {
     setLoading(true);
 
     try {
-      const data = await loginUser(username, password, role);
+      const data = await loginUser(username, password);
       onLoginSuccess(data);
     } catch (err) {
       setError(err.response?.data?.detail || 'Authentication failed. Please check credentials or backend server status.');
@@ -28,7 +28,7 @@ export default function LoginPage({ onLoginSuccess }) {
   const handleQuickDemoUser = (demoUsername, demoRole) => {
     setUsername(demoUsername);
     setPassword('password123');
-    setRole(demoRole);
+    setSelectedDemo(demoRole);
   };
 
   return (
@@ -61,7 +61,7 @@ export default function LoginPage({ onLoginSuccess }) {
             CampusMind AI
           </h2>
           <p className="text-xs text-sky-700 font-bold mt-1">
-            Enterprise RAG Intelligence & RBAC Access Portal
+            Development demo — server-assigned roles and synthetic data
           </p>
         </div>
 
@@ -75,7 +75,7 @@ export default function LoginPage({ onLoginSuccess }) {
         {/* DEMO USER QUICK PRESET PILLS */}
         <div className="mb-6">
           <label className="block text-[11px] font-extrabold text-slate-600 uppercase tracking-wider mb-2.5">
-            Select Role Scope Preset
+            Select Demo Identity
           </label>
           <div className="grid grid-cols-3 gap-2">
             <motion.button
@@ -84,7 +84,7 @@ export default function LoginPage({ onLoginSuccess }) {
               type="button"
               onClick={() => handleQuickDemoUser('student1', 'student')}
               className={`p-2.5 rounded-2xl border text-center transition-all ${
-                role === 'student'
+                selectedDemo === 'student'
                   ? 'bg-sky-500/20 border-sky-400/70 text-sky-900 font-extrabold shadow-sm'
                   : 'bg-white/60 border-white/90 text-slate-700 hover:bg-white'
               }`}
@@ -99,7 +99,7 @@ export default function LoginPage({ onLoginSuccess }) {
               type="button"
               onClick={() => handleQuickDemoUser('faculty1', 'faculty')}
               className={`p-2.5 rounded-2xl border text-center transition-all ${
-                role === 'faculty'
+                selectedDemo === 'faculty'
                   ? 'bg-purple-500/20 border-purple-400/70 text-purple-900 font-extrabold shadow-sm'
                   : 'bg-white/60 border-white/90 text-slate-700 hover:bg-white'
               }`}
@@ -114,7 +114,7 @@ export default function LoginPage({ onLoginSuccess }) {
               type="button"
               onClick={() => handleQuickDemoUser('admin1', 'admin')}
               className={`p-2.5 rounded-2xl border text-center transition-all ${
-                role === 'admin'
+                selectedDemo === 'admin'
                   ? 'bg-amber-500/20 border-amber-400/70 text-amber-900 font-extrabold shadow-sm'
                   : 'bg-white/60 border-white/90 text-slate-700 hover:bg-white'
               }`}
@@ -177,7 +177,7 @@ export default function LoginPage({ onLoginSuccess }) {
 
         {/* FOOTER DEMO INFO */}
         <div className="mt-6 pt-4 border-t border-slate-200/80 text-center font-mono text-[11px] text-slate-500 font-semibold">
-          Demo Passcode: <span className="text-sky-700 font-bold">password123</span>
+          Development demo only — roles are assigned by the server
         </div>
 
       </motion.div>

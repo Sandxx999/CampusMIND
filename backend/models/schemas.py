@@ -1,14 +1,16 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, ConfigDict, Field
 from typing import List, Optional
 
 class LoginRequest(BaseModel):
+    model_config = ConfigDict(extra="forbid")
+
     username: str = Field(..., example="student1")
     password: str = Field(..., example="password123")
-    role: str = Field("student", example="student") # student, faculty, admin
 
 class UserSchema(BaseModel):
     username: str
     role: str
+    enrollment_no: Optional[str] = None
 
 class TokenResponse(BaseModel):
     access_token: str

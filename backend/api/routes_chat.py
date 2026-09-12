@@ -20,10 +20,9 @@ except ImportError:
 
 from fastapi import APIRouter, Depends, HTTPException, status
 from models.schemas import ChatRequest, ChatResponse, FeedbackRequest, SourceCitation, UserSchema
-from auth.rbac import get_current_user
-from rag.retriever import retriever_instance
+from auth.rbac import can_access_student_record, get_current_user
 from rag.prompt_templates import rag_prompt
-from logs.logger import log_query_to_db, log_feedback_to_db, logger
+from logs.logger import get_query_owner, log_query_to_db, log_feedback_to_db, logger
 from config import settings
 
 router = APIRouter(prefix="/api/chat", tags=["Chat & RAG"])
@@ -166,14 +165,17 @@ def handle_chat(request: ChatRequest, user: UserSchema = Depends(get_current_use
     clean_message = request.message.strip().replace("<script>", "").replace("</script>", "")
 
     # Retrieve context chunks from ChromaDB filtered by role
+    # Import the embedding/vector stack only when chat is used, not during API startup.
+    from rag.retriever import retriever_instance
+
     retrieved_chunks, max_confidence = retriever_instance.retrieve_chunks(
         query=clean_message,
         user_role=user.role
     )
 
-    # Check for direct enrollment number lookup in SQLite database to enrich context
+    # Student records are never added to context merely because an enrollment number is known.
     match = re.search(r'2024IFHE\d{3}', clean_message, re.IGNORECASE)
-    if match:
+    if match and can_access_student_record(user, match.group(0)):
         enrollment_no = match.group(0).upper()
         try:
             import sqlite3
@@ -187,7 +189,7 @@ def handle_chat(request: ChatRequest, user: UserSchema = Depends(get_current_use
             if student_row:
                 s = dict(student_row)
                 student_snippet = (
-                    f"STUDENT ENROLLMENT RECORD: {s['enrollment_no']}\n"
+                    f"DEMO / SYNTHETIC STUDENT RECORD: {s['enrollment_no']}\n"
                     f"• Name: {s['name']}\n"
                     f"• Enrollment No: {s['enrollment_no']}\n"
                     f"• Email: {s['email']}\n"
@@ -280,5 +282,16 @@ def handle_chat(request: ChatRequest, user: UserSchema = Depends(get_current_use
 @router.post("/feedback")
 def submit_feedback(request: FeedbackRequest, user: UserSchema = Depends(get_current_user)):
     """Logs user thumbs-up/down feedback for query evaluation."""
+    owner = get_query_owner(request.query_id)
+    if owner is None:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="The referenced query was not found.",
+        )
+    if owner != user.username:
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="You may only submit feedback for your own queries.",
+        )
     log_feedback_to_db(request.query_id, request.is_positive)
     return {"status": "success", "message": "Feedback recorded successfully."}

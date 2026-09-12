@@ -167,7 +167,7 @@ export default function SourceCitation({ sources, isShuffling }) {
                 <span className="text-xs font-bold px-3 py-1 rounded-full bg-sky-500/15 border border-sky-300/60 text-sky-800 font-mono">
                   Score: {selectedDoc.score} ({Math.round(selectedDoc.score * 100)}% Match)
                 </span>
-                <span className="text-xs text-slate-600 font-medium">Verified Campus Record</span>
+                <span className="text-xs text-slate-600 font-medium">Retrieved campus record</span>
               </div>
 
               <div className="bg-white/80 p-4 rounded-2xl border border-slate-200 max-h-80 overflow-y-auto text-xs text-slate-800 leading-relaxed font-mono whitespace-pre-wrap font-medium">

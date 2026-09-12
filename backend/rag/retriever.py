@@ -1,14 +1,16 @@
 import os
-import chromadb
-from chromadb.utils import embedding_functions
 from config import settings
 from logs.logger import logger
 
 _retriever_instance = None
+PRIVATE_STUDENT_RECORD_DOCUMENTS = {"ifhe_student_directory_records.txt"}
 
 class CampusRetriever:
     def __init__(self):
         os.makedirs(settings.CHROMA_DB_DIR, exist_ok=True)
+        import chromadb
+        from chromadb.utils import embedding_functions
+
         self.client = chromadb.PersistentClient(path=settings.CHROMA_DB_DIR)
         self.embedding_fn = embedding_functions.SentenceTransformerEmbeddingFunction(
             model_name=settings.EMBEDDING_MODEL
@@ -53,6 +55,10 @@ class CampusRetriever:
                 
                 raw_roles = meta.get("allowed_roles", "student,faculty,admin")
                 allowed_roles = [r.strip().lower() for r in raw_roles.split(",")]
+
+                # Defend existing vector indexes that may predate corrected metadata.
+                if role_clean == "student" and meta.get("document_name", "").lower() in PRIVATE_STUDENT_RECORD_DOCUMENTS:
+                    continue
                 
                 if role_clean != "admin" and role_clean not in allowed_roles:
                     continue

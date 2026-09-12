@@ -168,7 +168,7 @@ export default function ChatWindow({ messages, onSendMessage, isLoading, current
               Campus Intelligence System
             </span>
             <span className="text-[11px] text-slate-600 font-mono font-bold">
-              Vector DB • 100 Verified Student Records
+              DEMO DATA • 100 Synthetic Student Records
             </span>
           </div>
 
@@ -176,7 +176,7 @@ export default function ChatWindow({ messages, onSendMessage, isLoading, current
             Official IFHE Knowledge Base & RAG Portal
           </h2>
           <p className="text-xs lg:text-sm text-slate-700 font-medium mt-1.5 max-w-xl leading-relaxed">
-            Instantly query campus guidelines, timetables, grade sheets, fee schedules, or retrieve exact profiles from the 100-student database.
+            Query campus guidelines, timetables, grade sheets, and fee schedules. Student records shown here are synthetic demo data.
           </p>
 
           {/* QUICK STUDENT RECORD EXPLORER STRIP */}
@@ -184,9 +184,9 @@ export default function ChatWindow({ messages, onSendMessage, isLoading, current
             <div className="flex items-center justify-between mb-2.5">
               <span className="text-xs font-bold text-slate-800 flex items-center gap-1.5">
                 <User className="w-3.5 h-3.5 text-sky-600" />
-                <span>Quick Student Record Prompts:</span>
+                <span>Demo Student Record Prompts:</span>
               </span>
-              <span className="text-[10px] text-sky-700 font-mono font-bold">100 Records Active</span>
+              <span className="text-[10px] text-sky-700 font-mono font-bold">DEMO DATA • 100 Records</span>
             </div>
 
             <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">

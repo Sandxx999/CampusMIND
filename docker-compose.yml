@@ -8,8 +8,11 @@ services:
     ports:
       - "8000:8000"
     environment:
+      - APP_ENV=production
+      - DEMO_MODE=false
       - GEMINI_API_KEY=${GEMINI_API_KEY}
       - JWT_SECRET_KEY=${JWT_SECRET_KEY}
+      - CORS_ORIGINS=${CORS_ORIGINS}
       - DATABASE_URL=sqlite:///./campusmind.db
       - CHROMA_DB_DIR=./chroma_db
     volumes:

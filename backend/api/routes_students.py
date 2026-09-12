@@ -3,7 +3,7 @@ import os
 from typing import List, Optional
 from fastapi import APIRouter, Depends, HTTPException, Query, status
 from pydantic import BaseModel
-from auth.rbac import get_current_user
+from auth.rbac import can_access_student_record, get_current_user, require_role
 from models.schemas import UserSchema
 from config import settings
 
@@ -56,11 +56,27 @@ def list_students(
     user: UserSchema = Depends(get_current_user)
 ):
     """
-    Search and filter student records with pagination.
-    Accessible by authenticated users (Students, Faculty, Admin).
+    Search and filter student records with pagination for faculty/admin users.
+    Student users receive their own record only, regardless of supplied filters.
     """
     conn = get_db_connection()
     cursor = conn.cursor()
+
+    if user.role == "student":
+        if not user.enrollment_no:
+            conn.close()
+            raise HTTPException(
+                status_code=status.HTTP_403_FORBIDDEN,
+                detail="Student identity is not linked to an enrollment record.",
+            )
+        cursor.execute(
+            "SELECT * FROM students WHERE UPPER(enrollment_no) = UPPER(?)",
+            (user.enrollment_no,),
+        )
+        row = cursor.fetchone()
+        conn.close()
+        students = [StudentSchema(**dict(row))] if row and offset == 0 else []
+        return StudentListResponse(total=1 if row else 0, limit=limit, offset=offset, students=students)
 
     conditions = []
     params = []
@@ -95,7 +111,7 @@ def list_students(
     return StudentListResponse(total=total, limit=limit, offset=offset, students=students)
 
 @router.get("/stats/summary", response_model=StudentStatsSummary)
-def get_student_stats(user: UserSchema = Depends(get_current_user)):
+def get_student_stats(user: UserSchema = Depends(require_role(["faculty", "admin"]))):
     """
     Aggregates student analytics including average CGPA, attendance, branch distribution, and fee status breakdown.
     """
@@ -140,6 +156,12 @@ def get_student_by_enrollment(enrollment_no: str, user: UserSchema = Depends(get
     """
     Retrieves detailed academic profile and contact details for a specific student by Enrollment Number.
     """
+    if not can_access_student_record(user, enrollment_no):
+        raise HTTPException(
+            status_code=status.HTTP_403_FORBIDDEN,
+            detail="You are not authorized to access this student record.",
+        )
+
     conn = get_db_connection()
     cursor = conn.cursor()
     cursor.execute("SELECT * FROM students WHERE UPPER(enrollment_no) = UPPER(?)", (enrollment_no.strip(),))

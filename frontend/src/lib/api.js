@@ -31,21 +31,16 @@ export function logoutUser() {
   localStorage.removeItem('campusmind_user');
 }
 
-export async function loginUser(username, password, role) {
+export async function loginUser(username, password) {
   const response = await axios.post(`${API_BASE_URL}/auth/login`, {
     username,
     password,
-    role,
   });
 
   const { access_token, user } = response.data;
   localStorage.setItem('campusmind_token', access_token);
   localStorage.setItem('campusmind_user', JSON.stringify(user));
   return user;
-}
-
-export async function switchUserRole(currentUsername, newRole) {
-  return await loginUser(currentUsername, 'password123', newRole);
 }
 
 export async function sendChatMessage(message) {

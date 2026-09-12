@@ -1,183 +1,95 @@
-import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
-import { 
-  Sparkles, 
-  ShieldCheck, 
-  UserCheck, 
-  GraduationCap, 
-  BookOpen, 
-  BarChart3, 
-  LogOut, 
-  Cpu, 
-  Layers,
-  ChevronDown
+import React from 'react';
+import { motion } from 'framer-motion';
+import {
+  BarChart3,
+  BookOpen,
+  Cpu,
+  GraduationCap,
+  LogOut,
+  ShieldCheck,
+  Sparkles,
+  UserCheck,
 } from 'lucide-react';
 
-export default function Header({ user, onLogout, activeTab, onSelectTab, onRoleChange }) {
-  const [showRoleDropdown, setShowRoleDropdown] = useState(false);
+const ROLE_DISPLAY = {
+  student: { icon: GraduationCap, label: 'Student Role', badge: 'bg-sky-500/15 text-sky-700 border-sky-300/60' },
+  faculty: { icon: UserCheck, label: 'Faculty Role', badge: 'bg-purple-500/15 text-purple-700 border-purple-300/60' },
+  admin: { icon: ShieldCheck, label: 'Admin Role', badge: 'bg-amber-500/15 text-amber-700 border-amber-300/60' },
+};
 
-  const roles = [
-    { id: 'student', name: 'Student View', icon: GraduationCap, badge: 'bg-sky-500/15 text-sky-700 border-sky-300/60 shadow-sm', desc: 'General Notices, Student Records, Timetables, Grades' },
-    { id: 'faculty', name: 'Faculty View', icon: UserCheck, badge: 'bg-purple-500/15 text-purple-700 border-purple-300/60 shadow-sm', desc: 'Faculty Circulars, Seed Grants, Grading Policy' },
-    { id: 'admin', name: 'Admin Scope', icon: ShieldCheck, badge: 'bg-amber-500/15 text-amber-700 border-amber-300/60 shadow-sm', desc: 'Full System Control, RAG Metrics & Query Logs' },
-  ];
-
-  const currentRoleObj = roles.find(r => r.id === user?.role) || roles[0];
-  const CurrentRoleIcon = currentRoleObj.icon;
-
-  const handleSelectRole = (newRole) => {
-    setShowRoleDropdown(false);
-    if (onRoleChange) {
-      onRoleChange(newRole);
-    }
-  };
+export default function Header({ user, onLogout, activeTab, onSelectTab }) {
+  const currentRole = ROLE_DISPLAY[user?.role] || ROLE_DISPLAY.student;
+  const CurrentRoleIcon = currentRole.icon;
 
   return (
-    <header className="glass-mirror-navbar sticky top-0 z-50 px-4 md:px-8 py-3.5 transition-all duration-300">
-      <div className="max-w-[1700px] mx-auto flex items-center justify-between gap-4">
-        
-        {/* BRAND & LOGO EMBLEM */}
+    <header className="glass-mirror-navbar sticky top-0 z-50 px-4 py-3.5 transition-all duration-300 md:px-8">
+      <div className="mx-auto flex max-w-[1700px] items-center justify-between gap-4">
         <div className="flex items-center gap-3.5">
-          <motion.div 
-            whileHover={{ scale: 1.08, rotate: 4 }}
-            whileTap={{ scale: 0.95 }}
-            className="relative group cursor-pointer"
-          >
+          <motion.div whileHover={{ scale: 1.08, rotate: 4 }} className="relative">
             <div className="w-11 h-11 rounded-2xl bg-gradient-to-tr from-sky-400 via-indigo-500 to-purple-500 p-[1.5px] shadow-lg shadow-sky-500/20">
-              <div className="w-full h-full bg-white/90 rounded-[14px] flex items-center justify-center backdrop-blur-md">
-                <Sparkles className="w-5.5 h-5.5 text-sky-600 animate-pulse" />
+              <div className="flex h-full w-full items-center justify-center rounded-[14px] bg-white/90 backdrop-blur-md">
+                <Sparkles className="w-5.5 h-5.5 animate-pulse text-sky-600" />
               </div>
             </div>
-            {/* Live RAG Status Dot */}
-            <span className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 bg-emerald-500 border-2 border-white rounded-full shadow-sm" title="RAG Vector Engine Active" />
+            <span className="absolute -bottom-0.5 -right-0.5 w-3.5 h-3.5 rounded-full border-2 border-white bg-emerald-500 shadow-sm" title="RAG Vector Engine Active" />
           </motion.div>
-
           <div>
-            <div className="flex items-center gap-2">
-              <h1 className="font-display text-xl md:text-2xl font-black tracking-tight text-slate-900">
-                CampusMind <span className="text-sky-600 font-extrabold text-xs tracking-wider uppercase px-2.5 py-0.5 rounded-full bg-sky-500/15 border border-sky-300/50 ml-1.5 shadow-sm">AI</span>
-              </h1>
-            </div>
-            <p className="text-xs text-slate-600 flex items-center gap-1.5 font-semibold tracking-wide">
+            <h1 className="font-display text-xl font-black tracking-tight text-slate-900 md:text-2xl">
+              CampusMind <span className="ml-1.5 rounded-full border border-sky-300/50 bg-sky-500/15 px-2.5 py-0.5 text-xs font-extrabold uppercase tracking-wider text-sky-600">AI</span>
+            </h1>
+            <p className="flex items-center gap-1.5 text-xs font-semibold tracking-wide text-slate-600">
               <Cpu className="w-3.5 h-3.5 text-sky-600" />
-              <span>IFHE Enterprise RAG Assistant</span>
+              <span>Campus RAG Assistant</span>
             </p>
           </div>
         </div>
 
-        {/* ROLE SCOPE SWITCHER & TAB NAV */}
-        <div className="hidden lg:flex items-center gap-2 bg-white/40 p-1.5 rounded-2xl border border-white/80 shadow-inner backdrop-blur-xl">
+        <nav className="hidden items-center gap-2 rounded-2xl border border-white/80 bg-white/40 p-1.5 shadow-inner backdrop-blur-xl lg:flex">
           <motion.button
             whileHover={{ scale: 1.03 }}
             whileTap={{ scale: 0.97 }}
-            onClick={() => onSelectTab && onSelectTab('chat')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-extrabold tracking-wide transition-all ${
-              activeTab === 'chat'
-                ? 'bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 text-white shadow-md shadow-sky-500/30 border border-white/60'
-                : 'text-slate-700 hover:text-slate-900 hover:bg-white/60'
-            }`}
+            onClick={() => onSelectTab('chat')}
+            className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-extrabold tracking-wide transition-all ${activeTab === 'chat' ? 'border border-white/60 bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 text-white shadow-md shadow-sky-500/30' : 'text-slate-700 hover:bg-white/60 hover:text-slate-900'}`}
           >
             <BookOpen className="w-4 h-4" />
             <span>Assistant Chat</span>
           </motion.button>
-
-          <motion.button
-            whileHover={{ scale: 1.03 }}
-            whileTap={{ scale: 0.97 }}
-            onClick={() => onSelectTab && onSelectTab('admin')}
-            className={`flex items-center gap-2 px-4 py-2 rounded-xl text-xs font-extrabold tracking-wide transition-all ${
-              activeTab === 'admin'
-                ? 'bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md shadow-purple-500/30 border border-white/60'
-                : 'text-slate-700 hover:text-slate-900 hover:bg-white/60'
-            }`}
-          >
-            <BarChart3 className="w-4 h-4" />
-            <span>Analytics & Knowledge Base</span>
-          </motion.button>
-        </div>
-
-        {/* USER PROFILE & ROLE SCOPE DROPDOWN */}
-        <div className="flex items-center gap-3">
-          {/* Dynamic Role Scope Selector Dropdown */}
-          <div className="relative">
+          {user?.role === 'admin' && (
             <motion.button
-              whileHover={{ scale: 1.04 }}
-              whileTap={{ scale: 0.96 }}
-              onClick={() => setShowRoleDropdown(!showRoleDropdown)}
-              className={`flex items-center gap-2 px-3.5 py-2 rounded-2xl border text-xs font-bold transition-all ${currentRoleObj.badge} backdrop-blur-md`}
-              title="Click to switch active role scope for RAG document permissions"
+              whileHover={{ scale: 1.03 }}
+              whileTap={{ scale: 0.97 }}
+              onClick={() => onSelectTab('admin')}
+              className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-extrabold tracking-wide transition-all ${activeTab === 'admin' ? 'border border-white/60 bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md shadow-purple-500/30' : 'text-slate-700 hover:bg-white/60 hover:text-slate-900'}`}
             >
-              <CurrentRoleIcon className="w-4 h-4" />
-              <span className="capitalize">{user?.role || 'Student'} Scope</span>
-              <ChevronDown className="w-3.5 h-3.5 opacity-70" />
+              <BarChart3 className="w-4 h-4" />
+              <span>Analytics & Knowledge Base</span>
             </motion.button>
+          )}
+        </nav>
 
-            {/* Dropdown Menu */}
-            <AnimatePresence>
-              {showRoleDropdown && (
-                <motion.div 
-                  initial={{ opacity: 0, y: -8, scale: 0.95 }}
-                  animate={{ opacity: 1, y: 0, scale: 1 }}
-                  exit={{ opacity: 0, y: -8, scale: 0.95 }}
-                  transition={{ duration: 0.2 }}
-                  className="absolute right-0 mt-2.5 w-72 glass-mirror-panel rounded-3xl border border-white/90 p-2.5 shadow-2xl z-50"
-                >
-                  <div className="px-3 py-2 mb-1.5 text-[11px] font-extrabold text-slate-500 uppercase tracking-wider border-b border-slate-200/60 flex items-center justify-between">
-                    <span>Switch Active Scope</span>
-                    <Layers className="w-3.5 h-3.5 text-sky-600" />
-                  </div>
-                  <div className="space-y-1.5">
-                    {roles.map((r) => {
-                      const IconComp = r.icon;
-                      const isSelected = (user?.role === r.id);
-                      return (
-                        <button
-                          key={r.id}
-                          onClick={() => handleSelectRole(r.id)}
-                          className={`w-full text-left p-2.5 rounded-2xl transition-all flex items-start gap-3 ${
-                            isSelected
-                              ? 'bg-sky-500/15 border border-sky-400/50 text-sky-900 font-bold shadow-sm'
-                              : 'hover:bg-white/80 text-slate-700'
-                          }`}
-                        >
-                          <IconComp className={`w-4 h-4 mt-0.5 ${isSelected ? 'text-sky-600' : 'text-slate-500'}`} />
-                          <div>
-                            <div className="text-xs font-bold">{r.name}</div>
-                            <div className="text-[11px] text-slate-500 leading-snug mt-0.5">{r.desc}</div>
-                          </div>
-                        </button>
-                      );
-                    })}
-                  </div>
-                </motion.div>
-              )}
-            </AnimatePresence>
+        <div className="flex items-center gap-3">
+          <div className={`flex items-center gap-2 rounded-2xl border px-3.5 py-2 text-xs font-bold backdrop-blur-md ${currentRole.badge}`} title="Role assigned by the server">
+            <CurrentRoleIcon className="w-4 h-4" />
+            <span>{currentRole.label}</span>
           </div>
-
-          {/* User Avatar Chip */}
-          <div className="hidden sm:flex items-center gap-2.5 pl-3 border-l border-slate-300/60">
+          <div className="hidden items-center gap-2.5 border-l border-slate-300/60 pl-3 sm:flex">
             <div className="w-8 h-8 rounded-2xl bg-gradient-to-tr from-sky-400 to-indigo-500 p-[1px] shadow-sm">
-              <div className="w-full h-full bg-white/90 rounded-[15px] flex items-center justify-center font-extrabold text-xs text-sky-700">
+              <div className="flex h-full w-full items-center justify-center rounded-[15px] bg-white/90 text-xs font-extrabold text-sky-700">
                 {(user?.username || 'U')[0].toUpperCase()}
               </div>
             </div>
-            <span className="text-xs font-bold text-slate-800 hidden md:inline">
-              {user?.username}
-            </span>
+            <span className="hidden text-xs font-bold text-slate-800 md:inline">{user?.username}</span>
           </div>
-
-          {/* Sign Out Button */}
           <motion.button
             whileHover={{ scale: 1.08 }}
             whileTap={{ scale: 0.92 }}
             onClick={onLogout}
-            className="p-2.5 rounded-2xl text-slate-500 hover:text-rose-600 hover:bg-rose-500/15 transition-all border border-transparent hover:border-rose-300"
+            className="rounded-2xl border border-transparent p-2.5 text-slate-500 transition-all hover:border-rose-300 hover:bg-rose-500/15 hover:text-rose-600"
             title="Sign Out"
           >
             <LogOut className="w-4.5 h-4.5" />
           </motion.button>
         </div>
-
       </div>
     </header>
   );

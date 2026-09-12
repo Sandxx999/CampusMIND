@@ -25,7 +25,10 @@ def ingest_campus_data():
 
         # Simple metadata assignment based on file convention
         role_scope = "student,faculty,admin"
-        if "faculty" in doc_name.lower():
+        if doc_name.lower() == "ifhe_student_directory_records.txt":
+            # Individual student records are never a general student RAG corpus.
+            role_scope = "faculty,admin"
+        elif "faculty" in doc_name.lower():
             role_scope = "faculty,admin"
         elif "admin" in doc_name.lower():
             role_scope = "admin"

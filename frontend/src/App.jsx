@@ -3,7 +3,7 @@ import LoginPage from './pages/LoginPage';
 import ChatPage from './pages/ChatPage';
 import AdminDashboard from './pages/AdminDashboard';
 import Header from './components/Header';
-import { getStoredUser, logoutUser, switchUserRole } from './lib/api';
+import { getStoredUser, logoutUser } from './lib/api';
 
 export default function App() {
   const [user, setUser] = useState(null);
@@ -21,20 +21,6 @@ export default function App() {
     setUser(null);
   };
 
-  const handleRoleChange = async (newRole) => {
-    if (!user) return;
-    try {
-      const updatedUser = await switchUserRole(user.username, newRole);
-      setUser(updatedUser);
-    } catch (err) {
-      console.error('Role change error:', err);
-      // Fallback local update
-      const updatedUser = { ...user, role: newRole };
-      localStorage.setItem('campusmind_user', JSON.stringify(updatedUser));
-      setUser(updatedUser);
-    }
-  };
-
   if (!user) {
     return <LoginPage onLoginSuccess={(userData) => setUser(userData)} />;
   }
@@ -47,7 +33,6 @@ export default function App() {
         onLogout={handleLogout}
         activeTab={activeTab}
         onSelectTab={setActiveTab}
-        onRoleChange={handleRoleChange}
       />
 
       {/* Main View Container */}

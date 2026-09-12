@@ -13,11 +13,15 @@ services:
       - key: PYTHON_VERSION
         value: 3.11.0
       - key: GEMINI_API_KEY
-        value: dummy_key_replace_with_real
+        sync: false
       - key: JWT_SECRET_KEY
-        value: campusmind_super_secret_jwt_key_2026
+        sync: false
+      - key: APP_ENV
+        value: production
+      - key: DEMO_MODE
+        value: "false"
       - key: CORS_ORIGINS
-        value: "*"
+        sync: false
 
   # ----------------------------------------------------------------------------
   # React / Vite Frontend Static Site

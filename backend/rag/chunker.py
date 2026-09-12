@@ -1,24 +1,47 @@
-try:
-    from langchain_text_splitters import RecursiveCharacterTextSplitter
-except ImportError:
-    try:
-        from langchain.text_splitter import RecursiveCharacterTextSplitter
-    except ImportError:
-        class RecursiveCharacterTextSplitter:
-            def __init__(self, chunk_size=500, chunk_overlap=80, separators=None):
-                self.chunk_size = chunk_size
-                self.chunk_overlap = chunk_overlap
+from typing import List, Dict
 
-            def split_text(self, text: str):
-                chunks = []
-                start = 0
-                while start < len(text):
-                    end = min(start + self.chunk_size, len(text))
-                    chunks.append(text[start:end])
-                    if end == len(text):
+class RecursiveCharacterTextSplitter:
+    """Lightweight, deterministic character text splitter with separator boundary awareness."""
+
+    def __init__(self, chunk_size=500, chunk_overlap=80, separators=None):
+        self.chunk_size = chunk_size
+        self.chunk_overlap = chunk_overlap
+        self.separators = separators or ["\n\n", "\n", " ", ""]
+
+    def split_text(self, text: str) -> List[str]:
+        if not text:
+            return []
+        
+        chunks = []
+        start = 0
+        text_len = len(text)
+        
+        while start < text_len:
+            end = min(start + self.chunk_size, text_len)
+            if end < text_len:
+                # Try splitting at separator
+                split_at = -1
+                for sep in self.separators:
+                    if not sep:
+                        continue
+                    idx = text.rfind(sep, start, end)
+                    if idx > start:
+                        split_at = idx + len(sep)
                         break
-                    start += self.chunk_size - self.chunk_overlap
-                return chunks
+                if split_at > start:
+                    end = split_at
+
+            chunk = text[start:end]
+            if chunk:
+                chunks.append(chunk)
+            
+            if end >= text_len:
+                break
+            
+            next_start = end - self.chunk_overlap
+            start = next_start if next_start > start else end
+
+        return chunks
 
 from typing import List, Dict
 

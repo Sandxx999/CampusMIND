@@ -168,9 +168,9 @@ def create_raw_txt_file(students):
     
     lines = [
         "================================================================================",
-        "IFHE HYDERABAD — OFFICIAL STUDENT ACADEMIC & ENROLLMENT DIRECTORY (CONFIDENTIAL)",
+        "DEMO DATA — SYNTHETIC STUDENT ACADEMIC & ENROLLMENT DIRECTORY (NOT OFFICIAL)",
         "================================================================================\n",
-        "This master document contains official academic transcripts, course registrations, GPA records, and contact details for enrolled students across all departments.\n"
+        "This development-only master document contains synthetic academic, enrollment, and contact records. It must not be treated as official campus data.\n"
     ]
     
     for s in students:
