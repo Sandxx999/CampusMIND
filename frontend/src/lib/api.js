@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-const API_BASE_URL = '/api';
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || '/api';
 
 // Helper to retrieve auth header
 function getAuthHeader() {
@@ -26,8 +26,18 @@ axios.interceptors.response.use(
 
 
 export function getStoredUser() {
-  const userStr = localStorage.getItem('campusmind_user');
-  return userStr ? JSON.parse(userStr) : null;
+  try {
+    const userStr = localStorage.getItem('campusmind_user');
+    if (!userStr || userStr === 'undefined' || userStr === 'null') {
+      return null;
+    }
+    return JSON.parse(userStr);
+  } catch (err) {
+    console.warn('Failed to parse campusmind_user, resetting state:', err);
+    localStorage.removeItem('campusmind_user');
+    localStorage.removeItem('campusmind_token');
+    return null;
+  }
 }
 
 export function logoutUser() {
@@ -42,8 +52,12 @@ export async function loginUser(username, password) {
   });
 
   const { access_token, user } = response.data;
-  localStorage.setItem('campusmind_token', access_token);
-  localStorage.setItem('campusmind_user', JSON.stringify(user));
+  if (access_token) {
+    localStorage.setItem('campusmind_token', access_token);
+  }
+  if (user) {
+    localStorage.setItem('campusmind_user', JSON.stringify(user));
+  }
   return user;
 }
 
@@ -73,7 +87,7 @@ export async function fetchAdminStats() {
 }
 
 // Phase 3 & 4 Institutional API v1 Helpers
-const API_V1_URL = '/api/v1';
+const API_V1_URL = `${API_BASE_URL}/v1`;
 
 export async function fetchCurrentTerm() {
   const response = await axios.get(`${API_V1_URL}/academics/terms/current`, {
@@ -287,8 +301,12 @@ export async function updateSSOConfig(data) {
 export async function loginSSO(payload) {
   const response = await axios.post(`${API_V1_URL}/auth/sso/login`, payload);
   const { access_token, user } = response.data;
-  localStorage.setItem('campusmind_token', access_token);
-  localStorage.setItem('campusmind_user', JSON.stringify(user));
+  if (access_token) {
+    localStorage.setItem('campusmind_token', access_token);
+  }
+  if (user) {
+    localStorage.setItem('campusmind_user', JSON.stringify(user));
+  }
   return user;
 }
 
@@ -400,8 +418,9 @@ export function subscribeToNotificationStream(onNotification, onError) {
 
   eventSource.onmessage = (event) => {
     try {
-      const data = JSON.parse(event.data);
-      if (data.type === 'notification' && onNotification) {
+      if (!event.data) return;
+      const data = typeof event.data === 'string' ? JSON.parse(event.data) : event.data;
+      if (data && data.type === 'notification' && onNotification) {
         onNotification(data.data);
       }
     } catch {
