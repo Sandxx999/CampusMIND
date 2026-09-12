@@ -56,11 +56,13 @@ def test_rag_query_student_details():
     headers = get_auth_headers()
     from unittest.mock import MagicMock, patch
     mock_retriever = MagicMock()
-    mock_retriever.retrieve_chunks.return_value = ([{
+    sample_chunk = {
         "document_name": "ifhe_student_directory_records.txt",
         "snippet": "STUDENT ENROLLMENT RECORD: 2024IFHE001\nName: Aarav Sharma\nEnrollment No: 2024IFHE001",
         "score": 0.99
-    }], 0.99)
+    }
+    mock_retriever.retrieve_chunks.return_value = ([sample_chunk], 0.99)
+    mock_retriever.retrieve_hybrid_evidence.return_value = ([sample_chunk], "sufficient", 0.99)
     with patch("rag.retriever.get_retriever", return_value=mock_retriever):
         res = client.post("/api/chat", json={
             "message": "Find details and courses enrolled for student 2024IFHE001"

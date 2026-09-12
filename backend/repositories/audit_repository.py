@@ -1,12 +1,13 @@
 """
 Audit & Query Log Data Repository for CampusMIND 2.0.
+
 Encapsulates operations for query logging, feedback tracking, and administrative usage analytics.
-Supports canonical relational ORM models (QueryLog & QueryFeedback) with fallback support.
+Supports canonical relational ORM models (QueryLog & QueryFeedback) with robust legacy fallback.
 """
 from datetime import datetime, timezone
 from typing import Dict, Any, List, Optional
-from sqlalchemy import select, func, desc
-from db.session import get_db_session, get_db_connection, create_tables
+from sqlalchemy import select, func, desc, text
+from db.session import get_db_session, get_db_connection, create_tables, get_engine
 from db.models import QueryLog, QueryFeedback, User, AuditEvent
 from core.logging import logger
 
@@ -18,11 +19,27 @@ class AuditRepository:
         self.db_conn_factory = db_conn_factory
 
     def init_db(self) -> None:
-        """Initializes canonical ORM tables and legacy tables if not already existing."""
+        """Initializes canonical ORM tables and legacy tables with column migration checks."""
         try:
             create_tables()
         except Exception as e:
             logger.debug(f"Alembic or ORM create_tables check: {e}")
+
+        # Ensure columns exist on SQLite database
+        try:
+            engine = get_engine()
+            if engine.name == "sqlite":
+                with engine.connect() as conn:
+                    # Check columns on query_logs table
+                    result = conn.execute(text("PRAGMA table_info(query_logs)"))
+                    columns = [row[1] for row in result.fetchall()]
+                    if "user_id" not in columns:
+                        conn.execute(text("ALTER TABLE query_logs ADD COLUMN user_id VARCHAR(36)"))
+                    if "created_at" not in columns:
+                        conn.execute(text("ALTER TABLE query_logs ADD COLUMN created_at DATETIME"))
+                    conn.commit()
+        except Exception as e:
+            logger.debug(f"SQLite PRAGMA column migration check: {e}")
 
         # Ensure legacy tables exist for fallback compatibility
         conn = self.db_conn_factory()
@@ -31,6 +48,7 @@ class AuditRepository:
             cursor.execute("""
             CREATE TABLE IF NOT EXISTS query_logs (
                 id TEXT PRIMARY KEY,
+                user_id TEXT,
                 timestamp TEXT,
                 username TEXT,
                 role TEXT,
@@ -39,7 +57,8 @@ class AuditRepository:
                 latency_ms REAL,
                 chunk_count INTEGER,
                 confidence REAL,
-                is_fallback INTEGER
+                is_fallback INTEGER,
+                created_at TEXT
             )
             """)
             cursor.execute("""
@@ -90,6 +109,7 @@ class AuditRepository:
                     is_fallback=bool(is_fallback),
                 )
                 session.add(log_entry)
+                return
         except Exception as e:
             logger.debug(f"Canonical query log insert failed, trying legacy insert: {e}")
 
@@ -98,9 +118,9 @@ class AuditRepository:
         try:
             cursor = conn.cursor()
             cursor.execute(
-                """INSERT OR REPLACE INTO query_logs (id, timestamp, username, role, question, answer, latency_ms, chunk_count, confidence, is_fallback)
-                   VALUES (?, datetime('now'), ?, ?, ?, ?, ?, ?, ?, ?)""",
-                (query_id, username, role, question, answer, latency_ms, chunk_count, confidence, 1 if is_fallback else 0)
+                """INSERT OR REPLACE INTO query_logs (id, user_id, timestamp, username, role, question, answer, latency_ms, chunk_count, confidence, is_fallback, created_at)
+                   VALUES (?, ?, datetime('now'), ?, ?, ?, ?, ?, ?, ?, ?, datetime('now'))""",
+                (query_id, None, username, role, question, answer, latency_ms, chunk_count, confidence, 1 if is_fallback else 0)
             )
             conn.commit()
         except Exception as e:
@@ -119,6 +139,7 @@ class AuditRepository:
                     timestamp=datetime.now(timezone.utc),
                 )
                 session.add(fb)
+                return
         except Exception as e:
             logger.debug(f"Canonical feedback insert failed, trying legacy insert: {e}")
 
@@ -250,7 +271,6 @@ class AuditRepository:
             }
         finally:
             conn.close()
-
 
     def log_audit_event(
         self,

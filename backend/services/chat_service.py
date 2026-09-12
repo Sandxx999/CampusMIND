@@ -1,7 +1,8 @@
 """
-Chat & RAG Business Logic Service.
-Handles rate limiting, vector retrieval, student record grounding, LLM generation,
-and query feedback processing.
+Chat & Advanced RAG Intelligence Service for CampusMIND 2.0.
+
+Handles rate limiting, query normalization/classification, hybrid retrieval,
+student record grounding, evidence quality evaluation, LLM synthesis, and audit logging.
 """
 import re
 import time
@@ -15,6 +16,7 @@ from core.config import settings
 from core.logging import logger
 from models.schemas import ChatRequest, ChatResponse, FeedbackRequest, SourceCitation, UserSchema
 from rag.prompt_templates import rag_prompt
+from rag.query_processor import QueryProcessor
 from repositories.audit_repository import audit_repository, AuditRepository
 from repositories.student_repository import student_repository, StudentRepository
 
@@ -34,7 +36,7 @@ except ImportError:
 
 
 class ChatService:
-    """Service managing RAG chat execution, rate limiting, and feedback."""
+    """Service managing advanced RAG chat execution, rate limiting, and feedback."""
 
     def __init__(
         self,
@@ -151,26 +153,31 @@ class ChatService:
         return self.synthesize_grounded_answer(question, retrieved_chunks)
 
     def process_chat_query(self, request: ChatRequest, user: UserSchema) -> ChatResponse:
-        """Processes user chat request using vector retrieval, DB grounding, and LLM synthesis."""
+        """
+        Processes user chat request using normalization, hybrid retrieval, DB grounding,
+        evidence quality scoring, grounded LLM synthesis, and structured audit logging.
+        """
         self.enforce_rate_limit(user)
         start_time = time.time()
         query_id = f"qry_{uuid.uuid4().hex[:8]}"
 
-        clean_message = request.message.strip().replace("<script>", "").replace("</script>", "")
+        # Step 1: Query Normalization and Understanding
+        qp_res = QueryProcessor.process(request.message)
+        clean_message = qp_res["normalized_query"]
 
-        # Deferred vector retrieval import
-        from rag.retriever import retriever_instance
+        # Step 2: Access-Aware Hybrid Retrieval & Reranking
+        from rag.retriever import get_retriever
+        retriever = get_retriever()
 
-        retrieved_chunks, max_confidence = retriever_instance.retrieve_chunks(
+        retrieved_chunks, evidence_quality, max_confidence = retriever.retrieve_hybrid_evidence(
             query=clean_message, user_role=user.role
         )
 
-        # Grounding with student record if authorized
-        match = re.search(r"2024IFHE\d{3}", clean_message, re.IGNORECASE)
-        if match and can_access_student_record(user, match.group(0)):
-            enrollment_no = match.group(0).upper()
+        # Step 3: Authorized Private Student Database Grounding
+        target_enrollment = qp_res.get("target_enrollment_no")
+        if target_enrollment and can_access_student_record(user, target_enrollment):
             try:
-                student_row = self.student_repo.get_by_enrollment(enrollment_no)
+                student_row = self.student_repo.get_by_enrollment(target_enrollment)
                 if student_row:
                     s = student_row
                     student_snippet = (
@@ -191,17 +198,22 @@ class ChatService:
                     retrieved_chunks.insert(
                         0,
                         {
+                            "document_id": "student_db_record",
                             "document_name": "ifhe_student_directory_records.txt",
+                            "section": "Student Profile",
+                            "category": "student_records",
+                            "version": "1.0",
                             "snippet": student_snippet,
                             "score": 0.99,
                         },
                     )
                     max_confidence = max(max_confidence, 0.99)
+                    evidence_quality = "high"
             except Exception as e:
                 logger.error(f"Error querying student repository during RAG chat: {e}")
 
-        # Check threshold
-        if not retrieved_chunks or max_confidence < settings.SIMILARITY_THRESHOLD:
+        # Step 4: Evidence Quality Check / Fallback Defense
+        if not retrieved_chunks or evidence_quality == "insufficient" or max_confidence < settings.SIMILARITY_THRESHOLD:
             fallback_answer = "I don't have information on that in the official campus database."
             latency_ms = round((time.time() - start_time) * 1000, 2)
 
@@ -222,24 +234,31 @@ class ChatService:
                 answer=fallback_answer,
                 sources=[],
                 confidence=max_confidence,
+                evidence_quality="insufficient",
                 is_fallback=True,
             )
 
-        formatted_context = "\n\n".join([f"[{c['document_name']}]: {c['snippet']}" for c in retrieved_chunks])
+        # Step 5: Grounded Answer Synthesis
+        formatted_context = "\n\n".join([f"[{c.get('document_name', 'Doc')}]: {c.get('snippet', '')}" for c in retrieved_chunks])
         prompt_text = rag_prompt.format(context=formatted_context, question=clean_message)
 
         answer_text = self.generate_llm_answer(prompt_text, retrieved_chunks=retrieved_chunks, question=clean_message)
         latency_ms = round((time.time() - start_time) * 1000, 2)
 
+        # Step 6: First-Class Citations Format
         sources = [
             SourceCitation(
-                document_name=c["document_name"],
-                snippet=c["snippet"][:200] + ("..." if len(c["snippet"]) > 200 else ""),
-                score=c["score"],
+                document_name=c.get("document_name", "Campus Document"),
+                section=c.get("section", "General"),
+                category=c.get("category", "general"),
+                version=c.get("version", "1.0"),
+                snippet=c.get("snippet", "")[:200] + ("..." if len(c.get("snippet", "")) > 200 else ""),
+                score=float(c.get("rerank_score", c.get("score", 0.0))),
             )
             for c in retrieved_chunks
         ]
 
+        # Step 7: Observability & Audit Logging
         self.audit_repo.log_query(
             query_id=query_id,
             username=user.username,
@@ -257,6 +276,7 @@ class ChatService:
             answer=answer_text,
             sources=sources,
             confidence=max_confidence,
+            evidence_quality=evidence_quality,
             is_fallback=False,
         )
 

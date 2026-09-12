@@ -68,7 +68,7 @@ export async function fetchAdminStats() {
   return response.data;
 }
 
-// Phase 3 Institutional API v1 Helpers
+// Phase 3 & 4 Institutional API v1 Helpers
 const API_V1_URL = '/api/v1';
 
 export async function fetchCurrentTerm() {
@@ -161,6 +161,34 @@ export async function registerForEvent(eventId) {
 
 export async function fetchKnowledgeDocuments() {
   const response = await axios.get(`${API_V1_URL}/knowledge`, {
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}
+
+export async function createKnowledgeDocument(data) {
+  const response = await axios.post(`${API_V1_URL}/knowledge`, data, {
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}
+
+export async function deactivateKnowledgeDocument(docId) {
+  const response = await axios.post(`${API_V1_URL}/knowledge/${docId}/deactivate`, {}, {
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}
+
+export async function activateKnowledgeDocument(docId) {
+  const response = await axios.post(`${API_V1_URL}/knowledge/${docId}/activate`, {}, {
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}
+
+export async function triggerVectorSync() {
+  const response = await axios.post(`${API_V1_URL}/knowledge/sync`, {}, {
     headers: getAuthHeader(),
   });
   return response.data;

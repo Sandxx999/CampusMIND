@@ -27,6 +27,7 @@ export default function ChatPage({ user }) {
         text: data.answer,
         sources: data.sources || [],
         confidence: data.confidence,
+        evidenceQuality: data.evidence_quality || 'high',
         isFallback: data.is_fallback,
         timestamp: new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
       };

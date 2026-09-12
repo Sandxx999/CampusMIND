@@ -60,6 +60,8 @@ class ChatRequest(BaseModel):
 class SourceCitation(BaseModel):
     document_name: str
     section: Optional[str] = "General"
+    category: Optional[str] = "general"
+    version: Optional[str] = "1.0"
     score: float
     snippet: str
 
@@ -69,6 +71,7 @@ class ChatResponse(BaseModel):
     answer: str
     sources: List[SourceCitation]
     confidence: float
+    evidence_quality: str = "high"
     is_fallback: bool
 
 

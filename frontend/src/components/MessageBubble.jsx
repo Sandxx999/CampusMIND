@@ -145,16 +145,29 @@ export default function MessageBubble({ message, onSelectSources }) {
           <span className="text-[10px] text-slate-500 font-mono">• {message.timestamp || 'Just now'}</span>
         </div>
 
-        {/* Confidence Meter Badge */}
-        {message.confidence !== undefined && (
-          <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full border ${
-            confidenceScore >= 75 ? 'bg-emerald-500/15 border-emerald-400/50 text-emerald-800' :
-            confidenceScore >= 50 ? 'bg-sky-500/15 border-sky-400/50 text-sky-800' :
-            'bg-amber-500/15 border-amber-400/50 text-amber-800'
-          }`}>
-            {confidenceScore}% RAG Match
-          </span>
-        )}
+        {/* Confidence & Evidence Quality Meter Badges */}
+        <div className="flex items-center gap-1.5">
+          {message.evidenceQuality && (
+            <span className={`text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full border ${
+              message.evidenceQuality === 'high' ? 'bg-emerald-500/15 border-emerald-400/50 text-emerald-800' :
+              message.evidenceQuality === 'medium' ? 'bg-sky-500/15 border-sky-400/50 text-sky-800' :
+              message.evidenceQuality === 'low' ? 'bg-amber-500/15 border-amber-400/50 text-amber-800' :
+              'bg-slate-500/15 border-slate-400/50 text-slate-700'
+            }`}>
+              {message.evidenceQuality} Quality
+            </span>
+          )}
+
+          {message.confidence !== undefined && (
+            <span className={`text-[10px] font-bold px-2.5 py-0.5 rounded-full border ${
+              confidenceScore >= 75 ? 'bg-emerald-500/15 border-emerald-400/50 text-emerald-800' :
+              confidenceScore >= 50 ? 'bg-sky-500/15 border-sky-400/50 text-sky-800' :
+              'bg-amber-500/15 border-amber-400/50 text-amber-800'
+            }`}>
+              {confidenceScore}% RAG Match
+            </span>
+          )}
+        </div>
       </div>
 
       {/* MESSAGE BODY CONTAINER WITH ALL-WHITE MIRROR GLASS */}

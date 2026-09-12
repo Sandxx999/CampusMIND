@@ -1,5 +1,10 @@
 """Safe, explicit runtime settings and isolated fixtures for the local demo test suite."""
 
+try:
+    import pyarrow
+except Exception:
+    pass
+
 import os
 import shutil
 import tempfile
@@ -8,6 +13,7 @@ import pytest
 # Ensure safe default environment variables
 os.environ.setdefault("APP_ENV", "development")
 os.environ.setdefault("DEMO_MODE", "true")
+os.environ.setdefault("EMBEDDING_PROVIDER", "mock")
 os.environ.setdefault("CORS_ORIGINS", "http://localhost:5173,http://localhost:3000")
 
 @pytest.fixture(scope="session", autouse=True)
@@ -39,6 +45,8 @@ def setup_test_database():
     try:
         from scripts.seed_canonical_db import seed_canonical_data
         seed_canonical_data()
+        from repositories.audit_repository import AuditRepository
+        AuditRepository().init_db()
     except Exception:
         pass
 
