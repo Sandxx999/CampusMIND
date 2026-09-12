@@ -9,7 +9,7 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 from db.session import get_db
-from auth.rbac import get_current_user
+from auth.rbac import get_current_user, require_role
 from models.schemas import (
 
     UserSchema,
@@ -128,28 +128,28 @@ def get_faculty_offering_performance(
 
 @router_v1.get("/admin/overview", response_model=AdminOverviewAnalyticsResponse)
 def get_admin_overview_analytics(
-    current_user: UserSchema = Depends(get_current_user),
+    current_user: UserSchema = Depends(require_role(["admin"])),
     db: Session = Depends(get_db),
 ):
-    """Retrieves institution-wide administrative overview analytics."""
+    """Retrieves institution-wide administrative overview analytics. Admin only."""
     return analytics_service.get_admin_overview(db, current_user)
 
 
 @router_v1.get("/admin/departments/{department_id}", response_model=AdminDepartmentAnalyticsResponse)
 def get_admin_department_analytics(
     department_id: str,
-    current_user: UserSchema = Depends(get_current_user),
+    current_user: UserSchema = Depends(require_role(["admin"])),
     db: Session = Depends(get_db),
 ):
-    """Retrieves department-level aggregated academic analytics for administrators."""
+    """Retrieves department-level aggregated academic analytics for administrators. Admin only."""
     return analytics_service.get_admin_department_analytics(db, department_id, current_user)
 
 
 @router_v1.get("/admin/programs/{program_id}", response_model=AdminProgramAnalyticsResponse)
 def get_admin_program_analytics(
     program_id: str,
-    current_user: UserSchema = Depends(get_current_user),
+    current_user: UserSchema = Depends(require_role(["admin"])),
     db: Session = Depends(get_db),
 ):
-    """Retrieves program-level aggregated academic analytics for administrators."""
+    """Retrieves program-level aggregated academic analytics for administrators. Admin only."""
     return analytics_service.get_admin_program_analytics(db, program_id, current_user)

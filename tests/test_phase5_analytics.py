@@ -196,7 +196,15 @@ def test_student_me_performance_endpoint(client, student_auth_headers):
 def test_student_cannot_access_admin_analytics(client, student_auth_headers):
     response = client.get("/api/v1/analytics/admin/overview", headers=student_auth_headers)
     assert response.status_code == 403
-    assert "System Admin authorization required" in response.json()["detail"]
+    detail = response.json()["detail"]
+    # Phase 9 defense-in-depth: router-level require_role fires first (preferred message),
+    # or service-layer _enforce_admin_authorization message (also acceptable).
+    assert (
+        "System Admin authorization required" in detail
+        or "not authorized for this resource" in detail
+        or "Access denied" in detail
+    ), f"Expected a 403 authorization detail, got: {detail}"
+
 
 
 def test_admin_overview_analytics_endpoint(client, admin_auth_headers):
