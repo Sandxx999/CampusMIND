@@ -54,6 +54,15 @@ export default function Header({ user, onLogout, activeTab, onSelectTab }) {
             <BookOpen className="w-4 h-4" />
             <span>Assistant Chat</span>
           </motion.button>
+          <motion.button
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            onClick={() => onSelectTab('hub')}
+            className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-extrabold tracking-wide transition-all ${activeTab === 'hub' ? 'border border-white/60 bg-gradient-to-r from-sky-500 via-indigo-600 to-purple-600 text-white shadow-md shadow-sky-500/30' : 'text-slate-700 hover:bg-white/60 hover:text-slate-900'}`}
+          >
+            <GraduationCap className="w-4 h-4" />
+            <span>Campus Intelligence</span>
+          </motion.button>
           {user?.role === 'admin' && (
             <motion.button
               whileHover={{ scale: 1.03 }}
@@ -62,10 +71,11 @@ export default function Header({ user, onLogout, activeTab, onSelectTab }) {
               className={`flex items-center gap-2 rounded-xl px-4 py-2 text-xs font-extrabold tracking-wide transition-all ${activeTab === 'admin' ? 'border border-white/60 bg-gradient-to-r from-indigo-600 to-purple-600 text-white shadow-md shadow-purple-500/30' : 'text-slate-700 hover:bg-white/60 hover:text-slate-900'}`}
             >
               <BarChart3 className="w-4 h-4" />
-              <span>Analytics & Knowledge Base</span>
+              <span>Analytics & System</span>
             </motion.button>
           )}
         </nav>
+
 
         <div className="flex items-center gap-3">
           <div className={`flex items-center gap-2 rounded-2xl border px-3.5 py-2 text-xs font-bold backdrop-blur-md ${currentRole.badge}`} title="Role assigned by the server">

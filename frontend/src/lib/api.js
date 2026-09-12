@@ -67,3 +67,109 @@ export async function fetchAdminStats() {
   });
   return response.data;
 }
+
+// Phase 3 Institutional API v1 Helpers
+const API_V1_URL = '/api/v1';
+
+export async function fetchCurrentTerm() {
+  const response = await axios.get(`${API_V1_URL}/academics/terms/current`, {
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}
+
+export async function fetchCourseOfferings() {
+  const response = await axios.get(`${API_V1_URL}/academics/offerings`, {
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}
+
+export async function fetchStudentAttendance(enrollmentNo) {
+  const response = await axios.get(`${API_V1_URL}/attendance/student/${enrollmentNo}`, {
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}
+
+export async function recordAttendance(offeringId, records) {
+  const response = await axios.post(
+    `${API_V1_URL}/attendance/offering/${offeringId}`,
+    { records },
+    { headers: getAuthHeader() }
+  );
+  return response.data;
+}
+
+export async function fetchStudentResults(enrollmentNo) {
+  const response = await axios.get(`${API_V1_URL}/assessments/student/${enrollmentNo}`, {
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}
+
+export async function createAssessment(data) {
+  const response = await axios.post(`${API_V1_URL}/assessments`, data, {
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}
+
+export async function recordGrades(assessmentId, grades) {
+  const response = await axios.post(
+    `${API_V1_URL}/assessments/${assessmentId}/grades`,
+    { grades },
+    { headers: getAuthHeader() }
+  );
+  return response.data;
+}
+
+export async function fetchAnnouncements() {
+  const response = await axios.get(`${API_V1_URL}/announcements`, {
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}
+
+export async function createAnnouncement(data) {
+  const response = await axios.post(`${API_V1_URL}/announcements`, data, {
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}
+
+export async function fetchCampusEvents() {
+  const response = await axios.get(`${API_V1_URL}/events`, {
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}
+
+export async function createCampusEvent(data) {
+  const response = await axios.post(`${API_V1_URL}/events`, data, {
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}
+
+export async function registerForEvent(eventId) {
+  const response = await axios.post(`${API_V1_URL}/events/${eventId}/register`, {}, {
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}
+
+export async function fetchKnowledgeDocuments() {
+  const response = await axios.get(`${API_V1_URL}/knowledge`, {
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}
+
+export async function performUnifiedSearch(query) {
+  const response = await axios.get(`${API_V1_URL}/search`, {
+    params: { q: query },
+    headers: getAuthHeader(),
+  });
+  return response.data;
+}

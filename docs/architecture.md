@@ -78,10 +78,10 @@ graph TD
 | Module | Responsibility |
 | :--- | :--- |
 | `backend/core/` | Global settings, secret-masking logging, request correlation middleware. |
-| `backend/db/` | Database connection management and connection session factories. |
-| `backend/repositories/` | Direct SQL data access and persistence abstraction layer. |
-| `backend/services/` | Business logic processing, rate-limiting, and domain workflows. |
-| `backend/api/` | FastAPI routes, input validation, and HTTP status code formatting. |
+| `backend/db/` | SQLAlchemy 2.x ORM models, session factories, and Alembic versioned migrations. |
+| `backend/repositories/` | Direct ORM data access (`StudentRepository`, `AcademicRepository`, `AttendanceRepository`, `AssessmentRepository`, `AnnouncementRepository`, `EventRepository`, `KnowledgeRepository`, `AuditRepository`). |
+| `backend/services/` | Business logic, server-side RBAC, validation, and domain workflows (`AuthService`, `AcademicService`, `AttendanceService`, `AssessmentService`, `AnnouncementService`, `EventService`, `KnowledgeService`, `SearchService`, `StudentService`, `AdminService`, `ChatService`). |
+| `backend/api/` | FastAPI routes (`routes_academics`, `routes_attendance`, `routes_assessments`, `routes_announcements`, `routes_events`, `routes_knowledge`, `routes_search`), validation, error handlers. |
 | `backend/models/` | Pydantic request/response schemas and domain data contracts. |
 | `backend/auth/` | JWT token generation, decoding, and server-side RBAC validation. |
 | `backend/rag/` | Document chunking, embedding generation, and ChromaDB vector retrieval. |

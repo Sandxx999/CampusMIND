@@ -19,6 +19,14 @@ from api.routes_chat import router as chat_router, router_v1 as chat_router_v1
 from api.routes_admin import router as admin_router, router_v1 as admin_router_v1
 from api.routes_students import router as students_router, router_v1 as students_router_v1
 from api.routes_system import router as system_router
+from api.routes_academics import router_v1 as academics_router_v1
+from api.routes_attendance import router_v1 as attendance_router_v1
+from api.routes_assessments import router_v1 as assessments_router_v1
+from api.routes_announcements import router_v1 as announcements_router_v1
+from api.routes_events import router_v1 as events_router_v1
+from api.routes_knowledge import router_v1 as knowledge_router_v1
+from api.routes_search import router_v1 as search_router_v1
+
 
 
 @asynccontextmanager
@@ -99,6 +107,13 @@ app.include_router(auth_router_v1)
 app.include_router(chat_router_v1)
 app.include_router(admin_router_v1)
 app.include_router(students_router_v1)
+app.include_router(academics_router_v1)
+app.include_router(attendance_router_v1)
+app.include_router(assessments_router_v1)
+app.include_router(announcements_router_v1)
+app.include_router(events_router_v1)
+app.include_router(knowledge_router_v1)
+app.include_router(search_router_v1)
 
 # Unversioned API Routers (for Phase 0 client compatibility)
 app.include_router(auth_router)

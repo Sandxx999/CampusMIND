@@ -4,19 +4,20 @@ CampusMIND 2.0 is an enterprise-grade Retrieval-Augmented Generation (RAG) assis
 
 ---
 
-## Current Architecture (Phase 1 Baseline)
+## Current Architecture (Phase 3 Foundation)
 
 CampusMIND 2.0 uses a **Modular Monolith** architecture:
 
-- **Presentation**: React 18 + Vite frontend styled with TailwindCSS & Lucide icons.
-- **API & Routing**: FastAPI backend with `/api/v1/` versioned routes and `/api/` backwards-compatible mounts.
+- **Presentation**: React 18 + Vite frontend with Campus Intelligence Portal, Assistant Chat, and System Hub.
+- **API & Routing**: FastAPI backend with `/api/v1/` versioned routes for Academics, Attendance, Assessments, Announcements, Campus Events, Knowledge Foundation, and Search.
 - **Core Architecture**:
   - `core/`: Environment-backed configuration, secret-masking logging, correlation middleware.
-  - `db/`: Isolated connection session management for SQLite (PostgreSQL-ready).
-  - `repositories/`: Repository pattern data access layer (`StudentRepository`, `AuditRepository`).
-  - `services/`: Business logic services (`AuthService`, `StudentService`, `AdminService`, `ChatService`).
-- **Security & Authorization**: JWT token authorization, server-enforced RBAC (Student, Faculty, Admin), IDOR protection, fail-closed production validation.
-- **RAG Engine**: ChromaDB vector retrieval, `sentence-transformers` embeddings, and Google Gemini 1.5 Flash grounded synthesis fallback.
+  - `db/`: SQLAlchemy 2.x ORM models & Alembic database migration pipeline (SQLite / PostgreSQL dual-dialect).
+  - `repositories/`: Data access abstractions (`StudentRepository`, `AcademicRepository`, `AttendanceRepository`, `AssessmentRepository`, `AnnouncementRepository`, `EventRepository`, `KnowledgeRepository`, `AuditRepository`).
+  - `services/`: Business logic services (`AuthService`, `StudentService`, `AcademicService`, `AttendanceService`, `AssessmentService`, `AnnouncementService`, `EventService`, `KnowledgeService`, `SearchService`, `AdminService`, `ChatService`).
+- **Security & Authorization**: Server-controlled JWT token validation, RBAC (Student, Faculty, Admin), IDOR protection, audience-filtered institutional queries, fail-closed validation.
+- **RAG Engine & Knowledge Foundation**: Knowledge document metadata tracking, ChromaDB vector retrieval, `sentence-transformers` embeddings, and Google Gemini 1.5 Flash grounded synthesis fallback.
+
 
 ---
 

@@ -7,7 +7,7 @@ from datetime import datetime, timezone
 from typing import Dict, Any, List, Optional
 from sqlalchemy import select, func, desc
 from db.session import get_db_session, get_db_connection, create_tables
-from db.models import QueryLog, QueryFeedback, User
+from db.models import QueryLog, QueryFeedback, User, AuditEvent
 from core.logging import logger
 
 
@@ -250,6 +250,32 @@ class AuditRepository:
             }
         finally:
             conn.close()
+
+
+    def log_audit_event(
+        self,
+        event_type: str,
+        actor_username: str,
+        user_id: Optional[str] = None,
+        details: Optional[str] = None,
+        ip_address: Optional[str] = None
+    ) -> None:
+        """Persists a security or administrative audit event."""
+        import uuid
+        try:
+            with get_db_session() as session:
+                event = AuditEvent(
+                    id=f"evt_{uuid.uuid4().hex[:12]}",
+                    event_type=event_type,
+                    user_id=user_id,
+                    actor_username=actor_username,
+                    ip_address=ip_address,
+                    details=details,
+                    timestamp=datetime.now(timezone.utc),
+                )
+                session.add(event)
+        except Exception as e:
+            logger.debug(f"Failed to log audit event ({event_type}): {e}")
 
 
 audit_repository = AuditRepository()
