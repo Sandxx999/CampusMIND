@@ -31,14 +31,18 @@ def setup_test_database():
     db_url = f"sqlite:///{temp_db_path}"
     os.environ["DATABASE_URL"] = db_url
 
+    chroma_dir = os.path.join(temp_dir, "test_chroma_db")
+    os.environ["CHROMA_DB_DIR"] = chroma_dir
+
     import sys
     backend_path = os.path.join(root_dir, "backend")
     if backend_path not in sys.path:
         sys.path.insert(0, backend_path)
     
     try:
-        from config import settings
+        from core.config import settings
         settings.DATABASE_URL = db_url
+        settings.CHROMA_DB_DIR = chroma_dir
     except Exception:
         pass
         
